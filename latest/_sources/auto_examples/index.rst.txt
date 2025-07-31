@@ -14,18 +14,69 @@ hogehoge
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="example">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example: Within-subject classification with deep learning">
 
 .. only:: html
 
-  .. image:: /auto_examples/images/thumb/sphx_glr_example_cross-subject-classification_thumb.png
+  .. image:: /auto_examples/images/thumb/sphx_glr_example_within-subject-classification-riemannian_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_example_cross-subject-classification.py`
+  :ref:`sphx_glr_auto_examples_example_within-subject-classification-riemannian.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Example: cross subject classification</div>
+      <div class="sphx-glr-thumbnail-title">Example: Within-subject classification with deep learning</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example: Within-subject classification with deep learning">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_example_cross-subject-classification-riemannian_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_example_cross-subject-classification-riemannian.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example: Within-subject classification with deep learning</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example: Within-subject classification with deep learning">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_example_within-subject-classification-deeplearning_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_example_within-subject-classification-deeplearning.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example: Within-subject classification with deep learning</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example: Within-subject classification with deep learning">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_example_cross-subject-classification-deeplearning_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_example_cross-subject-classification-deeplearning.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example: Within-subject classification with deep learning</div>
     </div>
 
 
@@ -39,7 +90,10 @@ hogehoge
 .. toctree::
    :hidden:
 
-   /auto_examples/example_cross-subject-classification
+   /auto_examples/example_within-subject-classification-riemannian
+   /auto_examples/example_cross-subject-classification-riemannian
+   /auto_examples/example_within-subject-classification-deeplearning
+   /auto_examples/example_cross-subject-classification-deeplearning
 
 
 .. only:: html

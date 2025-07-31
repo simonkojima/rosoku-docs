@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>rosoku.utils.dataset_to_dataloader &#8212; Rosoku 0.0.1 documentation</title>
+    <title>rosoku.utils.dataset_to_dataloader &#8212; Rosoku 0.0.3 documentation</title>
   
   
   
@@ -42,14 +42,14 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/documentation_options.js?v=47de8214"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'rosoku.utils.dataset_to_dataloader';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
-        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '~/git/rosoku.github.io/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://simonkojima.github.io/rosoku-docs/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.0.3';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
@@ -125,8 +125,8 @@
       
     
     
-    <img src="_static/logo-light.png" class="logo__image only-light" alt="Rosoku 0.0.1 documentation - Home"/>
-    <img src="_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="Rosoku 0.0.1 documentation - Home"/>
+    <img src="_static/logo-light.png" class="logo__image only-light" alt="Rosoku 0.0.3 documentation - Home"/>
+    <img src="_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="Rosoku 0.0.3 documentation - Home"/>
   
   
 </a></div>
@@ -324,6 +324,7 @@
   <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">rosoku modules</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="rosoku.deeplearning.html">rosoku.deeplearning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rosoku.conventional.html">rosoku.conventional</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rosoku.deeplearning_cross_subject.html">rosoku.deeplearning_cross_subject</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rosoku.riemannian_cross_subject.html">rosoku.riemannian_cross_subject</a></li>
 </ul>
@@ -411,8 +412,17 @@
 <h1>rosoku.utils.dataset_to_dataloader<a class="headerlink" href="#rosoku-utils-dataset-to-dataloader" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="rosoku.utils.dataset_to_dataloader">
-<span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">dataset_to_dataloader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_DS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DS_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/utils.html#dataset_to_dataloader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.dataset_to_dataloader" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">dataset_to_dataloader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_DS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DS_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/utils.html#dataset_to_dataloader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.dataset_to_dataloader" title="Link to this definition">#</a></dt>
+<dd><p>Convert dataset to Dataloader</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>generator</strong> (<em>None</em><em>, </em><em>instance</em><em> of </em><em>torch.Generator</em><em>(</em><em>)</em><em>, or </em><em>int</em>) – if None, no generator is set. if instance of torch.Genetator(), it will be used. If int, torch.Generator.manual_seed(generator) will be used.</p></li>
+<li><p><strong>enable_DS</strong> (<em>bool</em>) – if True, DistributedSampler will be used. Note that you must call sampler_train.set_epoch(epoch) every epoch.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 

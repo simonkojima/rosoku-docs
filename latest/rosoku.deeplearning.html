@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>rosoku.deeplearning &#8212; Rosoku 0.0.1 documentation</title>
+    <title>rosoku.deeplearning &#8212; Rosoku 0.0.3 documentation</title>
   
   
   
@@ -42,20 +42,20 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/documentation_options.js?v=47de8214"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'rosoku.deeplearning';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
-        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '~/git/rosoku.github.io/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://simonkojima.github.io/rosoku-docs/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.0.3';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="rosoku.deeplearning_cross_subject" href="rosoku.deeplearning_cross_subject.html" />
+    <link rel="next" title="rosoku.conventional" href="rosoku.conventional.html" />
     <link rel="prev" title="Documentation" href="documentation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -125,8 +125,8 @@
       
     
     
-    <img src="_static/logo-light.png" class="logo__image only-light" alt="Rosoku 0.0.1 documentation - Home"/>
-    <img src="_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="Rosoku 0.0.1 documentation - Home"/>
+    <img src="_static/logo-light.png" class="logo__image only-light" alt="Rosoku 0.0.3 documentation - Home"/>
+    <img src="_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="Rosoku 0.0.3 documentation - Home"/>
   
   
 </a></div>
@@ -324,6 +324,7 @@
   <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">rosoku modules</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">rosoku.deeplearning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rosoku.conventional.html">rosoku.conventional</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rosoku.deeplearning_cross_subject.html">rosoku.deeplearning_cross_subject</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rosoku.riemannian_cross_subject.html">rosoku.riemannian_cross_subject</a></li>
 </ul>
@@ -411,7 +412,7 @@
 <h1>rosoku.deeplearning<a class="headerlink" href="#rosoku-deeplearning" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="rosoku.deeplearning">
-<span class="sig-prename descclassname"><span class="pre">rosoku.</span></span><span class="sig-name descname"><span class="pre">deeplearning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keywords_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_load_epochs=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_load_ndarray=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion=CrossEntropyLoss()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size=64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_epochs=500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer=&lt;class</span> <span class="pre">'torch.optim.adamw.AdamW'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_func_proc_per_obj=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_proc_epochs=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_proc_ndarray=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_convert_epochs_to_ndarray=&lt;function</span> <span class="pre">convert_epochs_to_ndarray&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_params=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_get_model=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheduler=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheduler_params=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device='cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_ddp=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_dp=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_keys={'event:left':</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'event:right':</span> <span class="pre">1}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compile_test_subjects=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_wandb_logging=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wandb_params=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_fname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">history_fname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_classifier=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_normalization=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/deeplearning.html#deeplearning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.deeplearning" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">rosoku.</span></span><span class="sig-name descname"><span class="pre">deeplearning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keywords_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_load_epochs=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_load_ndarray=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion=CrossEntropyLoss()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size=64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_epochs=500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer=&lt;class</span> <span class="pre">'torch.optim.adamw.AdamW'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_func_proc_per_obj=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_proc_epochs=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_proc_ndarray=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_convert_epochs_to_ndarray=&lt;function</span> <span class="pre">convert_epochs_to_ndarray&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_params=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_get_model=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheduler=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheduler_params=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device='cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_ddp=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_dp=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compile_test=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_wandb_logging=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wandb_params=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_fname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">history_fname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_classifier=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_normalization=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/deeplearning.html#deeplearning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.deeplearning" title="Link to this definition">#</a></dt>
 <dd><p>汎用的なdeeplearning用関数</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -419,45 +420,83 @@
 <li><p><strong>subjects_train</strong> (<em>list</em>)</p></li>
 <li><p><strong>subjects_valid</strong> (<em>list</em>)</p></li>
 <li><p><strong>subjects_test</strong> (<em>list</em>)</p></li>
-<li><p><strong>func_get_fnames</strong> (<em>callable</em>) – <p>subject名を引数とし，-epo.fifのファイル名リストを返す関数
-def fuc_get_fnames(subject):</p>
-<blockquote>
-<div><p>return [f”{subject-R1-epo.fif}”, f”{subject-R2}-epo.fif”]</p>
-</div></blockquote>
+<li><p><strong>func_get_fnames</strong> (<em>callable</em>) – <p>subject名を引数とし，-epo.fifのファイル名リストを返す関数</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fuc_get_fnames</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">subject</span><span class="o">-</span><span class="n">R1</span><span class="o">-</span><span class="n">epo</span><span class="o">.</span><span class="n">fif</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">subject</span><span class="o">-</span><span class="n">R2</span><span class="si">}</span><span class="s2">-epo.fif&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
 </p></li>
 <li><p><strong>criterion</strong> (<em>instance</em><em> of </em><em>loss function</em>)</p></li>
 <li><p><strong>batch_size</strong> (<em>int</em>)</p></li>
 <li><p><strong>n_epochs</strong> (<em>int</em>)</p></li>
-<li><p><strong>optimizer</strong> (<em>reference to class</em>) – e.g., torch.optim.AdamW
-インスタンスではなく，クラスへの参照を渡す</p></li>
+<li><p><strong>optimizer</strong> (<em>reference to class</em>) – <ul>
+<li><p>インスタンスではなく，クラスへの参照を渡す</p></li>
+</ul>
+<p>e.g.,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span>
+</pre></div>
+</div>
+</p></li>
 <li><p><strong>optimizer_params</strong> (<em>dict</em>) – optimizerへ渡す**kwargs</p></li>
 <li><p><strong>model</strong> (<em>instance</em><em> of </em><em>pytorch model</em>) – func_get_modelを使う場合はNoneでOK</p></li>
-<li><p><strong>func_get_model</strong> (<em>callable</em>) – X_train, y_trainを引数として，modelを返す関数
-X_trainのshape依存のmodel等で便利
-modelに直接渡す場合はNoneでOK</p></li>
-<li><p><strong>scheduler</strong> – e.g., scheduler = torch.optim.lr_scheduler.CosineAnnealingLR
-インスタンスではなく，クラスへの参照を渡す</p></li>
+<li><p><strong>func_get_model</strong> (<em>callable</em>) – <ul>
+<li><p>X_train, y_trainを引数として，modelを返す関数</p></li>
+<li><p>X_trainのshape依存のmodel等で便利</p></li>
+<li><p>modelに直接渡す場合はNoneでOK</p></li>
+</ul>
+</p></li>
+<li><p><strong>scheduler</strong> – <p>インスタンスではなく，クラスへの参照を渡す</p>
+<p>e.g.,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">CosineAnnealingLR</span>
+</pre></div>
+</div>
+</p></li>
 <li><p><strong>scheduler_params</strong> (<em>dict</em>) – schedulerへ渡す**kwargs</p></li>
 <li><p><strong>device</strong> (<em>str</em>) – “cpu”, “cuda”…etc</p></li>
 <li><p><strong>enable_ddp</strong> (<em>bool</em>) – DDP(Distributed Data Parallel)を使うか否か．Trueの場合はdevice = “cuda”じゃないといけないので注意</p></li>
-<li><p><strong>num_workers</strong> (<em>int</em>) – 各GPUごとにいくつのプロセスを使ってデータ読み込みを行うか
-enable_ddp = Trueのときのみこの変更が有効になる</p></li>
-<li><p><strong>func_proc_epochs</strong> (<em>callable</em>) – mne.epochsを引数として，mne.epochsを返す
-チャネルを脳波のみにする，cropする…などで使う</p></li>
-<li><p><strong>label_keys</strong> (<em>dict</em>) – epochsからクラス情報を抜き出すのに使う
-e.g., label_keys={“event:left”: 0, “event:right”: 1}
-この場合，”event:left”のエポックが0で，”event:right”が1になる</p></li>
-<li><p><strong>compile_test_subjects</strong> (<em>bool</em>) – Trueのとき，複数のテストサブジェクトのデータを結合し，精度等を計算する
-Falseの場合は，被験者ごとの結果を返す</p></li>
+<li><p><strong>num_workers</strong> (<em>int</em>) – <ul>
+<li><p>各GPUごとにいくつのプロセスを使ってデータ読み込みを行うか</p></li>
+<li><p>enable_ddp = Trueのときのみこの変更が有効になる</p></li>
+</ul>
+</p></li>
+<li><p><strong>func_proc_epochs</strong> (<em>callable</em>) – <ul>
+<li><p>mne.epochsを引数として，mne.epochsを返す</p></li>
+<li><p>チャネルを脳波のみにする，cropする…などで使う</p></li>
+</ul>
+</p></li>
+<li><p><strong>label_keys</strong> (<em>dict</em>) – <p>epochsからクラス情報を抜き出すのに使う</p>
+<p>e.g.,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">label_keys</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;event:left&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;event:right&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>この場合，”event:left”のエポックが0で，”event:right”が1になる</p>
+</p></li>
+<li><p><strong>compile_test</strong> (<em>bool</em>) – <ul>
+<li><p>Trueのとき，複数のテストサブジェクトのデータを結合し，精度等を計算する</p></li>
+<li><p>Falseの場合は，被験者ごとの結果を返す</p></li>
+</ul>
+</p></li>
 <li><p><strong>enable_wandb_logging</strong> (<em>bool</em>) – wandbでのログ保存を有効化するか</p></li>
-<li><p><strong>wandb_params</strong> (<em>dict</em>) – wandb.init()に渡すkwargs
-project, name, などを入れておくと良い</p></li>
-<li><p><strong>checkpoint_fname</strong> (<em>path-like</em>) – checkpoint保存用ファイル名
-pthで保存される</p></li>
-<li><p><strong>history_fname</strong> (<em>path-like</em>) – history保存用ファイル名
-pkl, htmlでpandas DataFrameが保存される</p></li>
-<li><p><strong>early_stopping</strong> (<em>int</em><em> or </em><em>callable</em>) – early_stopping = rosoku.EarlyStopping(patience = 75)
-early_stopping = 75</p></li>
+<li><p><strong>wandb_params</strong> (<em>dict</em>) – <ul>
+<li><p>wandb.init()に渡すkwargs</p></li>
+<li><p>project, name, などを入れておくと良い</p></li>
+</ul>
+</p></li>
+<li><p><strong>checkpoint_fname</strong> (<em>path-like</em>) – <ul>
+<li><p>checkpoint保存用ファイル名</p></li>
+<li><p>pthで保存される</p></li>
+</ul>
+</p></li>
+<li><p><strong>history_fname</strong> (<em>path-like</em>) – <ul>
+<li><p>history保存用ファイル名</p></li>
+<li><p>pkl, htmlでpandas DataFrameが保存される</p></li>
+</ul>
+</p></li>
+<li><p><strong>early_stopping</strong> (<em>int</em><em> or </em><em>callable</em>) – <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">early_stopping</span> <span class="o">=</span> <span class="n">rosoku</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span> <span class="o">=</span> <span class="mi">75</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">early_stopping</span> <span class="o">=</span> <span class="mi">75</span>
+</pre></div>
+</div>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -491,11 +530,11 @@ early_stopping = 75</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="rosoku.deeplearning_cross_subject.html"
+       href="rosoku.conventional.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">rosoku.deeplearning_cross_subject</p>
+        <p class="prev-next-title">rosoku.conventional</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
