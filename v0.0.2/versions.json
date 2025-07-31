@@ -1,0 +1,10 @@
+[
+  {
+    "version": "latest",
+    "url": "/rosoku/latest/"
+  },
+  {
+    "version": "v0.0.2",
+    "url": "/rosou/v0.0.2/"
+  }
+]
