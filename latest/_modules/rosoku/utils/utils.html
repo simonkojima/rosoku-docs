@@ -510,22 +510,6 @@
 
 
 
-<div class="viewcode-block" id="get_labels_from_epochs">
-<a class="viewcode-back" href="../../../rosoku.utils.get_labels_from_epochs.html#rosoku.utils.utils.get_labels_from_epochs">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">label_keys</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;event:left&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;event:right&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}):</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-
-    <span class="n">_</span><span class="p">,</span> <span class="n">markers</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="n">markers_from_events</span><span class="p">(</span><span class="n">epochs</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="n">epochs</span><span class="o">.</span><span class="n">event_id</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">marker</span> <span class="ow">in</span> <span class="n">markers</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">label_keys</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">marker</span><span class="p">:</span>
-                <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">y</span></div>
-
-
-
 <div class="viewcode-block" id="nd_to_tensor">
 <a class="viewcode-back" href="../../../rosoku.utils.nd_to_tensor.html#rosoku.utils.utils.nd_to_tensor">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">nd_to_tensor</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">):</span>
@@ -606,25 +590,28 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 
-    <span class="k">if</span> <span class="n">generator</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">enable_DS</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">generator</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;When enable_DS = True, generator must be int.&quot;</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">generator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">func_worker_init</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">generator</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">generator</span><span class="p">)</span>
 
-                <span class="k">def</span><span class="w"> </span><span class="nf">func_worker_init</span><span class="p">(</span><span class="n">worker_id</span><span class="p">):</span>
-                    <span class="n">worker_seed</span> <span class="o">=</span> <span class="n">generator</span> <span class="o">+</span> <span class="n">worker_id</span>
-                    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">worker_seed</span><span class="p">)</span>
-                    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">worker_seed</span><span class="p">)</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">func_worker_init</span><span class="p">(</span><span class="n">worker_id</span><span class="p">):</span>
+            <span class="n">worker_seed</span> <span class="o">=</span> <span class="n">generator</span> <span class="o">+</span> <span class="n">worker_id</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">worker_seed</span><span class="p">)</span>
+            <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">worker_seed</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">generator</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-            <span class="n">g</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">generator</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">g</span> <span class="o">=</span> <span class="n">generator</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">generator</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Generator</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">generator</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">func_worker_init</span><span class="p">(</span><span class="n">worker_id</span><span class="p">):</span>
+            <span class="n">worker_seed</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">initial_seed</span><span class="p">()</span> <span class="o">+</span> <span class="n">worker_id</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">worker_seed</span><span class="p">)</span>
+            <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">worker_seed</span><span class="p">)</span>
 
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">g</span> <span class="o">=</span> <span class="n">generator</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;generator must be an int or torch.Generator&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">enable_DS</span><span class="p">:</span>
         <span class="n">world_size</span> <span class="o">=</span> <span class="n">DS_params</span><span class="p">[</span><span class="s2">&quot;world_size&quot;</span><span class="p">]</span>
@@ -696,7 +683,11 @@
     <span class="k">else</span><span class="p">:</span>
 
         <span class="n">dataloader_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
-            <span class="n">dataset_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="n">g</span>
+            <span class="n">dataset_train</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">generator</span><span class="o">=</span><span class="n">g</span><span class="p">,</span>
+            <span class="n">worker_init_fn</span><span class="o">=</span><span class="n">func_worker_init</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">dataloader_valid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
             <span class="n">dataset_valid</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span>
@@ -1008,122 +999,6 @@
         <span class="nb">print</span><span class="p">(</span><span class="n">txt_print</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">valid_loss</span></div>
-
-
-
-<div class="viewcode-block" id="convert_epochs_to_ndarray">
-<a class="viewcode-back" href="../../../rosoku.utils.html#rosoku.utils.utils.convert_epochs_to_ndarray">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">convert_epochs_to_ndarray</span><span class="p">(</span>
-    <span class="n">epochs_train</span><span class="p">,</span>
-    <span class="n">epochs_test</span><span class="p">,</span>
-    <span class="n">epochs_valid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">label_keys</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;event:left&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;event:right&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
-<span class="p">):</span>
-
-    <span class="n">X_train</span> <span class="o">=</span> <span class="n">epochs_train</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">epochs_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">X_valid</span> <span class="o">=</span> <span class="n">epochs_valid</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
-    <span class="n">X_test</span> <span class="o">=</span> <span class="n">epochs_test</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
-
-    <span class="n">y_train</span> <span class="o">=</span> <span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs_train</span><span class="p">,</span> <span class="n">label_keys</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">epochs_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">y_valid</span> <span class="o">=</span> <span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs_valid</span><span class="p">,</span> <span class="n">label_keys</span><span class="p">)</span>
-    <span class="n">y_test</span> <span class="o">=</span> <span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs_test</span><span class="p">,</span> <span class="n">label_keys</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">epochs_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">y_test</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span></div>
-
-
-
-<div class="viewcode-block" id="load_data">
-<a class="viewcode-back" href="../../../rosoku.utils.html#rosoku.utils.utils.load_data">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">load_data</span><span class="p">(</span>
-    <span class="n">keywords_train</span><span class="p">,</span>
-    <span class="n">keywords_test</span><span class="p">,</span>
-    <span class="n">keywords_valid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">func_load_epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">func_load_ndarray</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">func_proc_epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">func_proc_ndarray</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">apply_func_proc_per_obj</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">func_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">convert_epochs_to_ndarray</span><span class="p">,</span>
-    <span class="n">compile_test</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="c1">## training data</span>
-    <span class="k">if</span> <span class="n">func_load_epochs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">epochs_train</span> <span class="o">=</span> <span class="n">func_load_epochs</span><span class="p">(</span><span class="n">keywords_train</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">keywords_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">epochs_valid</span> <span class="o">=</span> <span class="n">func_load_epochs</span><span class="p">(</span><span class="n">keywords_valid</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">)</span>
-        <span class="n">epochs_test</span> <span class="o">=</span> <span class="n">func_load_epochs</span><span class="p">(</span><span class="n">keywords_test</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">func_proc_epochs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">apply_func_proc_per_obj</span><span class="p">:</span>
-                <span class="n">epochs_train</span> <span class="o">=</span> <span class="n">func_proc_epochs</span><span class="p">(</span><span class="n">epochs_train</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">keywords_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">epochs_valid</span> <span class="o">=</span> <span class="n">func_proc_epochs</span><span class="p">(</span><span class="n">epochs_valid</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">)</span>
-                <span class="n">epochs_test</span> <span class="o">=</span> <span class="n">func_proc_epochs</span><span class="p">(</span><span class="n">epochs_test</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">keywords_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">epochs_train</span><span class="p">,</span> <span class="n">epochs_valid</span><span class="p">,</span> <span class="n">epochs_test</span> <span class="o">=</span> <span class="n">func_proc_epochs</span><span class="p">(</span>
-                        <span class="n">epochs_train</span><span class="p">,</span>
-                        <span class="n">epochs_valid</span><span class="p">,</span>
-                        <span class="n">epochs_test</span><span class="p">,</span>
-                    <span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">epochs_train</span><span class="p">,</span> <span class="n">epochs_test</span> <span class="o">=</span> <span class="n">func_proc_epochs</span><span class="p">(</span>
-                        <span class="n">epochs_train</span><span class="p">,</span>
-                        <span class="n">epochs_test</span><span class="p">,</span>
-                    <span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">keywords_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="n">func_convert_epochs_to_ndarray</span><span class="p">(</span><span class="n">epochs_train</span><span class="p">,</span> <span class="n">epochs_valid</span><span class="p">,</span> <span class="n">epochs_test</span><span class="p">)</span>
-            <span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">func_convert_epochs_to_ndarray</span><span class="p">(</span>
-                <span class="n">epochs_train</span><span class="p">,</span> <span class="n">epochs_test</span>
-            <span class="p">)</span>
-
-    <span class="k">elif</span> <span class="n">func_load_ndarray</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">func_load_ndarray</span><span class="p">(</span><span class="n">keywords_train</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">keywords_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="n">func_load_ndarray</span><span class="p">(</span><span class="n">keywords_valid</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">)</span>
-        <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">func_load_ndarray</span><span class="p">(</span><span class="n">keywords_test</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="s2">&quot;either func_load_epochs or func_load_ndarray should not be None&quot;</span>
-        <span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">compile_test</span><span class="p">:</span>
-        <span class="c1"># compile y</span>
-        <span class="n">y_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
-
-        <span class="c1"># compile X</span>
-        <span class="n">X_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
-
-    <span class="k">if</span> <span class="n">func_proc_ndarray</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">apply_func_proc_per_obj</span><span class="p">:</span>
-            <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">func_proc_ndarray</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">keywords_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="n">func_proc_ndarray</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">)</span>
-            <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">func_proc_ndarray</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">keywords_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">func_proc_ndarray</span><span class="p">(</span>
-                    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">y_test</span>
-                <span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">func_proc_ndarray</span><span class="p">(</span>
-                    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span>
-                <span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">keywords_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">y_test</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span></div>
 
 </pre></div>
 

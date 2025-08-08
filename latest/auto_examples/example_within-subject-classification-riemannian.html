@@ -394,17 +394,12 @@ to download the full example code.</p>
 <section class="sphx-glr-example-title" id="example-within-subject-classification-with-riemannian-classifier">
 <span id="sphx-glr-auto-examples-example-within-subject-classification-riemannian-py"></span><h1>Example: Within-subject classification with riemannian classifier<a class="headerlink" href="#example-within-subject-classification-with-riemannian-classifier" title="Link to this heading">#</a></h1>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">mne</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">tag_mne</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tm</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">moabb.datasets</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pyriemann</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">rosoku</span>
 </pre></div>
@@ -426,7 +421,7 @@ to download the full example code.</p>
             <span class="n">l_freq</span><span class="o">=</span><span class="n">l_freq</span><span class="p">,</span>
             <span class="n">h_freq</span><span class="o">=</span><span class="n">h_freq</span><span class="p">,</span>
             <span class="n">method</span><span class="o">=</span><span class="s2">&quot;iir&quot;</span><span class="p">,</span>
-            <span class="n">iir_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ftype&quot;</span><span class="p">:</span> <span class="s2">&quot;butter&quot;</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;btype&quot;</span><span class="p">:</span> <span class="s2">&quot;bandpass&quot;</span><span class="p">},</span>
+            <span class="n">iir_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ftype&quot;</span><span class="p">:</span> <span class="s2">&quot;butter&quot;</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="n">order_filter</span><span class="p">,</span> <span class="s2">&quot;btype&quot;</span><span class="p">:</span> <span class="s2">&quot;bandpass&quot;</span><span class="p">},</span>
         <span class="p">)</span>
 
         <span class="c1"># eog and emg mapping</span>
@@ -501,7 +496,7 @@ to download the full example code.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0it [00:00, ?it/s]
-9it [00:00, 21472.55it/s]
+9it [00:00, 36088.66it/s]
 Reading 0 ... 230911  =      0.000 ...   450.998 secs...
 Reading 0 ... 230911  =      0.000 ...   450.998 secs...
 Reading 0 ... 230911  =      0.000 ...   450.998 secs...
@@ -622,28 +617,22 @@ No baseline correction applied
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">convert_epochs_to_ndarray</span><span class="p">(</span>
-    <span class="n">epochs_train</span><span class="p">,</span>
-    <span class="n">epochs_test</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="p">,</span>
     <span class="n">label_keys</span><span class="p">,</span>
 <span class="p">):</span>
 
-    <span class="n">X_train</span> <span class="o">=</span> <span class="n">epochs_train</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
-    <span class="n">X_test</span> <span class="o">=</span> <span class="n">epochs_test</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">pyriemann</span><span class="o">.</span><span class="n">estimation</span><span class="o">.</span><span class="n">Covariances</span><span class="p">()</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">rosoku</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">label_keys</span><span class="p">)</span>
 
-    <span class="n">X_train</span> <span class="o">=</span> <span class="n">pyriemann</span><span class="o">.</span><span class="n">estimation</span><span class="o">.</span><span class="n">Covariances</span><span class="p">()</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-    <span class="n">X_test</span> <span class="o">=</span> <span class="n">pyriemann</span><span class="o">.</span><span class="n">estimation</span><span class="o">.</span><span class="n">Covariances</span><span class="p">()</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-    <span class="n">y_train</span> <span class="o">=</span> <span class="n">rosoku</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs_train</span><span class="p">,</span> <span class="n">label_keys</span><span class="p">)</span>
-    <span class="n">y_test</span> <span class="o">=</span> <span class="n">rosoku</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs_test</span><span class="p">,</span> <span class="n">label_keys</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
 </pre></div>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">label_keys</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;event:left&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;event:right&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="n">rosoku</span><span class="o">.</span><span class="n">conventional</span><span class="p">(</span>
     <span class="n">keywords_train</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;run:1&quot;</span><span class="p">,</span> <span class="s2">&quot;run:2&quot;</span><span class="p">],</span>
-    <span class="n">keywords_test</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;run:3&quot;</span><span class="p">,</span> <span class="s2">&quot;run:4&quot;</span><span class="p">,</span> <span class="s2">&quot;run:5&quot;</span><span class="p">],</span>
+    <span class="n">keywords_test</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;run:3&quot;</span><span class="p">,</span> <span class="s2">&quot;run:4&quot;</span><span class="p">,</span> <span class="s2">&quot;run:5&quot;</span><span class="p">]],</span>
     <span class="n">func_load_epochs</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">func_load_epochs</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">),</span>
     <span class="n">func_proc_epochs</span><span class="o">=</span><span class="n">func_proc_epochs</span><span class="p">,</span>
     <span class="n">func_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
@@ -651,15 +640,31 @@ No baseline correction applied
     <span class="p">),</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>   keywords_train keywords_test classifier  accuracy                                             labels                                              preds                                             probas  desc
-0  [run:1, run:2]         run:3       tslr  0.991667  [1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, ...  [1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, ...  [[0.21452739068104754, 0.7854726093189525], [0...  None
-1  [run:1, run:2]         run:3        mdm  0.991667  [1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, ...  [1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, ...  [[0.16316916967233025, 0.8368308303276697], [0...  None
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>keywords_train                                       [run:1, run:2]
+keywords_test                                 [run:3, run:4, run:5]
+classifier                                                     tslr
+accuracy                                                   0.991667
+labels            [1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, ...
+preds             [1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, ...
+probas            [[0.21452739068104754, 0.7854726093189525], [0...
+desc                                                           None
+Name: 0, dtype: object
+keywords_train                                       [run:1, run:2]
+keywords_test                                 [run:3, run:4, run:5]
+classifier                                                      mdm
+accuracy                                                   0.991667
+labels            [1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, ...
+preds             [1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, ...
+probas            [[0.16316916967233025, 0.8368308303276697], [0...
+desc                                                           None
+Name: 1, dtype: object
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.707 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.187 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-example-within-subject-classification-riemannian-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/34684cad1ca6a9acba29b074a8172540/example_within-subject-classification-riemannian.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">example_within-subject-classification-riemannian.ipynb</span></code></a></p>

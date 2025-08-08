@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Documentation &#8212; Rosoku 0.0.3 documentation</title>
+    <title>rosoku.utils.convert_epochs_to_ndarray &#8212; Rosoku 0.0.3 documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <script src="_static/documentation_options.js?v=47de8214"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'documentation';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rosoku.utils.convert_epochs_to_ndarray';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://simonkojima.github.io/rosoku-docs/versions.json';
@@ -55,8 +55,8 @@
         </script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="rosoku.deeplearning" href="rosoku.deeplearning.html" />
-    <link rel="prev" title="rosoku documentation" href="index.html" />
+    <link rel="next" title="Examples" href="auto_examples/index.html" />
+    <link rel="prev" title="rosoku.utils.load_data" href="rosoku.utils.load_data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -142,7 +142,7 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
+  <a class="nav-link nav-internal" href="documentation.html">
     Documentation
   </a>
 </li>
@@ -255,7 +255,7 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
+  <a class="nav-link nav-internal" href="documentation.html">
     Documentation
   </a>
 </li>
@@ -339,7 +339,7 @@
 <li class="toctree-l1"><a class="reference internal" href="rosoku.tl.riemannian_alignment.html">rosoku.tl.riemannian_alignment</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">rosoku.utils</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="rosoku.utils.EarlyStopping.html">rosoku.utils.EarlyStopping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rosoku.utils.get_labels_from_epochs.html">rosoku.utils.get_labels_from_epochs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rosoku.utils.get_predictions.html">rosoku.utils.get_predictions</a></li>
@@ -349,7 +349,7 @@
 <li class="toctree-l1"><a class="reference internal" href="rosoku.utils.tensor_to_dataset.html">rosoku.utils.tensor_to_dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rosoku.utils.dataset_to_dataloader.html">rosoku.utils.dataset_to_dataloader</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rosoku.utils.load_data.html">rosoku.utils.load_data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rosoku.utils.convert_epochs_to_ndarray.html">rosoku.utils.convert_epochs_to_ndarray</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">rosoku.utils.convert_epochs_to_ndarray</a></li>
 </ul>
 </div>
 </nav></div>
@@ -390,7 +390,10 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Documentation</span></li>
+    
+    <li class="breadcrumb-item"><a href="documentation.html" class="nav-link">Documentation</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">rosoku.utils.convert_epochs_to_ndarray</span></li>
   </ul>
 </nav>
 </div>
@@ -407,94 +410,13 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="documentation">
-<h1>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h1>
-<section id="rosoku">
-<h2>rosoku<a class="headerlink" href="#rosoku" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="rosoku.deeplearning.html#rosoku.deeplearning" title="rosoku.deeplearning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.deeplearning</span></code></a>(keywords_train, ...[, ...])</p></td>
-<td><p>汎用的なdeeplearning用関数</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="rosoku.conventional.html#rosoku.conventional" title="rosoku.conventional"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.conventional</span></code></a>(keywords_train, ...[, ...])</p></td>
-<td><p>汎用的なriemannian用関数</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="rosoku.deeplearning_cross_subject.html#rosoku.deeplearning_cross_subject" title="rosoku.deeplearning_cross_subject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.deeplearning_cross_subject</span></code></a>(...[, ...])</p></td>
-<td><p>cross-subjectのDLを行う</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="rosoku.riemannian_cross_subject.html#rosoku.riemannian_cross_subject" title="rosoku.riemannian_cross_subject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.riemannian_cross_subject</span></code></a>(...[, ...])</p></td>
-<td><p>subjects_train: list subjects_test: list files: callable     subject名を引数とし，ファイル名を返す関数 func_proc_epochs: function     def func_proc_eochs(epochs)         return epochs classifier: list of classifier, &quot;tslr&quot;, &quot;mdm&quot;, instance label_keys: dict compile_test_subjects: bool     Trueにすると，テストsubjectのデータをまとめて，その精度とかを返す     Falseにすると，各被験者ごとの精度をリストで返す</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="rosoku-preprocessing">
-<h2>rosoku.preprocessing<a class="headerlink" href="#rosoku-preprocessing" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="rosoku.preprocessing.normalize.html#rosoku.preprocessing.normalize" title="rosoku.preprocessing.normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.preprocessing.normalize</span></code></a>(X_train, ...)</p></td>
-<td><p>Normalization</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="rosoku.preprocessing.normalize_tensor.html#rosoku.preprocessing.normalize_tensor" title="rosoku.preprocessing.normalize_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.preprocessing.normalize_tensor</span></code></a>(...)</p></td>
-<td><p>Normalization</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="rosoku-tl">
-<h2>rosoku.tl<a class="headerlink" href="#rosoku-tl" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="rosoku.tl.euclidean_alignment.html#rosoku.tl.euclidean_alignment" title="rosoku.tl.euclidean_alignment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.tl.euclidean_alignment</span></code></a>(X)</p></td>
-<td><p>EA (Euclidean Alignment)を行う関数 recenteringがユークリッド空間で行われる</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="rosoku.tl.riemannian_alignment.html#rosoku.tl.riemannian_alignment" title="rosoku.tl.riemannian_alignment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.tl.riemannian_alignment</span></code></a>(covariances)</p></td>
-<td><p>Riemannian Procrustes Analysisのrecentering, rescalingを行う関数 scaling = Falseのとき，recenteringのみ</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="rosoku-utils">
-<h2>rosoku.utils<a class="headerlink" href="#rosoku-utils" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="rosoku.utils.EarlyStopping.html#rosoku.utils.EarlyStopping" title="rosoku.utils.EarlyStopping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.utils.EarlyStopping</span></code></a>([patience, min_delta])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="rosoku.utils.get_labels_from_epochs.html#rosoku.utils.get_labels_from_epochs" title="rosoku.utils.get_labels_from_epochs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.utils.get_labels_from_epochs</span></code></a>(epochs)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="rosoku.utils.get_predictions.html#rosoku.utils.get_predictions" title="rosoku.utils.get_predictions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.utils.get_predictions</span></code></a>(model, dataloader)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="rosoku.utils.get_ddp_params.html#rosoku.utils.get_ddp_params" title="rosoku.utils.get_ddp_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.utils.get_ddp_params</span></code></a>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="rosoku.utils.nd_to_dataloader.html#rosoku.utils.nd_to_dataloader" title="rosoku.utils.nd_to_dataloader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.utils.nd_to_dataloader</span></code></a>(X_train, ...)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="rosoku.utils.nd_to_tensor.html#rosoku.utils.nd_to_tensor" title="rosoku.utils.nd_to_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.utils.nd_to_tensor</span></code></a>(X_train, y_train, ...)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="rosoku.utils.tensor_to_dataset.html#rosoku.utils.tensor_to_dataset" title="rosoku.utils.tensor_to_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.utils.tensor_to_dataset</span></code></a>(...)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="rosoku.utils.dataset_to_dataloader.html#rosoku.utils.dataset_to_dataloader" title="rosoku.utils.dataset_to_dataloader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.utils.dataset_to_dataloader</span></code></a>(...[, ...])</p></td>
-<td><p>Convert dataset to Dataloader</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="rosoku.utils.load_data.html#rosoku.utils.load_data" title="rosoku.utils.load_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.utils.load_data</span></code></a>(keywords_train, ...)</p></td>
-<td><p>渡されたkeywordsをもとに，データを読み出す関数</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="rosoku.utils.convert_epochs_to_ndarray.html#rosoku.utils.convert_epochs_to_ndarray" title="rosoku.utils.convert_epochs_to_ndarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.utils.convert_epochs_to_ndarray</span></code></a>(epochs)</p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
+  <section id="rosoku-utils-convert-epochs-to-ndarray">
+<h1>rosoku.utils.convert_epochs_to_ndarray<a class="headerlink" href="#rosoku-utils-convert-epochs-to-ndarray" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="rosoku.utils.convert_epochs_to_ndarray">
+<span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">convert_epochs_to_ndarray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'event:left':</span> <span class="pre">0,</span> <span class="pre">'event:right':</span> <span class="pre">1}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/data_load.html#convert_epochs_to_ndarray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.convert_epochs_to_ndarray" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 </section>
 
 
@@ -508,20 +430,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="rosoku.utils.load_data.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">rosoku documentation</p>
+        <p class="prev-next-title">rosoku.utils.load_data</p>
       </div>
     </a>
     <a class="right-next"
-       href="rosoku.deeplearning.html"
+       href="auto_examples/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">rosoku.deeplearning</p>
+        <p class="prev-next-title">Examples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -544,10 +466,7 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku">rosoku</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku-preprocessing">rosoku.preprocessing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku-tl">rosoku.tl</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku-utils">rosoku.utils</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.convert_epochs_to_ndarray"><code class="docutils literal notranslate"><span class="pre">convert_epochs_to_ndarray()</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -555,7 +474,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/documentation.rst.txt"
+      <li><a href="_sources/rosoku.utils.convert_epochs_to_ndarray.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>

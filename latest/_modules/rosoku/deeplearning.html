@@ -533,9 +533,11 @@
     <span class="k">if</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elapsed Time: </span><span class="si">{</span><span class="n">elapsed_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">enable_wandb_logging</span><span class="p">:</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">enable_ddp</span> <span class="ow">and</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">enable_ddp</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">):</span>
-            <span class="n">wandb</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    if enable_wandb_logging:</span>
+<span class="sd">        if (enable_ddp and rank == 0) or (enable_ddp is False):</span>
+<span class="sd">            wandb.finish()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">history_fname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">df_save</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
@@ -1109,27 +1111,6 @@
 
 
 
-<div class="viewcode-block" id="convert_epochs_to_ndarray">
-<a class="viewcode-back" href="../../rosoku.html#rosoku.deeplearning.convert_epochs_to_ndarray">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">convert_epochs_to_ndarray</span><span class="p">(</span>
-    <span class="n">epochs_train</span><span class="p">,</span>
-    <span class="n">epochs_valid</span><span class="p">,</span>
-    <span class="n">epochs_test</span><span class="p">,</span>
-    <span class="n">label_keys</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;event:left&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;event:right&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
-<span class="p">):</span>
-
-    <span class="n">X_train</span> <span class="o">=</span> <span class="n">epochs_train</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
-    <span class="n">X_valid</span> <span class="o">=</span> <span class="n">epochs_valid</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
-    <span class="n">X_test</span> <span class="o">=</span> <span class="n">epochs_test</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
-
-    <span class="n">y_train</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs_train</span><span class="p">,</span> <span class="n">label_keys</span><span class="p">)</span>
-    <span class="n">y_valid</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs_valid</span><span class="p">,</span> <span class="n">label_keys</span><span class="p">)</span>
-    <span class="n">y_test</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs_test</span><span class="p">,</span> <span class="n">label_keys</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">y_test</span></div>
-
-
-
 <div class="viewcode-block" id="deeplearning">
 <a class="viewcode-back" href="../../rosoku.deeplearning.html#rosoku.deeplearning.deeplearning">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">deeplearning</span><span class="p">(</span>
@@ -1143,10 +1124,10 @@
     <span class="n">n_epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
     <span class="n">optimizer</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
-    <span class="n">apply_func_proc_per_obj</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">func_proc_mode</span><span class="o">=</span><span class="s2">&quot;per_split&quot;</span><span class="p">,</span>
     <span class="n">func_proc_epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">func_proc_ndarray</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">func_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">convert_epochs_to_ndarray</span><span class="p">,</span>
+    <span class="n">func_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">utils</span><span class="o">.</span><span class="n">convert_epochs_to_ndarray</span><span class="p">,</span>
     <span class="n">optimizer_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">func_get_model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1156,15 +1137,12 @@
     <span class="n">enable_ddp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">enable_dp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="c1"># label_keys={&quot;event:left&quot;: 0, &quot;event:right&quot;: 1},</span>
-    <span class="n">compile_test</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">enable_wandb_logging</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">wandb_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">checkpoint_fname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">history_fname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">early_stopping</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">name_classifier</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="c1"># enable_euclidean_alignment=False,</span>
     <span class="n">enable_normalization</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">desc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1349,10 +1327,12 @@
         <span class="n">func_load_ndarray</span><span class="o">=</span><span class="n">func_load_ndarray</span><span class="p">,</span>
         <span class="n">func_proc_epochs</span><span class="o">=</span><span class="n">func_proc_epochs</span><span class="p">,</span>
         <span class="n">func_proc_ndarray</span><span class="o">=</span><span class="n">func_proc_ndarray</span><span class="p">,</span>
-        <span class="n">apply_func_proc_per_obj</span><span class="o">=</span><span class="n">apply_func_proc_per_obj</span><span class="p">,</span>
+        <span class="n">func_proc_mode</span><span class="o">=</span><span class="n">func_proc_mode</span><span class="p">,</span>
         <span class="n">func_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">func_convert_epochs_to_ndarray</span><span class="p">,</span>
-        <span class="n">compile_test</span><span class="o">=</span><span class="n">compile_test</span><span class="p">,</span>
     <span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keywords_test</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;len(keywords_test) != len(X_test)&quot;</span><span class="p">)</span>
 
     <span class="c1"># data normalization</span>
     <span class="k">if</span> <span class="n">enable_normalization</span><span class="p">:</span>
@@ -1377,7 +1357,6 @@
         <span class="s2">&quot;scheduler_params&quot;</span><span class="p">:</span> <span class="n">scheduler_params</span><span class="p">,</span>
         <span class="s2">&quot;func_proc_epochs&quot;</span><span class="p">:</span> <span class="n">func_proc_epochs</span><span class="p">,</span>
         <span class="c1"># &quot;label_keys&quot;: label_keys,</span>
-        <span class="s2">&quot;compile_test&quot;</span><span class="p">:</span> <span class="n">compile_test</span><span class="p">,</span>
         <span class="s2">&quot;enable_wandb_logging&quot;</span><span class="p">:</span> <span class="n">enable_wandb_logging</span><span class="p">,</span>
         <span class="s2">&quot;wandb_params&quot;</span><span class="p">:</span> <span class="n">wandb_params</span><span class="p">,</span>
         <span class="s2">&quot;checkpoint_fname&quot;</span><span class="p">:</span> <span class="n">checkpoint_fname</span><span class="p">,</span>
@@ -1466,6 +1445,8 @@
             <span class="p">)</span>
 
             <span class="n">accuracy</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">preds</span><span class="p">)</span>
+            <span class="n">f1</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">preds</span><span class="p">)</span>
+            <span class="n">bacc</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">balanced_accuracy_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">preds</span><span class="p">)</span>
 
             <span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
             <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;keywords_train&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">keywords_train</span><span class="p">]</span>
@@ -1483,97 +1464,36 @@
                 <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;normalization_mean&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">normalization_mean</span><span class="o">.</span><span class="n">flatten</span><span class="p">()]</span>
                 <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;normalization_std&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">normalization_std</span><span class="o">.</span><span class="n">flatten</span><span class="p">()]</span>
 
+            <span class="k">if</span> <span class="n">enable_wandb_logging</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">enable_ddp</span> <span class="ow">and</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;rank&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">enable_ddp</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">):</span>
+                    <span class="n">table</span> <span class="o">=</span> <span class="n">wandb</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;preds&quot;</span><span class="p">])</span>
+                    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">preds</span><span class="p">)):</span>
+                        <span class="n">table</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+
+                    <span class="n">wandb</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;test/accuracy&quot;</span><span class="p">:</span> <span class="n">accuracy</span><span class="p">,</span>
+                            <span class="s2">&quot;test/bacc&quot;</span><span class="p">:</span> <span class="n">bacc</span><span class="p">,</span>
+                            <span class="s2">&quot;test/f1&quot;</span><span class="p">:</span> <span class="n">f1</span><span class="p">,</span>
+                            <span class="s2">&quot;predictions&quot;</span><span class="p">:</span> <span class="n">table</span><span class="p">,</span>
+                        <span class="p">}</span>
+                    <span class="p">)</span>
+
             <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_results</span><span class="p">)</span>
 
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
+    <span class="k">if</span> <span class="n">enable_wandb_logging</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">enable_ddp</span><span class="p">:</span>
+            <span class="n">ddp_params</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_ddp_params</span><span class="p">()</span>
+            <span class="n">rank</span> <span class="o">=</span> <span class="n">ddp_params</span><span class="p">[</span><span class="s2">&quot;rank&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">enable_ddp</span> <span class="ow">and</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">enable_ddp</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="n">wandb</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+
     <span class="k">return</span> <span class="n">df</span></div>
 
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">braindecode</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_func_proc_epochs</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-        <span class="n">epochs</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="n">picks</span><span class="o">=</span><span class="s2">&quot;eeg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="n">tmin</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">epochs</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_func_get_fnames</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-        <span class="n">base_dir</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~/Documents/datasets/dreyer_2023/derivatives&quot;</span><span class="p">)</span>
-            <span class="o">/</span> <span class="s2">&quot;epochs&quot;</span>
-            <span class="o">/</span> <span class="s2">&quot;l_freq-8.0_h_freq-30.0_resample-128&quot;</span>
-            <span class="o">/</span> <span class="n">subject</span>
-        <span class="p">)</span>
-
-        <span class="n">fnames_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-        <span class="n">fnames_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">_acquisition-epo.fif&quot;</span><span class="p">)</span>
-        <span class="n">fnames_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">_online-epo.fif&quot;</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">fnames_list</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_func_get_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-        <span class="n">_</span><span class="p">,</span> <span class="n">n_chans</span><span class="p">,</span> <span class="n">n_times</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">F1</span> <span class="o">=</span> <span class="mi">4</span>
-        <span class="n">D</span> <span class="o">=</span> <span class="mi">2</span>
-        <span class="n">F2</span> <span class="o">=</span> <span class="n">F1</span> <span class="o">*</span> <span class="n">D</span>
-
-        <span class="n">model</span> <span class="o">=</span> <span class="n">braindecode</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">EEGNetv4</span><span class="p">(</span>
-            <span class="n">n_chans</span><span class="o">=</span><span class="n">n_chans</span><span class="p">,</span>
-            <span class="n">n_outputs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-            <span class="n">n_times</span><span class="o">=</span><span class="n">n_times</span><span class="p">,</span>
-            <span class="n">F1</span><span class="o">=</span><span class="n">F1</span><span class="p">,</span>
-            <span class="n">D</span><span class="o">=</span><span class="n">D</span><span class="p">,</span>
-            <span class="n">F2</span><span class="o">=</span><span class="n">F2</span><span class="p">,</span>
-            <span class="n">drop_prob</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">model</span>
-
-    <span class="c1"># setup mpdels</span>
-
-    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
-
-    <span class="n">lr</span> <span class="o">=</span> <span class="mf">0.001</span>
-    <span class="n">weight_decay</span> <span class="o">=</span> <span class="mf">0.0005</span>
-    <span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">100</span>
-    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
-    <span class="n">patience</span> <span class="o">=</span> <span class="mi">75</span>
-
-    <span class="n">early_stopping</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="n">patience</span><span class="p">)</span>
-
-    <span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
-    <span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">CosineAnnealingLR</span>
-
-    <span class="n">returns</span> <span class="o">=</span> <span class="n">deeplearning_cross_subject</span><span class="p">(</span>
-        <span class="c1"># subjects_train=[&quot;A1&quot;, &quot;A2&quot;],</span>
-        <span class="c1"># subjects_valid=[&quot;A3&quot;, &quot;A4&quot;],</span>
-        <span class="c1"># subjects_test=[&quot;A5&quot;, &quot;A6&quot;],</span>
-        <span class="n">subjects_train</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;A</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;A56&quot;</span><span class="p">],</span>
-        <span class="n">subjects_valid</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;A</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;A56&quot;</span><span class="p">],</span>
-        <span class="n">subjects_test</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A56&quot;</span><span class="p">],</span>
-        <span class="n">func_get_fnames</span><span class="o">=</span><span class="n">_func_get_fnames</span><span class="p">,</span>
-        <span class="n">func_proc_epochs</span><span class="o">=</span><span class="n">_func_proc_epochs</span><span class="p">,</span>
-        <span class="n">func_get_model</span><span class="o">=</span><span class="n">_func_get_model</span><span class="p">,</span>
-        <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
-        <span class="n">scheduler</span><span class="o">=</span><span class="n">scheduler</span><span class="p">,</span>
-        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-        <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
-        <span class="n">checkpoint_fname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">early_stopping</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">use_cuda</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">history_fname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">scheduler_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T_max&quot;</span><span class="p">:</span> <span class="n">n_epochs</span><span class="p">,</span> <span class="s2">&quot;eta_min&quot;</span><span class="p">:</span> <span class="mf">1e-6</span><span class="p">},</span>
-        <span class="n">optimizer</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">,</span>
-        <span class="n">optimizer_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;lr&quot;</span><span class="p">:</span> <span class="n">lr</span><span class="p">,</span> <span class="s2">&quot;weight_decay&quot;</span><span class="p">:</span> <span class="n">weight_decay</span><span class="p">},</span>
-        <span class="n">compile_test_subjects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="p">)</span>
 </pre></div>
 
                 </article>
