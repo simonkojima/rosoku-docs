@@ -381,6 +381,7 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">attribution</span>
 
 
 <div class="viewcode-block" id="setup_optimizer">
@@ -533,12 +534,6 @@
     <span class="k">if</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elapsed Time: </span><span class="si">{</span><span class="n">elapsed_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    if enable_wandb_logging:</span>
-<span class="sd">        if (enable_ddp and rank == 0) or (enable_ddp is False):</span>
-<span class="sd">            wandb.finish()</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="k">if</span> <span class="n">history_fname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">df_save</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
         <span class="n">df_save</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">history_fname</span><span class="si">}</span><span class="s2">.pkl&quot;</span><span class="p">)</span>
@@ -584,8 +579,6 @@
 <div class="viewcode-block" id="main">
 <a class="viewcode-back" href="../../rosoku.html#rosoku.deeplearning.main">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span>
-    <span class="c1"># rank,</span>
-    <span class="c1"># world_size,</span>
     <span class="n">enable_ddp</span><span class="p">,</span>
     <span class="n">enable_dp</span><span class="p">,</span>
     <span class="n">num_workers</span><span class="p">,</span>
@@ -623,25 +616,6 @@
     <span class="c1"># setup DDP</span>
     <span class="k">if</span> <span class="n">enable_ddp</span><span class="p">:</span>
 
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        # os.environ[&quot;MASTER_ADDR&quot;] = &quot;127.0.0.1&quot;</span>
-<span class="sd">        # os.environ[&quot;MASTER_ADDR&quot;] = &quot;sirocco07&quot;</span>
-<span class="sd">        # os.environ[&quot;MASTER_ADDR&quot;] = &quot;sirocco07.plafrim.cluster&quot;</span>
-<span class="sd">        # os.environ[&quot;MASTER_ADDR&quot;] = &quot;localhost&quot;</span>
-<span class="sd">        os.environ[&quot;MASTER_ADDR&quot;] = &quot;10.151.5.23&quot;</span>
-<span class="sd">        os.environ[&quot;MASTER_PORT&quot;] = &quot;29627&quot;</span>
-
-<span class="sd">        # print(f&quot;[rank {rank}] MASTER_ADDR={os.environ[&#39;MASTER_ADDR&#39;]}&quot;</span>
-<span class="sd">        # print(f&quot;[rank {rank}] MASTER_PORT={os.environ[&#39;MASTER_PORT&#39;]}&quot;)</span>
-
-<span class="sd">        init_method = f&quot;tcp://{os.environ[&#39;MASTER_ADDR&#39;]}:{os.environ[&#39;MASTER_PORT&#39;]}&quot;</span>
-
-<span class="sd">        backend = &quot;nccl&quot;</span>
-<span class="sd">        # backend = &quot;gloo&quot;</span>
-<span class="sd">        torch.distributed.init_process_group(</span>
-<span class="sd">            backend=backend, rank=rank, world_size=world_size, init_method=init_method</span>
-<span class="sd">        )</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">params</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_ddp_params</span><span class="p">()</span>
 
         <span class="n">rank</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;rank&quot;</span><span class="p">]</span>
@@ -667,7 +641,6 @@
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Rank </span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">] Distributed not initialized: NG&quot;</span><span class="p">)</span>
 
         <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cuda:</span><span class="si">{</span><span class="n">local_rank</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="c1"># device = torch.device(&quot;cuda:0&quot;)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># non DDP</span>
         <span class="n">rank</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1144,6 +1117,8 @@
     <span class="n">early_stopping</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">name_classifier</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">enable_normalization</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">saliency_map</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">label_keys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">desc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
@@ -1266,59 +1241,6 @@
 
     <span class="c1"># load data</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    ## training data</span>
-<span class="sd">    if func_load_epochs is not None:</span>
-<span class="sd">        epochs_train = func_load_epochs(keywords_train, &quot;train&quot;)</span>
-<span class="sd">        epochs_valid = func_load_epochs(keywords_valid, &quot;valid&quot;)</span>
-<span class="sd">        epochs_test = func_load_epochs(keywords_test, &quot;test&quot;)</span>
-
-<span class="sd">        if func_proc_epochs is not None:</span>
-<span class="sd">            if apply_func_proc_per_obj:</span>
-<span class="sd">                epochs_train = func_proc_epochs(epochs_train, &quot;train&quot;)</span>
-<span class="sd">                epochs_valid = func_proc_epochs(epochs_valid, &quot;valid&quot;)</span>
-<span class="sd">                epochs_test = func_proc_epochs(epochs_test, &quot;test&quot;)</span>
-<span class="sd">            else:</span>
-<span class="sd">                epochs_train, epochs_valid, epochs_test = func_proc_epochs(</span>
-<span class="sd">                    epochs_train,</span>
-<span class="sd">                    epochs_valid,</span>
-<span class="sd">                    epochs_test,</span>
-<span class="sd">                )</span>
-
-<span class="sd">        X_train, X_valid, X_test, y_train, y_valid, y_test = (</span>
-<span class="sd">            func_convert_epochs_to_ndarray(epochs_train, epochs_valid, epochs_test)</span>
-<span class="sd">        )</span>
-
-<span class="sd">    elif func_load_ndarray is not None:</span>
-<span class="sd">        X_train, y_train = func_load_ndarray(keywords_train, &quot;train&quot;)</span>
-<span class="sd">        X_valid, y_valid = func_load_ndarray(keywords_valid, &quot;valid&quot;)</span>
-<span class="sd">        X_test, y_test = func_load_ndarray(keywords_test, &quot;test&quot;)</span>
-<span class="sd">    else:</span>
-<span class="sd">        raise ValueError(</span>
-<span class="sd">            &quot;either func_load_epochs or func_load_ndarray should not be None&quot;</span>
-<span class="sd">        )</span>
-
-<span class="sd">    if compile_test_subjects:</span>
-<span class="sd">        # compile y</span>
-<span class="sd">        y_test = [np.concatenate(y_test, axis=0)]</span>
-
-<span class="sd">        # compile X</span>
-<span class="sd">        X_test = [np.concatenate(X_test, axis=0)]</span>
-
-<span class="sd">        # compile subjects_test list</span>
-<span class="sd">        subjects_test = [subjects_test]</span>
-
-<span class="sd">    if func_proc_ndarray is not None:</span>
-<span class="sd">        if apply_func_proc_per_obj:</span>
-<span class="sd">            X_train, y_train = func_proc_ndarray(X_train, y_train, &quot;train&quot;)</span>
-<span class="sd">            X_valid, y_valid = func_proc_ndarray(X_valid, y_valid, &quot;valid&quot;)</span>
-<span class="sd">            X_test, y_test = func_proc_ndarray(X_test, y_test, &quot;test&quot;)</span>
-<span class="sd">        else:</span>
-<span class="sd">            X_train, X_valid, X_test, y_train, y_valid, y_test = func_proc_ndarray(</span>
-<span class="sd">                X_train, X_valid, X_test, y_train, y_valid, y_test</span>
-<span class="sd">            )</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span>
         <span class="n">keywords_train</span><span class="o">=</span><span class="n">keywords_train</span><span class="p">,</span>
         <span class="n">keywords_valid</span><span class="o">=</span><span class="n">keywords_valid</span><span class="p">,</span>
@@ -1340,15 +1262,6 @@
             <span class="n">preprocessing</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">return_params</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="p">)</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    X_train = np.zeros((40, 27, 128 * 4))</span>
-<span class="sd">    y_train = 0</span>
-<span class="sd">    X_valid = 0</span>
-<span class="sd">    y_valid = 0</span>
-<span class="sd">    X_test = 0</span>
-<span class="sd">    y_test = 0</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;optimizer_params&quot;</span><span class="p">:</span> <span class="n">optimizer_params</span><span class="p">,</span>
         <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span>
@@ -1356,7 +1269,6 @@
         <span class="s2">&quot;scheduler&quot;</span><span class="p">:</span> <span class="n">scheduler</span><span class="p">,</span>
         <span class="s2">&quot;scheduler_params&quot;</span><span class="p">:</span> <span class="n">scheduler_params</span><span class="p">,</span>
         <span class="s2">&quot;func_proc_epochs&quot;</span><span class="p">:</span> <span class="n">func_proc_epochs</span><span class="p">,</span>
-        <span class="c1"># &quot;label_keys&quot;: label_keys,</span>
         <span class="s2">&quot;enable_wandb_logging&quot;</span><span class="p">:</span> <span class="n">enable_wandb_logging</span><span class="p">,</span>
         <span class="s2">&quot;wandb_params&quot;</span><span class="p">:</span> <span class="n">wandb_params</span><span class="p">,</span>
         <span class="s2">&quot;checkpoint_fname&quot;</span><span class="p">:</span> <span class="n">checkpoint_fname</span><span class="p">,</span>
@@ -1434,9 +1346,26 @@
 
     <span class="n">df_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">saliency_map</span><span class="p">:</span>
+        <span class="n">saliency_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">dataloader</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dataloader_test</span><span class="p">):</span>
+            <span class="n">saliency_data</span><span class="o">.</span><span class="n">append</span><span class="p">({})</span>
+            <span class="k">if</span> <span class="n">label_keys</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+                <span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+                <span class="n">label_keys</span> <span class="o">=</span> <span class="p">{</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">}</span>
+
+            <span class="k">for</span> <span class="n">class_label</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">label_keys</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">saliency_data</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">class_label</span><span class="p">]</span> <span class="o">=</span> <span class="n">attribution</span><span class="o">.</span><span class="n">saliency_map</span><span class="p">(</span>
+                    <span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">class_index</span><span class="o">=</span><span class="n">c</span>
+                <span class="p">)</span>
+
     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-        <span class="k">for</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">keywords_test_single</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dataloader_test</span><span class="p">,</span> <span class="n">keywords_test</span><span class="p">):</span>
-            <span class="c1"># accuracy = utils.accuracy_score_dataloader(model, dataloader_test)</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">keywords_test_single</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+            <span class="nb">zip</span><span class="p">(</span><span class="n">dataloader_test</span><span class="p">,</span> <span class="n">keywords_test</span><span class="p">)</span>
+        <span class="p">):</span>
 
             <span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">logits</span><span class="p">,</span> <span class="n">probas</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_predictions</span><span class="p">(</span>
                 <span class="n">model</span><span class="p">,</span>
@@ -1458,11 +1387,13 @@
             <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;preds&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">preds</span><span class="p">]</span>
             <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;probas&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">probas</span><span class="p">]</span>
             <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;logits&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">logits</span><span class="p">]</span>
-            <span class="c1"># df_results[&quot;elapsed_time&quot;] = [elapsed_time]</span>
             <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;desc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">desc</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">enable_normalization</span><span class="p">:</span>
                 <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;normalization_mean&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">normalization_mean</span><span class="o">.</span><span class="n">flatten</span><span class="p">()]</span>
                 <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;normalization_std&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">normalization_std</span><span class="o">.</span><span class="n">flatten</span><span class="p">()]</span>
+
+            <span class="k">if</span> <span class="n">saliency_map</span><span class="p">:</span>
+                <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;saliency_map&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">saliency_data</span><span class="p">[</span><span class="n">idx</span><span class="p">]]</span>
 
             <span class="k">if</span> <span class="n">enable_wandb_logging</span><span class="p">:</span>
                 <span class="k">if</span> <span class="p">(</span><span class="n">enable_ddp</span> <span class="ow">and</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;rank&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">enable_ddp</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">):</span>

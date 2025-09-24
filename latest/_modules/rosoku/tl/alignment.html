@@ -369,22 +369,10 @@
   <h1>Source code for rosoku.tl.alignment</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tqdm</span>
 
 
-<div class="viewcode-block" id="euclidean_alignment">
-<a class="viewcode-back" href="../../../rosoku.tl.euclidean_alignment.html#rosoku.tl.alignment.euclidean_alignment">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">euclidean_alignment</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    EA (Euclidean Alignment)を行う関数</span>
-<span class="sd">    recenteringがユークリッド空間で行われる</span>
-
-<span class="sd">    X: nd.array</span>
-<span class="sd">        shape of (n_trials, n_channels, n_times)</span>
-
-<span class="sd">    References:</span>
-<span class="sd">    H. He and D. Wu, &quot;Transfer Learning for Brain–Computer Interfaces: A Euclidean Space Data Alignment Approach,&quot; in IEEE Transactions on Biomedical Engineering, vol. 67, no. 2, pp. 399-410, Feb. 2020, doi: 10.1109/TBME.2019.2913914.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
+<span class="k">def</span><span class="w"> </span><span class="nf">_euclidean_alignment</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
     <span class="n">n_trials</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
 
     <span class="n">covariances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_trials</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">))</span>
@@ -399,26 +387,33 @@
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
         <span class="n">X_aligned</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">R_inv_sqrt</span> <span class="o">@</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
 
-    <span class="k">return</span> <span class="n">X_aligned</span></div>
+    <span class="k">return</span> <span class="n">X_aligned</span>
 
 
-
-<div class="viewcode-block" id="riemannian_alignment">
-<a class="viewcode-back" href="../../../rosoku.tl.riemannian_alignment.html#rosoku.tl.alignment.riemannian_alignment">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">riemannian_alignment</span><span class="p">(</span><span class="n">covariances</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="euclidean_alignment">
+<a class="viewcode-back" href="../../../rosoku.tl.euclidean_alignment.html#rosoku.tl.alignment.euclidean_alignment">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">euclidean_alignment</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">online</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">enable_tqdm</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Riemannian Procrustes Analysisのrecentering, rescalingを行う関数</span>
-<span class="sd">    scaling = Falseのとき，recenteringのみ</span>
+<span class="sd">    EA (Euclidean Alignment)を行う関数</span>
+<span class="sd">    recenteringがユークリッド空間で行われる</span>
 
-<span class="sd">    covariances: nd.array</span>
-<span class="sd">        shape of (n_trials, n_channels, n_channels)</span>
-<span class="sd">    scaling: bool</span>
-<span class="sd">        rescalingを行うかどうか</span>
+<span class="sd">    X: nd.array</span>
+<span class="sd">        shape of (n_trials, n_channels, n_times)</span>
 
 <span class="sd">    References:</span>
-<span class="sd">    P. L. C. Rodrigues, C. Jutten and M. Congedo, &quot;Riemannian Procrustes Analysis: Transfer Learning for Brain–Computer Interfaces,&quot; in IEEE Transactions on Biomedical Engineering, vol. 66, no. 8, pp. 2390-2401, Aug. 2019, doi: 10.1109/TBME.2018.2889705.</span>
-
+<span class="sd">    H. He and D. Wu, &quot;Transfer Learning for Brain–Computer Interfaces: A Euclidean Space Data Alignment Approach,&quot; in IEEE Transactions on Biomedical Engineering, vol. 67, no. 2, pp. 399-410, Feb. 2020, doi: 10.1109/TBME.2019.2913914.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">online</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_euclidean_alignment</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">new_X</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">disable</span><span class="o">=</span><span class="ow">not</span> <span class="n">enable_tqdm</span><span class="p">):</span>
+            <span class="n">new_X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_euclidean_alignment</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="p">:,</span> <span class="p">:])[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">new_X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_riemannian_alignment</span><span class="p">(</span><span class="n">covariances</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">pyriemann</span>
 
     <span class="n">mean_cov</span> <span class="o">=</span> <span class="n">pyriemann</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">mean</span><span class="o">.</span><span class="n">mean_covariance</span><span class="p">(</span><span class="n">covariances</span><span class="p">)</span>
@@ -444,7 +439,41 @@
                 <span class="n">aligned_covs</span><span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">d_tilda</span>
             <span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">aligned_covs</span></div>
+    <span class="k">return</span> <span class="n">aligned_covs</span>
+
+
+<div class="viewcode-block" id="riemannian_alignment">
+<a class="viewcode-back" href="../../../rosoku.tl.riemannian_alignment.html#rosoku.tl.alignment.riemannian_alignment">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">riemannian_alignment</span><span class="p">(</span><span class="n">covariances</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">online</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">enable_tqdm</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Riemannian Procrustes Analysisのrecentering, rescalingを行う関数</span>
+<span class="sd">    scaling = Falseのとき，recenteringのみ</span>
+
+<span class="sd">    covariances: nd.array</span>
+<span class="sd">        shape of (n_trials, n_channels, n_channels)</span>
+<span class="sd">    scaling: bool</span>
+<span class="sd">        rescalingを行うかどうか</span>
+
+<span class="sd">    References:</span>
+<span class="sd">    P. L. C. Rodrigues, C. Jutten and M. Congedo, &quot;Riemannian Procrustes Analysis: Transfer Learning for Brain–Computer Interfaces,&quot; in IEEE Transactions on Biomedical Engineering, vol. 66, no. 8, pp. 2390-2401, Aug. 2019, doi: 10.1109/TBME.2018.2889705.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">online</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_riemannian_alignment</span><span class="p">(</span><span class="n">covariances</span><span class="o">=</span><span class="n">covariances</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="n">scaling</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">new_covariances</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">covariances</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">disable</span><span class="o">=</span><span class="ow">not</span> <span class="n">enable_tqdm</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">_scaling</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">_scaling</span> <span class="o">=</span> <span class="n">scaling</span>
+            <span class="n">new_covariances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">_riemannian_alignment</span><span class="p">(</span><span class="n">covariances</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">scaling</span><span class="o">=</span><span class="n">_scaling</span><span class="p">)[</span>
+                    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">new_covariances</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
 
 </pre></div>
 
