@@ -1,0 +1,6 @@
+﻿rosoku.attribution.saliency\_temporal
+=====================================
+
+.. currentmodule:: rosoku.attribution
+
+.. autofunction:: saliency_temporal

@@ -1,0 +1,1316 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Example 01: Within-subject classification with deep learning &#8212; Rosoku 0.0.3 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=47de8214"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/02_deeplearning/02_example_2step_early_stopping';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://simonkojima.github.io/rosoku-docs/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.0.3';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="How to Install" href="../../install.html" />
+    <link rel="prev" title="Example: Plot Saliency Map" href="01_example_plot_saliency_map.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo-light.png" class="logo__image only-light" alt="Rosoku 0.0.3 documentation - Home"/>
+    <img src="../../_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="Rosoku 0.0.3 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    How to Install
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    How to Install
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_getting_started/index.html">Getting Started!!</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_getting_started/02_example_cross-subject-classification-riemannian.html">Example: Cross-subject classification with riemannian classifier</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../00_getting_started/00_example_within-subject-classification-riemannian.html">Example: Within-subject classification with riemannian classifier</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../00_getting_started/03_example_cross-subject-classification-deeplearning.html">Example: Cross-subject classification with deep learning</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../00_getting_started/01_example_within-subject-classification-deeplearning.html">Example 01: Within-subject classification with deep learning</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Deep Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00_example_test_reproducibility.html">Example: Testing Reproducibility of Deeplearning Experiments</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="01_example_plot_saliency_map.html">Example: Plot Saliency Map</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Example 01: Within-subject classification with deep learning</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Examples</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Deep Learning</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Example 01: Within-subject classification with deep learning</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-02-deeplearning-02-example-2step-early-stopping-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="example-01-within-subject-classification-with-deep-learning">
+<span id="sphx-glr-auto-examples-02-deeplearning-02-example-2step-early-stopping-py"></span><h1>Example 01: Within-subject classification with deep learning<a class="headerlink" href="#example-01-within-subject-classification-with-deep-learning" title="Link to this heading">#</a></h1>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors: Simon Kojima &lt;simon.kojima@inria.fr&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># License: BSD (3-clause)</span>
+</pre></div>
+</div>
+</section>
+<section id="import-packages">
+<h1>Import Packages<a class="headerlink" href="#import-packages" title="Link to this heading">#</a></h1>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mne</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">braindecode</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rosoku</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">moabb.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dreyer2023</span>
+</pre></div>
+</div>
+</section>
+<section id="define-callback-functions">
+<h1>Define callback functions<a class="headerlink" href="#define-callback-functions" title="Link to this heading">#</a></h1>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">callback_get_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">n_chans</span><span class="p">,</span> <span class="n">n_times</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">F1</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">F2</span> <span class="o">=</span> <span class="n">F1</span> <span class="o">*</span> <span class="n">D</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">braindecode</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">EEGNet</span><span class="p">(</span>
+        <span class="n">n_chans</span><span class="o">=</span><span class="n">n_chans</span><span class="p">,</span>
+        <span class="n">n_outputs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">n_times</span><span class="o">=</span><span class="n">n_times</span><span class="p">,</span>
+        <span class="n">F1</span><span class="o">=</span><span class="n">F1</span><span class="p">,</span>
+        <span class="n">D</span><span class="o">=</span><span class="n">D</span><span class="p">,</span>
+        <span class="n">F2</span><span class="o">=</span><span class="n">F2</span><span class="p">,</span>
+        <span class="n">drop_prob</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">callback_load_epochs</span><span class="p">(</span>
+    <span class="n">items</span><span class="p">,</span> <span class="n">split</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">l_freq</span><span class="p">,</span> <span class="n">h_freq</span><span class="p">,</span> <span class="n">order_filter</span><span class="p">,</span> <span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span>
+<span class="p">):</span>
+    <span class="n">subject</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="n">sessions</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">subjects</span><span class="o">=</span><span class="p">[</span><span class="n">subject</span><span class="p">])</span>
+    <span class="n">raws_dict</span> <span class="o">=</span> <span class="n">sessions</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="s2">&quot;0&quot;</span><span class="p">]</span>
+
+    <span class="n">epochs_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">name_run</span><span class="p">,</span> <span class="n">raw</span> <span class="ow">in</span> <span class="n">raws_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="kc">True</span> <span class="ow">in</span> <span class="p">[</span><span class="n">item</span> <span class="ow">in</span> <span class="n">name_run</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">]:</span>
+            <span class="k">continue</span>
+
+        <span class="n">raw</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="n">l_freq</span><span class="o">=</span><span class="n">l_freq</span><span class="p">,</span>
+            <span class="n">h_freq</span><span class="o">=</span><span class="n">h_freq</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="s2">&quot;iir&quot;</span><span class="p">,</span>
+            <span class="n">iir_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ftype&quot;</span><span class="p">:</span> <span class="s2">&quot;butter&quot;</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="n">order_filter</span><span class="p">,</span> <span class="s2">&quot;btype&quot;</span><span class="p">:</span> <span class="s2">&quot;bandpass&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="n">picks</span><span class="o">=</span><span class="s2">&quot;eeg&quot;</span><span class="p">)</span>
+
+        <span class="n">epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">Epochs</span><span class="p">(</span>
+            <span class="n">raw</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
+            <span class="n">tmin</span><span class="o">=</span><span class="n">tmin</span><span class="p">,</span>
+            <span class="n">tmax</span><span class="o">=</span><span class="n">tmax</span><span class="p">,</span>
+            <span class="n">baseline</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">epochs_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">mne</span><span class="o">.</span><span class="n">concatenate_epochs</span><span class="p">(</span><span class="n">epochs_list</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">callback_proc_epochs</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">split</span><span class="p">):</span>
+    <span class="c1"># do nothing in this example</span>
+    <span class="k">return</span> <span class="n">epochs</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_epochs_to_ndarray</span><span class="p">(</span>
+    <span class="n">epochs</span><span class="p">,</span>
+    <span class="n">split</span><span class="p">,</span>
+    <span class="n">label_keys</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">rosoku</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">label_keys</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+</section>
+<section id="run-the-experiment-using-early-stopping-with-validation-data">
+<h1>Run the Experiment using Early Stopping with Validation data<a class="headerlink" href="#run-the-experiment-using-early-stopping-with-validation-data" title="Link to this heading">#</a></h1>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">subject</span> <span class="o">=</span> <span class="mi">56</span>
+<span class="n">resample</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">1e-3</span>
+<span class="n">weight_decay</span> <span class="o">=</span> <span class="mf">1e-2</span>
+<span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">patience</span> <span class="o">=</span> <span class="mi">75</span>
+<span class="n">enable_normalization</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span>
+
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dreyer2023</span><span class="p">()</span>
+
+<span class="n">save_base</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;rosoku-log&quot;</span>
+<span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;checkpoint&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;history&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;saliency&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;samples&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;normalization&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">CosineAnnealingLR</span>
+<span class="n">scheduler_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;T_max&quot;</span><span class="p">:</span> <span class="n">n_epochs</span><span class="p">,</span> <span class="s2">&quot;eta_min&quot;</span><span class="p">:</span> <span class="mf">1e-6</span><span class="p">}</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span>
+<span class="n">optimizer_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;lr&quot;</span><span class="p">:</span> <span class="n">lr</span><span class="p">,</span> <span class="s2">&quot;weight_decay&quot;</span><span class="p">:</span> <span class="n">weight_decay</span><span class="p">}</span>
+<span class="n">early_stopping</span> <span class="o">=</span> <span class="n">rosoku</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="n">patience</span><span class="p">)</span>
+
+<span class="n">label_keys</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;left_hand&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;right_hand&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+
+<span class="n">results_1st_step</span> <span class="o">=</span> <span class="n">rosoku</span><span class="o">.</span><span class="n">deeplearning</span><span class="p">(</span>
+    <span class="n">items_train</span><span class="o">=</span><span class="p">[</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="s2">&quot;R2&quot;</span><span class="p">],</span>
+    <span class="n">items_valid</span><span class="o">=</span><span class="p">[</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;R3&quot;</span><span class="p">],</span>
+    <span class="n">items_test</span><span class="o">=</span><span class="p">[[</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;R4&quot;</span><span class="p">,</span> <span class="s2">&quot;R5&quot;</span><span class="p">]],</span>
+    <span class="n">callback_load_epochs</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
+        <span class="n">callback_load_epochs</span><span class="p">,</span>
+        <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+        <span class="n">l_freq</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span>
+        <span class="n">h_freq</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span>
+        <span class="n">order_filter</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">tmin</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">interval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">tmax</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">),</span>
+    <span class="n">callback_proc_epochs</span><span class="o">=</span><span class="n">callback_proc_epochs</span><span class="p">,</span>
+    <span class="n">callback_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
+        <span class="n">convert_epochs_to_ndarray</span><span class="p">,</span> <span class="n">label_keys</span><span class="o">=</span><span class="n">label_keys</span>
+    <span class="p">),</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
+    <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+    <span class="n">optimizer_params</span><span class="o">=</span><span class="n">optimizer_params</span><span class="p">,</span>
+    <span class="n">callback_get_model</span><span class="o">=</span><span class="n">callback_get_model</span><span class="p">,</span>
+    <span class="n">scheduler</span><span class="o">=</span><span class="n">scheduler</span><span class="p">,</span>
+    <span class="n">scheduler_params</span><span class="o">=</span><span class="n">scheduler_params</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="n">early_stopping</span><span class="p">,</span>
+    <span class="n">enable_normalization</span><span class="o">=</span><span class="n">enable_normalization</span><span class="p">,</span>
+    <span class="n">history_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;history&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.parquet&quot;</span><span class="p">),</span>
+    <span class="n">checkpoint_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;checkpoint&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.pth&quot;</span><span class="p">),</span>
+    <span class="n">samples_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;samples&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.parquet&quot;</span><span class="p">),</span>
+    <span class="n">normalization_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;normalization&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.msgpack&quot;</span><span class="p">),</span>
+    <span class="n">saliency_map_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;saliency&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.msgpack&quot;</span><span class="p">),</span>
+    <span class="n">label_keys</span><span class="o">=</span><span class="n">label_keys</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+    <span class="n">additional_values</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="n">subject</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0it [00:00, ?it/s]
+9it [00:00, 25696.89it/s]
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 8 - 30 Hz
+
+IIR filter parameters
+---------------------
+Butterworth bandpass zero-phase (two-pass forward and reverse) non-causal filter:
+- Filter order 16 (effective, after forward-backward)
+- Cutoffs at 8.00, 30.00 Hz: -6.02, -6.02 dB
+
+Used Annotations descriptions: [np.str_(&#39;left_hand&#39;), np.str_(&#39;right_hand&#39;)]
+Ignoring annotation durations and creating fixed-duration epochs around annotation onsets.
+Not setting metadata
+40 matching events found
+No baseline correction applied
+0 projection items activated
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 8 - 30 Hz
+
+IIR filter parameters
+---------------------
+Butterworth bandpass zero-phase (two-pass forward and reverse) non-causal filter:
+- Filter order 16 (effective, after forward-backward)
+- Cutoffs at 8.00, 30.00 Hz: -6.02, -6.02 dB
+
+Used Annotations descriptions: [np.str_(&#39;left_hand&#39;), np.str_(&#39;right_hand&#39;)]
+Ignoring annotation durations and creating fixed-duration epochs around annotation onsets.
+Not setting metadata
+40 matching events found
+No baseline correction applied
+0 projection items activated
+/home/skojima/git/rosoku/examples/02_deeplearning/02_example_2step_early_stopping.py:78: RuntimeWarning: Concatenation of Annotations within Epochs is not supported yet. All annotations will be dropped.
+  return mne.concatenate_epochs(epochs_list)
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+0 bad epochs dropped
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+0 bad epochs dropped
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+Not setting metadata
+80 matching events found
+No baseline correction applied
+
+0it [00:00, ?it/s]
+9it [00:00, 23548.81it/s]
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 8 - 30 Hz
+
+IIR filter parameters
+---------------------
+Butterworth bandpass zero-phase (two-pass forward and reverse) non-causal filter:
+- Filter order 16 (effective, after forward-backward)
+- Cutoffs at 8.00, 30.00 Hz: -6.02, -6.02 dB
+
+Used Annotations descriptions: [np.str_(&#39;left_hand&#39;), np.str_(&#39;right_hand&#39;)]
+Ignoring annotation durations and creating fixed-duration epochs around annotation onsets.
+Not setting metadata
+40 matching events found
+No baseline correction applied
+0 projection items activated
+/home/skojima/git/rosoku/examples/02_deeplearning/02_example_2step_early_stopping.py:78: RuntimeWarning: Concatenation of Annotations within Epochs is not supported yet. All annotations will be dropped.
+  return mne.concatenate_epochs(epochs_list)
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+0 bad epochs dropped
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+Not setting metadata
+40 matching events found
+No baseline correction applied
+
+0it [00:00, ?it/s]
+9it [00:00, 24306.98it/s]
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 8 - 30 Hz
+
+IIR filter parameters
+---------------------
+Butterworth bandpass zero-phase (two-pass forward and reverse) non-causal filter:
+- Filter order 16 (effective, after forward-backward)
+- Cutoffs at 8.00, 30.00 Hz: -6.02, -6.02 dB
+
+Used Annotations descriptions: [np.str_(&#39;left_hand&#39;), np.str_(&#39;right_hand&#39;)]
+Ignoring annotation durations and creating fixed-duration epochs around annotation onsets.
+Not setting metadata
+40 matching events found
+No baseline correction applied
+0 projection items activated
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 8 - 30 Hz
+
+IIR filter parameters
+---------------------
+Butterworth bandpass zero-phase (two-pass forward and reverse) non-causal filter:
+- Filter order 16 (effective, after forward-backward)
+- Cutoffs at 8.00, 30.00 Hz: -6.02, -6.02 dB
+
+Used Annotations descriptions: [np.str_(&#39;left_hand&#39;), np.str_(&#39;right_hand&#39;)]
+Ignoring annotation durations and creating fixed-duration epochs around annotation onsets.
+Not setting metadata
+40 matching events found
+No baseline correction applied
+0 projection items activated
+/home/skojima/git/rosoku/examples/02_deeplearning/02_example_2step_early_stopping.py:78: RuntimeWarning: Concatenation of Annotations within Epochs is not supported yet. All annotations will be dropped.
+  return mne.concatenate_epochs(epochs_list)
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+0 bad epochs dropped
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+0 bad epochs dropped
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+Not setting metadata
+80 matching events found
+No baseline correction applied
+epoch 000, train_loss: 0.6919, train_acc: 0.61, valid_loss: 0.6937, valid_acc: 0.47, lr: 9.9999e-04, et: 0.0650, checkpoint saved
+epoch 001, train_loss: 0.6332, train_acc: 0.68, valid_loss: 0.6948, valid_acc: 0.50, lr: 9.9996e-04, et: 0.0647
+epoch 002, train_loss: 0.6347, train_acc: 0.66, valid_loss: 0.6955, valid_acc: 0.47, lr: 9.9991e-04, et: 0.0656
+epoch 003, train_loss: 0.5997, train_acc: 0.68, valid_loss: 0.6944, valid_acc: 0.47, lr: 9.9984e-04, et: 0.0649
+epoch 004, train_loss: 0.5286, train_acc: 0.78, valid_loss: 0.6924, valid_acc: 0.57, lr: 9.9975e-04, et: 0.0643, checkpoint saved
+epoch 005, train_loss: 0.5075, train_acc: 0.82, valid_loss: 0.6798, valid_acc: 0.57, lr: 9.9965e-04, et: 0.0643, checkpoint saved
+epoch 006, train_loss: 0.4459, train_acc: 0.88, valid_loss: 0.6837, valid_acc: 0.53, lr: 9.9952e-04, et: 0.0607
+epoch 007, train_loss: 0.3751, train_acc: 0.86, valid_loss: 0.6510, valid_acc: 0.55, lr: 9.9937e-04, et: 0.0609, checkpoint saved
+epoch 008, train_loss: 0.3568, train_acc: 0.89, valid_loss: 0.6626, valid_acc: 0.55, lr: 9.9920e-04, et: 0.0611
+epoch 009, train_loss: 0.2593, train_acc: 0.91, valid_loss: 0.6794, valid_acc: 0.55, lr: 9.9901e-04, et: 0.0608
+epoch 010, train_loss: 0.2592, train_acc: 0.91, valid_loss: 0.6534, valid_acc: 0.55, lr: 9.9881e-04, et: 0.0611
+epoch 011, train_loss: 0.2299, train_acc: 0.94, valid_loss: 0.6083, valid_acc: 0.55, lr: 9.9858e-04, et: 0.0614, checkpoint saved
+epoch 012, train_loss: 0.1552, train_acc: 0.96, valid_loss: 0.4209, valid_acc: 0.80, lr: 9.9833e-04, et: 0.0621, checkpoint saved
+epoch 013, train_loss: 0.1337, train_acc: 0.99, valid_loss: 0.3637, valid_acc: 0.82, lr: 9.9807e-04, et: 0.0644, checkpoint saved
+epoch 014, train_loss: 0.2102, train_acc: 0.95, valid_loss: 0.3051, valid_acc: 0.82, lr: 9.9778e-04, et: 0.0653, checkpoint saved
+epoch 015, train_loss: 0.1530, train_acc: 0.94, valid_loss: 0.2539, valid_acc: 0.90, lr: 9.9748e-04, et: 0.0649, checkpoint saved
+epoch 016, train_loss: 0.1723, train_acc: 0.94, valid_loss: 0.2159, valid_acc: 0.93, lr: 9.9715e-04, et: 0.0814, checkpoint saved
+epoch 017, train_loss: 0.1036, train_acc: 0.96, valid_loss: 0.2000, valid_acc: 0.95, lr: 9.9681e-04, et: 0.0757, checkpoint saved
+epoch 018, train_loss: 0.1393, train_acc: 0.94, valid_loss: 0.1957, valid_acc: 0.93, lr: 9.9644e-04, et: 0.1275, checkpoint saved
+epoch 019, train_loss: 0.1155, train_acc: 0.95, valid_loss: 0.2044, valid_acc: 0.95, lr: 9.9606e-04, et: 0.0672
+epoch 020, train_loss: 0.1876, train_acc: 0.93, valid_loss: 0.1976, valid_acc: 0.93, lr: 9.9566e-04, et: 0.0720
+epoch 021, train_loss: 0.1834, train_acc: 0.93, valid_loss: 0.2464, valid_acc: 0.97, lr: 9.9524e-04, et: 0.0657
+epoch 022, train_loss: 0.1553, train_acc: 0.95, valid_loss: 0.2026, valid_acc: 0.90, lr: 9.9479e-04, et: 0.0649
+epoch 023, train_loss: 0.1404, train_acc: 0.96, valid_loss: 0.1941, valid_acc: 0.95, lr: 9.9433e-04, et: 0.0642, checkpoint saved
+epoch 024, train_loss: 0.1131, train_acc: 0.96, valid_loss: 0.1750, valid_acc: 0.95, lr: 9.9385e-04, et: 0.0642, checkpoint saved
+epoch 025, train_loss: 0.1515, train_acc: 0.96, valid_loss: 0.3006, valid_acc: 0.88, lr: 9.9335e-04, et: 0.0638
+epoch 026, train_loss: 0.0913, train_acc: 0.97, valid_loss: 0.2549, valid_acc: 0.90, lr: 9.9283e-04, et: 0.0638
+epoch 027, train_loss: 0.1127, train_acc: 0.96, valid_loss: 0.2194, valid_acc: 0.90, lr: 9.9229e-04, et: 0.0639
+epoch 028, train_loss: 0.0794, train_acc: 0.97, valid_loss: 0.2679, valid_acc: 0.90, lr: 9.9173e-04, et: 0.0650
+epoch 029, train_loss: 0.0667, train_acc: 0.97, valid_loss: 0.1871, valid_acc: 0.93, lr: 9.9115e-04, et: 0.0688
+epoch 030, train_loss: 0.0671, train_acc: 0.99, valid_loss: 0.1950, valid_acc: 0.93, lr: 9.9055e-04, et: 0.0662
+epoch 031, train_loss: 0.0574, train_acc: 0.99, valid_loss: 0.2113, valid_acc: 0.88, lr: 9.8994e-04, et: 0.0659
+epoch 032, train_loss: 0.0818, train_acc: 0.99, valid_loss: 0.2257, valid_acc: 0.88, lr: 9.8930e-04, et: 0.0660
+epoch 033, train_loss: 0.1026, train_acc: 0.95, valid_loss: 0.2036, valid_acc: 0.93, lr: 9.8865e-04, et: 0.0654
+epoch 034, train_loss: 0.1489, train_acc: 0.95, valid_loss: 0.2954, valid_acc: 0.88, lr: 9.8797e-04, et: 0.0646
+epoch 035, train_loss: 0.1411, train_acc: 0.96, valid_loss: 0.2489, valid_acc: 0.88, lr: 9.8728e-04, et: 0.0641
+epoch 036, train_loss: 0.1073, train_acc: 0.97, valid_loss: 0.1989, valid_acc: 0.95, lr: 9.8656e-04, et: 0.0646
+epoch 037, train_loss: 0.2400, train_acc: 0.93, valid_loss: 0.2263, valid_acc: 0.93, lr: 9.8583e-04, et: 0.0642
+epoch 038, train_loss: 0.1861, train_acc: 0.94, valid_loss: 0.2124, valid_acc: 0.93, lr: 9.8508e-04, et: 0.0644
+epoch 039, train_loss: 0.1216, train_acc: 0.96, valid_loss: 0.3105, valid_acc: 0.85, lr: 9.8431e-04, et: 0.0645
+epoch 040, train_loss: 0.0605, train_acc: 1.00, valid_loss: 0.3991, valid_acc: 0.85, lr: 9.8352e-04, et: 0.0645
+epoch 041, train_loss: 0.0527, train_acc: 0.99, valid_loss: 0.3097, valid_acc: 0.85, lr: 9.8271e-04, et: 0.0651
+epoch 042, train_loss: 0.1835, train_acc: 0.94, valid_loss: 0.2783, valid_acc: 0.93, lr: 9.8188e-04, et: 0.0647
+epoch 043, train_loss: 0.0590, train_acc: 0.99, valid_loss: 0.3222, valid_acc: 0.88, lr: 9.8103e-04, et: 0.0651
+epoch 044, train_loss: 0.0856, train_acc: 0.97, valid_loss: 0.2762, valid_acc: 0.85, lr: 9.8017e-04, et: 0.0655
+epoch 045, train_loss: 0.0951, train_acc: 0.96, valid_loss: 0.2635, valid_acc: 0.90, lr: 9.7928e-04, et: 0.0649
+epoch 046, train_loss: 0.0336, train_acc: 0.99, valid_loss: 0.2757, valid_acc: 0.90, lr: 9.7838e-04, et: 0.0652
+epoch 047, train_loss: 0.0477, train_acc: 1.00, valid_loss: 0.2971, valid_acc: 0.93, lr: 9.7745e-04, et: 0.0657
+epoch 048, train_loss: 0.1386, train_acc: 0.95, valid_loss: 0.3489, valid_acc: 0.88, lr: 9.7651e-04, et: 0.0649
+epoch 049, train_loss: 0.1192, train_acc: 0.94, valid_loss: 0.3810, valid_acc: 0.82, lr: 9.7555e-04, et: 0.0645
+epoch 050, train_loss: 0.1212, train_acc: 0.96, valid_loss: 0.3801, valid_acc: 0.88, lr: 9.7457e-04, et: 0.0648
+epoch 051, train_loss: 0.1911, train_acc: 0.93, valid_loss: 0.3016, valid_acc: 0.85, lr: 9.7358e-04, et: 0.0647
+epoch 052, train_loss: 0.0620, train_acc: 0.97, valid_loss: 0.3264, valid_acc: 0.85, lr: 9.7256e-04, et: 0.0646
+epoch 053, train_loss: 0.0747, train_acc: 0.96, valid_loss: 0.3431, valid_acc: 0.85, lr: 9.7152e-04, et: 0.0648
+epoch 054, train_loss: 0.0549, train_acc: 0.99, valid_loss: 0.3228, valid_acc: 0.88, lr: 9.7047e-04, et: 0.0641
+epoch 055, train_loss: 0.0371, train_acc: 0.99, valid_loss: 0.3160, valid_acc: 0.85, lr: 9.6940e-04, et: 0.0642
+epoch 056, train_loss: 0.0562, train_acc: 0.99, valid_loss: 0.3042, valid_acc: 0.82, lr: 9.6831e-04, et: 0.0654
+epoch 057, train_loss: 0.0767, train_acc: 0.96, valid_loss: 0.3371, valid_acc: 0.80, lr: 9.6720e-04, et: 0.0641
+epoch 058, train_loss: 0.0692, train_acc: 0.99, valid_loss: 0.3156, valid_acc: 0.90, lr: 9.6607e-04, et: 0.0648
+epoch 059, train_loss: 0.0341, train_acc: 0.99, valid_loss: 0.3008, valid_acc: 0.93, lr: 9.6492e-04, et: 0.0655
+epoch 060, train_loss: 0.1689, train_acc: 0.94, valid_loss: 0.3612, valid_acc: 0.88, lr: 9.6376e-04, et: 0.0655
+epoch 061, train_loss: 0.0823, train_acc: 0.97, valid_loss: 0.3327, valid_acc: 0.90, lr: 9.6258e-04, et: 0.0652
+epoch 062, train_loss: 0.2053, train_acc: 0.95, valid_loss: 0.3068, valid_acc: 0.88, lr: 9.6138e-04, et: 0.0652
+epoch 063, train_loss: 0.0209, train_acc: 1.00, valid_loss: 0.2504, valid_acc: 0.90, lr: 9.6016e-04, et: 0.0653
+epoch 064, train_loss: 0.0543, train_acc: 0.99, valid_loss: 0.2414, valid_acc: 0.90, lr: 9.5892e-04, et: 0.0651
+epoch 065, train_loss: 0.0651, train_acc: 0.97, valid_loss: 0.2410, valid_acc: 0.90, lr: 9.5766e-04, et: 0.0645
+epoch 066, train_loss: 0.0290, train_acc: 1.00, valid_loss: 0.2477, valid_acc: 0.93, lr: 9.5639e-04, et: 0.0642
+epoch 067, train_loss: 0.0583, train_acc: 0.99, valid_loss: 0.2426, valid_acc: 0.93, lr: 9.5510e-04, et: 0.0653
+epoch 068, train_loss: 0.0173, train_acc: 1.00, valid_loss: 0.2280, valid_acc: 0.90, lr: 9.5379e-04, et: 0.0642
+epoch 069, train_loss: 0.0332, train_acc: 1.00, valid_loss: 0.2089, valid_acc: 0.93, lr: 9.5246e-04, et: 0.0643
+epoch 070, train_loss: 0.0460, train_acc: 0.99, valid_loss: 0.2061, valid_acc: 0.93, lr: 9.5112e-04, et: 0.0649
+epoch 071, train_loss: 0.0123, train_acc: 1.00, valid_loss: 0.2319, valid_acc: 0.93, lr: 9.4975e-04, et: 0.0645
+epoch 072, train_loss: 0.0275, train_acc: 0.99, valid_loss: 0.2143, valid_acc: 0.93, lr: 9.4837e-04, et: 0.0719
+epoch 073, train_loss: 0.0228, train_acc: 1.00, valid_loss: 0.2011, valid_acc: 0.93, lr: 9.4697e-04, et: 0.0647
+epoch 074, train_loss: 0.0889, train_acc: 0.95, valid_loss: 0.2250, valid_acc: 0.93, lr: 9.4556e-04, et: 0.0680
+epoch 075, train_loss: 0.0666, train_acc: 0.96, valid_loss: 0.3259, valid_acc: 0.85, lr: 9.4412e-04, et: 0.0647
+epoch 076, train_loss: 0.1659, train_acc: 0.95, valid_loss: 0.2696, valid_acc: 0.90, lr: 9.4267e-04, et: 0.0668
+epoch 077, train_loss: 0.0230, train_acc: 1.00, valid_loss: 0.2733, valid_acc: 0.90, lr: 9.4120e-04, et: 0.0685
+epoch 078, train_loss: 0.0781, train_acc: 0.95, valid_loss: 0.2967, valid_acc: 0.88, lr: 9.3972e-04, et: 0.0646
+epoch 079, train_loss: 0.0436, train_acc: 0.97, valid_loss: 0.3071, valid_acc: 0.90, lr: 9.3822e-04, et: 0.0644
+epoch 080, train_loss: 0.0232, train_acc: 0.99, valid_loss: 0.2752, valid_acc: 0.93, lr: 9.3669e-04, et: 0.0644
+epoch 081, train_loss: 0.0832, train_acc: 0.96, valid_loss: 0.3039, valid_acc: 0.93, lr: 9.3516e-04, et: 0.0647
+epoch 082, train_loss: 0.0246, train_acc: 1.00, valid_loss: 0.2704, valid_acc: 0.93, lr: 9.3360e-04, et: 0.0650
+epoch 083, train_loss: 0.0833, train_acc: 0.96, valid_loss: 0.3484, valid_acc: 0.90, lr: 9.3203e-04, et: 0.0651
+epoch 084, train_loss: 0.0479, train_acc: 1.00, valid_loss: 0.3210, valid_acc: 0.90, lr: 9.3044e-04, et: 0.0637
+epoch 085, train_loss: 0.0595, train_acc: 0.97, valid_loss: 0.2855, valid_acc: 0.95, lr: 9.2883e-04, et: 0.0647
+epoch 086, train_loss: 0.0506, train_acc: 0.97, valid_loss: 0.2362, valid_acc: 0.90, lr: 9.2721e-04, et: 0.0642
+epoch 087, train_loss: 0.0510, train_acc: 0.99, valid_loss: 0.2305, valid_acc: 0.95, lr: 9.2557e-04, et: 0.0652
+epoch 088, train_loss: 0.1621, train_acc: 0.94, valid_loss: 0.2736, valid_acc: 0.90, lr: 9.2392e-04, et: 0.0645
+epoch 089, train_loss: 0.0703, train_acc: 0.97, valid_loss: 0.2126, valid_acc: 0.90, lr: 9.2224e-04, et: 0.0659
+epoch 090, train_loss: 0.0496, train_acc: 1.00, valid_loss: 0.1718, valid_acc: 0.93, lr: 9.2055e-04, et: 0.0673, checkpoint saved
+epoch 091, train_loss: 0.0587, train_acc: 0.96, valid_loss: 0.2098, valid_acc: 0.93, lr: 9.1885e-04, et: 0.0670
+epoch 092, train_loss: 0.0133, train_acc: 1.00, valid_loss: 0.1894, valid_acc: 0.90, lr: 9.1712e-04, et: 0.0649
+epoch 093, train_loss: 0.0093, train_acc: 1.00, valid_loss: 0.1842, valid_acc: 0.90, lr: 9.1538e-04, et: 0.0660
+epoch 094, train_loss: 0.0478, train_acc: 0.99, valid_loss: 0.2066, valid_acc: 0.90, lr: 9.1363e-04, et: 0.0647
+epoch 095, train_loss: 0.0230, train_acc: 1.00, valid_loss: 0.2147, valid_acc: 0.93, lr: 9.1185e-04, et: 0.0642
+epoch 096, train_loss: 0.0257, train_acc: 1.00, valid_loss: 0.2214, valid_acc: 0.90, lr: 9.1007e-04, et: 0.0668
+epoch 097, train_loss: 0.0161, train_acc: 1.00, valid_loss: 0.2076, valid_acc: 0.93, lr: 9.0826e-04, et: 0.0648
+epoch 098, train_loss: 0.0518, train_acc: 0.99, valid_loss: 0.2454, valid_acc: 0.90, lr: 9.0644e-04, et: 0.0639
+epoch 099, train_loss: 0.0897, train_acc: 0.95, valid_loss: 0.2843, valid_acc: 0.90, lr: 9.0460e-04, et: 0.0651
+epoch 100, train_loss: 0.0593, train_acc: 0.97, valid_loss: 0.2618, valid_acc: 0.93, lr: 9.0275e-04, et: 0.0647
+epoch 101, train_loss: 0.0818, train_acc: 0.96, valid_loss: 0.2470, valid_acc: 0.90, lr: 9.0088e-04, et: 0.0645
+epoch 102, train_loss: 0.0415, train_acc: 0.99, valid_loss: 0.2728, valid_acc: 0.88, lr: 8.9900e-04, et: 0.0671
+epoch 103, train_loss: 0.1165, train_acc: 0.94, valid_loss: 0.2420, valid_acc: 0.88, lr: 8.9710e-04, et: 0.0641
+epoch 104, train_loss: 0.0842, train_acc: 0.99, valid_loss: 0.2636, valid_acc: 0.93, lr: 8.9518e-04, et: 0.0653
+epoch 105, train_loss: 0.0461, train_acc: 0.99, valid_loss: 0.2792, valid_acc: 0.93, lr: 8.9325e-04, et: 0.0668
+epoch 106, train_loss: 0.1048, train_acc: 0.96, valid_loss: 0.2532, valid_acc: 0.90, lr: 8.9130e-04, et: 0.0647
+epoch 107, train_loss: 0.0490, train_acc: 0.97, valid_loss: 0.2562, valid_acc: 0.90, lr: 8.8934e-04, et: 0.0659
+epoch 108, train_loss: 0.1171, train_acc: 0.94, valid_loss: 0.3507, valid_acc: 0.85, lr: 8.8736e-04, et: 0.0662
+epoch 109, train_loss: 0.0629, train_acc: 0.96, valid_loss: 0.4671, valid_acc: 0.82, lr: 8.8537e-04, et: 0.0645
+epoch 110, train_loss: 0.0409, train_acc: 0.97, valid_loss: 0.3479, valid_acc: 0.90, lr: 8.8336e-04, et: 0.0649
+epoch 111, train_loss: 0.0545, train_acc: 0.99, valid_loss: 0.1982, valid_acc: 0.93, lr: 8.8134e-04, et: 0.0642
+epoch 112, train_loss: 0.0326, train_acc: 0.99, valid_loss: 0.1739, valid_acc: 0.93, lr: 8.7930e-04, et: 0.0640
+epoch 113, train_loss: 0.0149, train_acc: 1.00, valid_loss: 0.1648, valid_acc: 0.93, lr: 8.7725e-04, et: 0.0645, checkpoint saved
+epoch 114, train_loss: 0.0294, train_acc: 0.97, valid_loss: 0.1836, valid_acc: 0.90, lr: 8.7518e-04, et: 0.0640
+epoch 115, train_loss: 0.0086, train_acc: 1.00, valid_loss: 0.1922, valid_acc: 0.90, lr: 8.7310e-04, et: 0.0647
+epoch 116, train_loss: 0.0456, train_acc: 0.99, valid_loss: 0.2136, valid_acc: 0.93, lr: 8.7100e-04, et: 0.0645
+epoch 117, train_loss: 0.0204, train_acc: 1.00, valid_loss: 0.1945, valid_acc: 0.93, lr: 8.6889e-04, et: 0.0646
+epoch 118, train_loss: 0.0517, train_acc: 0.99, valid_loss: 0.2060, valid_acc: 0.90, lr: 8.6676e-04, et: 0.0648
+epoch 119, train_loss: 0.0278, train_acc: 0.99, valid_loss: 0.2103, valid_acc: 0.90, lr: 8.6462e-04, et: 0.0647
+epoch 120, train_loss: 0.0811, train_acc: 0.97, valid_loss: 0.2652, valid_acc: 0.88, lr: 8.6246e-04, et: 0.0648
+epoch 121, train_loss: 0.0215, train_acc: 1.00, valid_loss: 0.2750, valid_acc: 0.90, lr: 8.6029e-04, et: 0.0653
+epoch 122, train_loss: 0.0393, train_acc: 0.97, valid_loss: 0.2859, valid_acc: 0.90, lr: 8.5811e-04, et: 0.0657
+epoch 123, train_loss: 0.0106, train_acc: 1.00, valid_loss: 0.2705, valid_acc: 0.90, lr: 8.5591e-04, et: 0.0639
+epoch 124, train_loss: 0.0684, train_acc: 0.97, valid_loss: 0.2403, valid_acc: 0.88, lr: 8.5370e-04, et: 0.0650
+epoch 125, train_loss: 0.0125, train_acc: 1.00, valid_loss: 0.2053, valid_acc: 0.93, lr: 8.5147e-04, et: 0.0644
+epoch 126, train_loss: 0.0211, train_acc: 0.99, valid_loss: 0.1966, valid_acc: 0.90, lr: 8.4923e-04, et: 0.0660
+epoch 127, train_loss: 0.0425, train_acc: 0.99, valid_loss: 0.2788, valid_acc: 0.85, lr: 8.4698e-04, et: 0.0642
+epoch 128, train_loss: 0.1572, train_acc: 0.95, valid_loss: 0.2709, valid_acc: 0.90, lr: 8.4471e-04, et: 0.0641
+epoch 129, train_loss: 0.0627, train_acc: 0.97, valid_loss: 0.2590, valid_acc: 0.82, lr: 8.4243e-04, et: 0.0645
+epoch 130, train_loss: 0.0448, train_acc: 0.99, valid_loss: 0.2959, valid_acc: 0.85, lr: 8.4014e-04, et: 0.0643
+epoch 131, train_loss: 0.0683, train_acc: 0.97, valid_loss: 0.2596, valid_acc: 0.88, lr: 8.3783e-04, et: 0.0638
+epoch 132, train_loss: 0.0317, train_acc: 0.99, valid_loss: 0.2473, valid_acc: 0.90, lr: 8.3551e-04, et: 0.0639
+epoch 133, train_loss: 0.0822, train_acc: 0.96, valid_loss: 0.2625, valid_acc: 0.88, lr: 8.3317e-04, et: 0.0643
+epoch 134, train_loss: 0.0076, train_acc: 1.00, valid_loss: 0.2548, valid_acc: 0.90, lr: 8.3083e-04, et: 0.0641
+epoch 135, train_loss: 0.0815, train_acc: 0.97, valid_loss: 0.2572, valid_acc: 0.90, lr: 8.2846e-04, et: 0.0641
+epoch 136, train_loss: 0.0123, train_acc: 1.00, valid_loss: 0.2419, valid_acc: 0.90, lr: 8.2609e-04, et: 0.0652
+epoch 137, train_loss: 0.0222, train_acc: 1.00, valid_loss: 0.2403, valid_acc: 0.90, lr: 8.2370e-04, et: 0.0644
+epoch 138, train_loss: 0.0593, train_acc: 0.99, valid_loss: 0.1999, valid_acc: 0.90, lr: 8.2131e-04, et: 0.0646
+epoch 139, train_loss: 0.0169, train_acc: 1.00, valid_loss: 0.1987, valid_acc: 0.90, lr: 8.1889e-04, et: 0.0642
+epoch 140, train_loss: 0.0362, train_acc: 0.97, valid_loss: 0.2068, valid_acc: 0.90, lr: 8.1647e-04, et: 0.0644
+epoch 141, train_loss: 0.0076, train_acc: 1.00, valid_loss: 0.2359, valid_acc: 0.90, lr: 8.1403e-04, et: 0.0642
+epoch 142, train_loss: 0.0146, train_acc: 1.00, valid_loss: 0.2158, valid_acc: 0.90, lr: 8.1158e-04, et: 0.0638
+epoch 143, train_loss: 0.0460, train_acc: 0.97, valid_loss: 0.2385, valid_acc: 0.90, lr: 8.0912e-04, et: 0.0642
+epoch 144, train_loss: 0.1858, train_acc: 0.96, valid_loss: 0.3266, valid_acc: 0.85, lr: 8.0665e-04, et: 0.0643
+epoch 145, train_loss: 0.0472, train_acc: 0.99, valid_loss: 0.3072, valid_acc: 0.88, lr: 8.0416e-04, et: 0.0642
+epoch 146, train_loss: 0.0369, train_acc: 0.97, valid_loss: 0.2725, valid_acc: 0.90, lr: 8.0166e-04, et: 0.0640
+epoch 147, train_loss: 0.0504, train_acc: 0.96, valid_loss: 0.3240, valid_acc: 0.90, lr: 7.9915e-04, et: 0.0639
+epoch 148, train_loss: 0.0182, train_acc: 1.00, valid_loss: 0.3232, valid_acc: 0.90, lr: 7.9663e-04, et: 0.0640
+epoch 149, train_loss: 0.0697, train_acc: 0.96, valid_loss: 0.3354, valid_acc: 0.90, lr: 7.9410e-04, et: 0.0645
+epoch 150, train_loss: 0.0318, train_acc: 1.00, valid_loss: 0.3435, valid_acc: 0.88, lr: 7.9155e-04, et: 0.0645
+epoch 151, train_loss: 0.0187, train_acc: 1.00, valid_loss: 0.3294, valid_acc: 0.88, lr: 7.8900e-04, et: 0.0640
+epoch 152, train_loss: 0.0179, train_acc: 1.00, valid_loss: 0.3018, valid_acc: 0.93, lr: 7.8643e-04, et: 0.0644
+epoch 153, train_loss: 0.0150, train_acc: 1.00, valid_loss: 0.2833, valid_acc: 0.93, lr: 7.8385e-04, et: 0.0641
+epoch 154, train_loss: 0.0622, train_acc: 0.96, valid_loss: 0.2102, valid_acc: 0.93, lr: 7.8126e-04, et: 0.0691
+epoch 155, train_loss: 0.0733, train_acc: 0.97, valid_loss: 0.1782, valid_acc: 0.93, lr: 7.7866e-04, et: 0.0637
+epoch 156, train_loss: 0.0122, train_acc: 1.00, valid_loss: 0.1620, valid_acc: 0.93, lr: 7.7605e-04, et: 0.0638, checkpoint saved
+epoch 157, train_loss: 0.0179, train_acc: 1.00, valid_loss: 0.1631, valid_acc: 0.93, lr: 7.7342e-04, et: 0.0640
+epoch 158, train_loss: 0.0122, train_acc: 1.00, valid_loss: 0.1734, valid_acc: 0.90, lr: 7.7079e-04, et: 0.0639
+epoch 159, train_loss: 0.1379, train_acc: 0.96, valid_loss: 0.2560, valid_acc: 0.93, lr: 7.6815e-04, et: 0.0639
+epoch 160, train_loss: 0.0980, train_acc: 0.94, valid_loss: 0.2989, valid_acc: 0.88, lr: 7.6549e-04, et: 0.0654
+epoch 161, train_loss: 0.0691, train_acc: 0.97, valid_loss: 0.2787, valid_acc: 0.90, lr: 7.6282e-04, et: 0.0646
+epoch 162, train_loss: 0.0075, train_acc: 1.00, valid_loss: 0.2654, valid_acc: 0.93, lr: 7.6015e-04, et: 0.0639
+epoch 163, train_loss: 0.0213, train_acc: 0.99, valid_loss: 0.2667, valid_acc: 0.93, lr: 7.5746e-04, et: 0.0641
+epoch 164, train_loss: 0.0362, train_acc: 1.00, valid_loss: 0.2809, valid_acc: 0.90, lr: 7.5477e-04, et: 0.0645
+epoch 165, train_loss: 0.0333, train_acc: 0.99, valid_loss: 0.2605, valid_acc: 0.90, lr: 7.5206e-04, et: 0.0639
+epoch 166, train_loss: 0.0146, train_acc: 1.00, valid_loss: 0.2539, valid_acc: 0.90, lr: 7.4934e-04, et: 0.0644
+epoch 167, train_loss: 0.0388, train_acc: 0.97, valid_loss: 0.2540, valid_acc: 0.93, lr: 7.4662e-04, et: 0.0665
+epoch 168, train_loss: 0.0126, train_acc: 1.00, valid_loss: 0.2509, valid_acc: 0.93, lr: 7.4388e-04, et: 0.0716
+epoch 169, train_loss: 0.0657, train_acc: 0.96, valid_loss: 0.2674, valid_acc: 0.93, lr: 7.4114e-04, et: 0.0688
+epoch 170, train_loss: 0.0310, train_acc: 1.00, valid_loss: 0.2908, valid_acc: 0.93, lr: 7.3838e-04, et: 0.0681
+epoch 171, train_loss: 0.0624, train_acc: 0.97, valid_loss: 0.2728, valid_acc: 0.93, lr: 7.3562e-04, et: 0.0674
+epoch 172, train_loss: 0.0086, train_acc: 1.00, valid_loss: 0.2563, valid_acc: 0.93, lr: 7.3284e-04, et: 0.0894
+epoch 173, train_loss: 0.0688, train_acc: 0.96, valid_loss: 0.2628, valid_acc: 0.93, lr: 7.3006e-04, et: 0.0832
+epoch 174, train_loss: 0.0887, train_acc: 0.97, valid_loss: 0.2649, valid_acc: 0.90, lr: 7.2727e-04, et: 0.1029
+epoch 175, train_loss: 0.0526, train_acc: 0.97, valid_loss: 0.3100, valid_acc: 0.90, lr: 7.2447e-04, et: 0.0724
+epoch 176, train_loss: 0.0137, train_acc: 1.00, valid_loss: 0.2898, valid_acc: 0.93, lr: 7.2166e-04, et: 0.0731
+epoch 177, train_loss: 0.0065, train_acc: 1.00, valid_loss: 0.2735, valid_acc: 0.93, lr: 7.1884e-04, et: 0.0668
+epoch 178, train_loss: 0.0275, train_acc: 0.97, valid_loss: 0.3083, valid_acc: 0.93, lr: 7.1601e-04, et: 0.0659
+epoch 179, train_loss: 0.0837, train_acc: 0.97, valid_loss: 0.3115, valid_acc: 0.93, lr: 7.1318e-04, et: 0.0655
+epoch 180, train_loss: 0.0282, train_acc: 1.00, valid_loss: 0.2433, valid_acc: 0.93, lr: 7.1033e-04, et: 0.0651
+epoch 181, train_loss: 0.0518, train_acc: 0.99, valid_loss: 0.2535, valid_acc: 0.93, lr: 7.0748e-04, et: 0.0697
+epoch 182, train_loss: 0.0418, train_acc: 0.99, valid_loss: 0.2289, valid_acc: 0.93, lr: 7.0462e-04, et: 0.0677
+epoch 183, train_loss: 0.0449, train_acc: 0.99, valid_loss: 0.2304, valid_acc: 0.93, lr: 7.0175e-04, et: 0.0653
+epoch 184, train_loss: 0.0748, train_acc: 0.97, valid_loss: 0.2506, valid_acc: 0.93, lr: 6.9888e-04, et: 0.0654
+epoch 185, train_loss: 0.0819, train_acc: 0.99, valid_loss: 0.2900, valid_acc: 0.90, lr: 6.9599e-04, et: 0.0651
+epoch 186, train_loss: 0.0168, train_acc: 0.99, valid_loss: 0.2804, valid_acc: 0.90, lr: 6.9310e-04, et: 0.0647
+epoch 187, train_loss: 0.0204, train_acc: 1.00, valid_loss: 0.2641, valid_acc: 0.93, lr: 6.9020e-04, et: 0.0648
+epoch 188, train_loss: 0.0191, train_acc: 1.00, valid_loss: 0.2517, valid_acc: 0.90, lr: 6.8729e-04, et: 0.0646
+epoch 189, train_loss: 0.0940, train_acc: 0.97, valid_loss: 0.2660, valid_acc: 0.90, lr: 6.8438e-04, et: 0.0650
+epoch 190, train_loss: 0.0300, train_acc: 0.99, valid_loss: 0.2397, valid_acc: 0.90, lr: 6.8146e-04, et: 0.0662
+epoch 191, train_loss: 0.0353, train_acc: 0.99, valid_loss: 0.2325, valid_acc: 0.90, lr: 6.7853e-04, et: 0.0650
+epoch 192, train_loss: 0.0107, train_acc: 1.00, valid_loss: 0.2267, valid_acc: 0.90, lr: 6.7559e-04, et: 0.0651
+epoch 193, train_loss: 0.0137, train_acc: 1.00, valid_loss: 0.2294, valid_acc: 0.90, lr: 6.7265e-04, et: 0.0670
+epoch 194, train_loss: 0.0352, train_acc: 0.99, valid_loss: 0.2086, valid_acc: 0.93, lr: 6.6970e-04, et: 0.0649
+epoch 195, train_loss: 0.0259, train_acc: 0.97, valid_loss: 0.2209, valid_acc: 0.93, lr: 6.6674e-04, et: 0.0659
+epoch 196, train_loss: 0.0138, train_acc: 1.00, valid_loss: 0.2358, valid_acc: 0.93, lr: 6.6378e-04, et: 0.0654
+epoch 197, train_loss: 0.0393, train_acc: 0.99, valid_loss: 0.2642, valid_acc: 0.93, lr: 6.6081e-04, et: 0.0644
+epoch 198, train_loss: 0.0349, train_acc: 1.00, valid_loss: 0.3364, valid_acc: 0.90, lr: 6.5784e-04, et: 0.0652
+epoch 199, train_loss: 0.0806, train_acc: 0.96, valid_loss: 0.3652, valid_acc: 0.90, lr: 6.5485e-04, et: 0.0653
+epoch 200, train_loss: 0.0727, train_acc: 0.99, valid_loss: 0.3175, valid_acc: 0.90, lr: 6.5187e-04, et: 0.0651
+epoch 201, train_loss: 0.0483, train_acc: 0.97, valid_loss: 0.2581, valid_acc: 0.93, lr: 6.4887e-04, et: 0.0654
+epoch 202, train_loss: 0.0165, train_acc: 1.00, valid_loss: 0.2687, valid_acc: 0.90, lr: 6.4587e-04, et: 0.0666
+epoch 203, train_loss: 0.0225, train_acc: 1.00, valid_loss: 0.2522, valid_acc: 0.90, lr: 6.4287e-04, et: 0.0650
+epoch 204, train_loss: 0.0160, train_acc: 1.00, valid_loss: 0.2418, valid_acc: 0.90, lr: 6.3986e-04, et: 0.0675
+epoch 205, train_loss: 0.0052, train_acc: 1.00, valid_loss: 0.2268, valid_acc: 0.93, lr: 6.3684e-04, et: 0.0692
+epoch 206, train_loss: 0.0240, train_acc: 0.99, valid_loss: 0.2300, valid_acc: 0.93, lr: 6.3382e-04, et: 0.0646
+epoch 207, train_loss: 0.0676, train_acc: 0.97, valid_loss: 0.2501, valid_acc: 0.93, lr: 6.3079e-04, et: 0.0647
+epoch 208, train_loss: 0.0041, train_acc: 1.00, valid_loss: 0.2820, valid_acc: 0.95, lr: 6.2776e-04, et: 0.0650
+epoch 209, train_loss: 0.0056, train_acc: 1.00, valid_loss: 0.2788, valid_acc: 0.95, lr: 6.2472e-04, et: 0.0656
+epoch 210, train_loss: 0.0318, train_acc: 1.00, valid_loss: 0.2855, valid_acc: 0.93, lr: 6.2168e-04, et: 0.0653
+epoch 211, train_loss: 0.0230, train_acc: 0.99, valid_loss: 0.2575, valid_acc: 0.90, lr: 6.1863e-04, et: 0.0651
+epoch 212, train_loss: 0.0118, train_acc: 1.00, valid_loss: 0.2459, valid_acc: 0.90, lr: 6.1558e-04, et: 0.0654
+epoch 213, train_loss: 0.0337, train_acc: 0.99, valid_loss: 0.2437, valid_acc: 0.93, lr: 6.1252e-04, et: 0.0668
+epoch 214, train_loss: 0.1128, train_acc: 0.94, valid_loss: 0.2407, valid_acc: 0.93, lr: 6.0946e-04, et: 0.0669
+epoch 215, train_loss: 0.0053, train_acc: 1.00, valid_loss: 0.2335, valid_acc: 0.93, lr: 6.0640e-04, et: 0.0662
+epoch 216, train_loss: 0.0062, train_acc: 1.00, valid_loss: 0.2266, valid_acc: 0.95, lr: 6.0333e-04, et: 0.0659
+epoch 217, train_loss: 0.0468, train_acc: 0.99, valid_loss: 0.2388, valid_acc: 0.90, lr: 6.0026e-04, et: 0.0643
+epoch 218, train_loss: 0.0087, train_acc: 1.00, valid_loss: 0.2442, valid_acc: 0.90, lr: 5.9718e-04, et: 0.0650
+epoch 219, train_loss: 0.0062, train_acc: 1.00, valid_loss: 0.2282, valid_acc: 0.93, lr: 5.9410e-04, et: 0.0644
+epoch 220, train_loss: 0.0465, train_acc: 0.99, valid_loss: 0.2173, valid_acc: 0.93, lr: 5.9101e-04, et: 0.0637
+epoch 221, train_loss: 0.0061, train_acc: 1.00, valid_loss: 0.2057, valid_acc: 0.93, lr: 5.8792e-04, et: 0.0640
+epoch 222, train_loss: 0.0296, train_acc: 0.97, valid_loss: 0.2335, valid_acc: 0.93, lr: 5.8483e-04, et: 0.0640
+epoch 223, train_loss: 0.0039, train_acc: 1.00, valid_loss: 0.2399, valid_acc: 0.93, lr: 5.8174e-04, et: 0.0641
+epoch 224, train_loss: 0.0273, train_acc: 0.97, valid_loss: 0.2302, valid_acc: 0.93, lr: 5.7864e-04, et: 0.0645
+epoch 225, train_loss: 0.0071, train_acc: 1.00, valid_loss: 0.2291, valid_acc: 0.93, lr: 5.7554e-04, et: 0.0644
+epoch 226, train_loss: 0.0996, train_acc: 0.93, valid_loss: 0.2160, valid_acc: 0.93, lr: 5.7243e-04, et: 0.0642
+epoch 227, train_loss: 0.0165, train_acc: 1.00, valid_loss: 0.2472, valid_acc: 0.93, lr: 5.6933e-04, et: 0.0649
+epoch 228, train_loss: 0.0284, train_acc: 0.99, valid_loss: 0.2693, valid_acc: 0.93, lr: 5.6622e-04, et: 0.0650
+epoch 229, train_loss: 0.0143, train_acc: 1.00, valid_loss: 0.2615, valid_acc: 0.93, lr: 5.6310e-04, et: 0.0675
+epoch 230, train_loss: 0.0418, train_acc: 0.97, valid_loss: 0.2822, valid_acc: 0.90, lr: 5.5999e-04, et: 0.0651
+epoch 231, train_loss: 0.0300, train_acc: 0.99, valid_loss: 0.2975, valid_acc: 0.90, lr: 5.5687e-04, et: 0.0661
+Early stopping was triggered: epoch #232
+Elapsed Time: 15.34s
+</pre></div>
+</div>
+</section>
+<section id="run-the-experiment-using-early-stopping-with-callback-early-stopping">
+<h1>Run the Experiment using Early Stopping with callback_early_stopping<a class="headerlink" href="#run-the-experiment-using-early-stopping-with-callback-early-stopping" title="Link to this heading">#</a></h1>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;checkpoint&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.pth&quot;</span><span class="p">)</span>
+<span class="n">loss_best</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;loss_best&quot;</span><span class="p">]</span>
+
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">1e-4</span>
+<span class="n">weight_decay</span> <span class="o">=</span> <span class="mf">1e-2</span>
+<span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">callback_early_stopping</span><span class="p">(</span><span class="n">loss_train</span><span class="p">,</span> <span class="n">loss_valid</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">loss_train</span> <span class="o">&lt;=</span> <span class="n">loss_best</span>
+
+
+<span class="n">results_2nd_step</span> <span class="o">=</span> <span class="n">rosoku</span><span class="o">.</span><span class="n">deeplearning</span><span class="p">(</span>
+    <span class="n">items_train</span><span class="o">=</span><span class="p">[</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="s2">&quot;R2&quot;</span><span class="p">,</span> <span class="s2">&quot;R3&quot;</span><span class="p">],</span>
+    <span class="n">items_valid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">items_test</span><span class="o">=</span><span class="p">[[</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;R4&quot;</span><span class="p">,</span> <span class="s2">&quot;R5&quot;</span><span class="p">]],</span>
+    <span class="n">callback_load_epochs</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
+        <span class="n">callback_load_epochs</span><span class="p">,</span>
+        <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+        <span class="n">l_freq</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span>
+        <span class="n">h_freq</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span>
+        <span class="n">order_filter</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">tmin</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">interval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">tmax</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">),</span>
+    <span class="n">callback_proc_epochs</span><span class="o">=</span><span class="n">callback_proc_epochs</span><span class="p">,</span>
+    <span class="n">callback_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
+        <span class="n">convert_epochs_to_ndarray</span><span class="p">,</span> <span class="n">label_keys</span><span class="o">=</span><span class="n">label_keys</span>
+    <span class="p">),</span>
+    <span class="n">callback_early_stopping</span><span class="o">=</span><span class="n">callback_early_stopping</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
+    <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+    <span class="n">optimizer_params</span><span class="o">=</span><span class="n">optimizer_params</span><span class="p">,</span>
+    <span class="n">callback_get_model</span><span class="o">=</span><span class="n">callback_get_model</span><span class="p">,</span>
+    <span class="n">scheduler</span><span class="o">=</span><span class="n">scheduler</span><span class="p">,</span>
+    <span class="n">scheduler_params</span><span class="o">=</span><span class="n">scheduler_params</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">enable_normalization</span><span class="o">=</span><span class="n">enable_normalization</span><span class="p">,</span>
+    <span class="n">history_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;history&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">_2nd.parquet&quot;</span><span class="p">),</span>
+    <span class="n">checkpoint_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;checkpoint&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">_2nd.pth&quot;</span><span class="p">),</span>
+    <span class="n">samples_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;samples&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">_2nd.parquet&quot;</span><span class="p">),</span>
+    <span class="n">normalization_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;normalization&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">_2nd.msgpack&quot;</span><span class="p">),</span>
+    <span class="n">saliency_map_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;saliency&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">_2nd.msgpack&quot;</span><span class="p">),</span>
+    <span class="n">label_keys</span><span class="o">=</span><span class="n">label_keys</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+    <span class="n">additional_values</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="n">subject</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0it [00:00, ?it/s]
+9it [00:00, 21065.14it/s]
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 8 - 30 Hz
+
+IIR filter parameters
+---------------------
+Butterworth bandpass zero-phase (two-pass forward and reverse) non-causal filter:
+- Filter order 16 (effective, after forward-backward)
+- Cutoffs at 8.00, 30.00 Hz: -6.02, -6.02 dB
+
+Used Annotations descriptions: [np.str_(&#39;left_hand&#39;), np.str_(&#39;right_hand&#39;)]
+Ignoring annotation durations and creating fixed-duration epochs around annotation onsets.
+Not setting metadata
+40 matching events found
+No baseline correction applied
+0 projection items activated
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 8 - 30 Hz
+
+IIR filter parameters
+---------------------
+Butterworth bandpass zero-phase (two-pass forward and reverse) non-causal filter:
+- Filter order 16 (effective, after forward-backward)
+- Cutoffs at 8.00, 30.00 Hz: -6.02, -6.02 dB
+
+Used Annotations descriptions: [np.str_(&#39;left_hand&#39;), np.str_(&#39;right_hand&#39;)]
+Ignoring annotation durations and creating fixed-duration epochs around annotation onsets.
+Not setting metadata
+40 matching events found
+No baseline correction applied
+0 projection items activated
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 8 - 30 Hz
+
+IIR filter parameters
+---------------------
+Butterworth bandpass zero-phase (two-pass forward and reverse) non-causal filter:
+- Filter order 16 (effective, after forward-backward)
+- Cutoffs at 8.00, 30.00 Hz: -6.02, -6.02 dB
+
+Used Annotations descriptions: [np.str_(&#39;left_hand&#39;), np.str_(&#39;right_hand&#39;)]
+Ignoring annotation durations and creating fixed-duration epochs around annotation onsets.
+Not setting metadata
+40 matching events found
+No baseline correction applied
+0 projection items activated
+/home/skojima/git/rosoku/examples/02_deeplearning/02_example_2step_early_stopping.py:78: RuntimeWarning: Concatenation of Annotations within Epochs is not supported yet. All annotations will be dropped.
+  return mne.concatenate_epochs(epochs_list)
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+0 bad epochs dropped
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+0 bad epochs dropped
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+0 bad epochs dropped
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+Not setting metadata
+120 matching events found
+No baseline correction applied
+
+0it [00:00, ?it/s]
+9it [00:00, 24818.37it/s]
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Reading 0 ... 230911  =      0.000 ...   450.998 secs...
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 8 - 30 Hz
+
+IIR filter parameters
+---------------------
+Butterworth bandpass zero-phase (two-pass forward and reverse) non-causal filter:
+- Filter order 16 (effective, after forward-backward)
+- Cutoffs at 8.00, 30.00 Hz: -6.02, -6.02 dB
+
+Used Annotations descriptions: [np.str_(&#39;left_hand&#39;), np.str_(&#39;right_hand&#39;)]
+Ignoring annotation durations and creating fixed-duration epochs around annotation onsets.
+Not setting metadata
+40 matching events found
+No baseline correction applied
+0 projection items activated
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 8 - 30 Hz
+
+IIR filter parameters
+---------------------
+Butterworth bandpass zero-phase (two-pass forward and reverse) non-causal filter:
+- Filter order 16 (effective, after forward-backward)
+- Cutoffs at 8.00, 30.00 Hz: -6.02, -6.02 dB
+
+Used Annotations descriptions: [np.str_(&#39;left_hand&#39;), np.str_(&#39;right_hand&#39;)]
+Ignoring annotation durations and creating fixed-duration epochs around annotation onsets.
+Not setting metadata
+40 matching events found
+No baseline correction applied
+0 projection items activated
+/home/skojima/git/rosoku/examples/02_deeplearning/02_example_2step_early_stopping.py:78: RuntimeWarning: Concatenation of Annotations within Epochs is not supported yet. All annotations will be dropped.
+  return mne.concatenate_epochs(epochs_list)
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+0 bad epochs dropped
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+0 bad epochs dropped
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+Using data from preloaded Raw for 40 events and 2305 original time points ...
+Not setting metadata
+80 matching events found
+No baseline correction applied
+epoch 000, train_loss: 0.7141, train_acc: 0.52, lr: 9.9999e-04, et: 0.0799, checkpoint saved
+epoch 001, train_loss: 0.6456, train_acc: 0.64, lr: 9.9996e-04, et: 0.0808, checkpoint saved
+epoch 002, train_loss: 0.6280, train_acc: 0.66, lr: 9.9991e-04, et: 0.0817, checkpoint saved
+epoch 003, train_loss: 0.5808, train_acc: 0.70, lr: 9.9984e-04, et: 0.0826, checkpoint saved
+epoch 004, train_loss: 0.5111, train_acc: 0.80, lr: 9.9975e-04, et: 0.0841, checkpoint saved
+epoch 005, train_loss: 0.4032, train_acc: 0.86, lr: 9.9965e-04, et: 0.0823, checkpoint saved
+epoch 006, train_loss: 0.2703, train_acc: 0.92, lr: 9.9952e-04, et: 0.0829, checkpoint saved
+epoch 007, train_loss: 0.2807, train_acc: 0.93, lr: 9.9937e-04, et: 0.0833
+epoch 008, train_loss: 0.2585, train_acc: 0.89, lr: 9.9920e-04, et: 0.0809, checkpoint saved
+epoch 009, train_loss: 0.2334, train_acc: 0.93, lr: 9.9901e-04, et: 0.0821, checkpoint saved
+epoch 010, train_loss: 0.1748, train_acc: 0.93, lr: 9.9881e-04, et: 0.0854, checkpoint saved
+epoch 011, train_loss: 0.2425, train_acc: 0.88, lr: 9.9858e-04, et: 0.0836
+epoch 012, train_loss: 0.1828, train_acc: 0.95, lr: 9.9833e-04, et: 0.0831
+epoch 013, train_loss: 0.1591, train_acc: 0.94, lr: 9.9807e-04, et: 0.0836, checkpoint saved
+Early stopping was triggered: epoch #14
+Elapsed Time: 1.19s
+</pre></div>
+</div>
+</section>
+<section id="print-results">
+<h1>Print Results<a class="headerlink" href="#print-results" title="Link to this heading">#</a></h1>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">results_1st_step</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results_2nd_step</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>        items_train items_valid        items_test  accuracy   model  subject
+0  [56, &quot;R1&quot;, &quot;R2&quot;]  [56, &quot;R3&quot;]  [56, &quot;R4&quot;, &quot;R5&quot;]      0.95  EEGNet       56
+              items_train items_valid        items_test  accuracy   model  subject
+0  [56, &quot;R1&quot;, &quot;R2&quot;, &quot;R3&quot;]        null  [56, &quot;R4&quot;, &quot;R5&quot;]       1.0  EEGNet       56
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 20.077 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-02-deeplearning-02-example-2step-early-stopping-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/0c1d790f744e6cc6f60abc4cd1527367/02_example_2step_early_stopping.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">02_example_2step_early_stopping.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/7b4e3d7b01cdc6619c9410b091c089bf/02_example_2step_early_stopping.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">02_example_2step_early_stopping.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/f6f3245bdc97349100116ca65a8629d6/02_example_2step_early_stopping.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">02_example_2step_early_stopping.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_example_plot_saliency_map.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Example: Plot Saliency Map</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../install.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">How to Install</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Example 01: Within-subject classification with deep learning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-packages">Import Packages</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#define-callback-functions">Define callback functions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-experiment-using-early-stopping-with-validation-data">Run the Experiment using Early Stopping with Validation data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-experiment-using-early-stopping-with-callback-early-stopping">Run the Experiment using Early Stopping with callback_early_stopping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#print-results">Print Results</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/auto_examples/02_deeplearning/02_example_2step_early_stopping.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Simon Kojima.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

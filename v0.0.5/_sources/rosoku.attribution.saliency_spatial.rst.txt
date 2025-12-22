@@ -1,0 +1,6 @@
+﻿rosoku.attribution.saliency\_spatial
+====================================
+
+.. currentmodule:: rosoku.attribution
+
+.. autofunction:: saliency_spatial

@@ -1,0 +1,6 @@
+﻿rosoku.viz.plot\_history
+========================
+
+.. currentmodule:: rosoku.viz
+
+.. autofunction:: plot_history

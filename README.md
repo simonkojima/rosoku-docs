@@ -4,9 +4,11 @@
 
 ### Requirements for docs generation
 
+Install rosoku first.
+
 ```
-pip install git+https://github.com/NeuroTechX/moabb.git#egg=moabb
-pip install sphinx pydata-sphinx-theme sphinx-multiversion sphinx-gallery numpydoc
+#pip install git+https://github.com/NeuroTechX/moabb.git#egg=moabb
+pip install sphinx pydata-sphinx-theme sphinx-multiversion sphinx-gallery numpydoc moabb braindecode
 ```
 
 1. Run following in docs

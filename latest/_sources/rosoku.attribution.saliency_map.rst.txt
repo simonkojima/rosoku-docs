@@ -1,0 +1,6 @@
+﻿rosoku.attribution.saliency\_map
+================================
+
+.. currentmodule:: rosoku.attribution
+
+.. autofunction:: saliency_map
