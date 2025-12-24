@@ -1,0 +1,100 @@
+
+
+.. _sphx_glr_auto_examples_00_getting_started:
+
+Getting Started!!
+=================
+
+.. toctree::
+   :hidden:
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates a within-subject motor imagery classification pipeline using a Riemannian geometry-based classifier with rosoku.">
+
+.. only:: html
+
+  .. image:: /auto_examples/00_getting_started/images/thumb/sphx_glr_01_example_within-subject-classification-riemannian_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/00_getting_started/01_example_within-subject-classification-riemannian`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 01: Within-subject classification with Riemannian classifier</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform within-subject motor imagery classification using a deep learning model with rosoku.">
+
+.. only:: html
+
+  .. image:: /auto_examples/00_getting_started/images/thumb/sphx_glr_02_example_within-subject-classification-deeplearning_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/00_getting_started/02_example_within-subject-classification-deeplearning`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 02: Within-subject classification with deep learning</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates cross-subject motor imagery classification using a Riemannian geometry-based pipeline with rosoku.">
+
+.. only:: html
+
+  .. image:: /auto_examples/00_getting_started/images/thumb/sphx_glr_03_example_cross-subject-classification-riemannian_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/00_getting_started/03_example_cross-subject-classification-riemannian`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 03: Cross-subject classification with Riemannian classifier</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates cross-subject motor imagery classification using a deep learning model with rosoku.">
+
+.. only:: html
+
+  .. image:: /auto_examples/00_getting_started/images/thumb/sphx_glr_04_example_cross-subject-classification-deeplearning_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/00_getting_started/04_example_cross-subject-classification-deeplearning`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 04: Cross-subject classification with deep learning</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/00_getting_started/01_example_within-subject-classification-riemannian
+   /auto_examples/00_getting_started/02_example_within-subject-classification-deeplearning
+   /auto_examples/00_getting_started/03_example_cross-subject-classification-riemannian
+   /auto_examples/00_getting_started/04_example_cross-subject-classification-deeplearning
+

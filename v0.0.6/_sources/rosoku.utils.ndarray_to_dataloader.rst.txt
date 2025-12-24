@@ -1,0 +1,6 @@
+﻿rosoku.utils.ndarray\_to\_dataloader
+====================================
+
+.. currentmodule:: rosoku.utils
+
+.. autofunction:: ndarray_to_dataloader

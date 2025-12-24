@@ -1,0 +1,1534 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rosoku.utils.data_load &#8212; Rosoku 0.0.4 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8c5712d9"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/rosoku/utils/data_load';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://simonkojima.github.io/rosoku-docs/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.0.4';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo-light.png" class="logo__image only-light" alt="Rosoku 0.0.4 documentation - Home"/>
+    <img src="../../../_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="Rosoku 0.0.4 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../install.html">
+    How to Install
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../install.html">
+    How to Install
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">rosoku.utils.data_load</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for rosoku.utils.data_load</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_swap_dict</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">markers_from_events</span><span class="p">(</span><span class="n">events</span><span class="p">,</span> <span class="n">event_id</span><span class="p">):</span>
+    <span class="n">event_id_swap</span> <span class="o">=</span> <span class="n">get_swap_dict</span><span class="p">(</span><span class="n">event_id</span><span class="p">)</span>
+
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">events</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">markers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">events</span><span class="p">)[:,</span> <span class="mi">2</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="s2">&quot;marker:&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_id_swap</span><span class="p">[</span><span class="n">val</span><span class="p">]):</span>
+            <span class="n">markers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">event_id_swap</span><span class="p">[</span><span class="n">val</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">markers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;marker:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_id_swap</span><span class="p">[</span><span class="n">val</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">samples</span><span class="p">,</span> <span class="n">markers</span>
+
+
+<div class="viewcode-block" id="get_labels_from_epochs">
+<a class="viewcode-back" href="../../../rosoku.utils.get_labels_from_epochs.html#rosoku.utils.get_labels_from_epochs">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">label_keys</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;left_hand&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;right_hand&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extract trial labels from MNE Epochs based on event markers.</span>
+
+<span class="sd">    This function retrieves event markers from ``epochs.events`` and maps them to</span>
+<span class="sd">    integer class IDs according to ``label_keys``.</span>
+<span class="sd">    Event strings containing multiple tags (e.g. ``&quot;cue/left_hand&quot;``) are also</span>
+<span class="sd">    supported — if a key appears anywhere within the marker, it is assigned.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    epochs : mne.Epochs</span>
+<span class="sd">        Input epochs from which events are extracted.</span>
+<span class="sd">        ``epochs.events`` and ``epochs.event_id`` must be available.</span>
+
+<span class="sd">    label_keys : dict, default={&quot;left_hand&quot;: 0, &quot;right_hand&quot;: 1}</span>
+<span class="sd">        Mapping from event keyword to integer class label.</span>
+<span class="sd">        Keys are matched against event marker strings.</span>
+<span class="sd">        Example:</span>
+<span class="sd">        ``{&quot;left_hand&quot;: 0, &quot;right_hand&quot;: 1, &quot;feet&quot;: 2}``</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    y : np.ndarray of shape (n_epochs,)</span>
+<span class="sd">        Array of integer labels corresponding to each epoch.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    RuntimeError</span>
+<span class="sd">        If the extracted label count does not match the number of epochs.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - Event markers may contain hierarchical names (e.g. ``&quot;cue/left_hand&quot;``).</span>
+<span class="sd">      In such cases, the marker is split by ``&quot;/&quot;`` and matched against keys.</span>
+<span class="sd">    - Every epoch must contain exactly one identifiable label.</span>
+<span class="sd">    - ``len(epochs) == len(y)`` is enforced for consistency.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; y = get_labels_from_epochs(epochs,</span>
+<span class="sd">    ...     label_keys={&quot;left_hand&quot;: 0, &quot;right_hand&quot;: 1, &quot;feet&quot;: 2})</span>
+<span class="sd">    &gt;&gt;&gt; y[:10]</span>
+<span class="sd">    array([0, 1, 1, 0, ...])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+    <span class="n">_</span><span class="p">,</span> <span class="n">markers</span> <span class="o">=</span> <span class="n">markers_from_events</span><span class="p">(</span><span class="n">epochs</span><span class="o">.</span><span class="n">events</span><span class="p">,</span> <span class="n">epochs</span><span class="o">.</span><span class="n">event_id</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">marker</span> <span class="ow">in</span> <span class="n">markers</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">label_keys</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="s2">&quot;/&quot;</span> <span class="ow">in</span> <span class="n">marker</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">marker</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">):</span>
+                    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">marker</span><span class="p">:</span>
+                    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;lenth of epochs is not match with length of y.</span><span class="se">\n</span><span class="s2"> len(epochs): </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span><span class="si">}</span><span class="s2">, len(y): </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_callback_proc</span><span class="p">(</span><span class="n">callback_proc</span><span class="p">,</span> <span class="n">callback_proc_mode</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="n">valid</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply a preprocessing callback function to dataset splits.</span>
+
+<span class="sd">    This function supports two processing modes:</span>
+
+<span class="sd">    - ``&quot;per_split&quot;``: The callback function is applied independently to</span>
+<span class="sd">      each data split (train / valid / test). The callback receives a</span>
+<span class="sd">      single split and its corresponding split name.</span>
+
+<span class="sd">    - ``&quot;joint&quot;``: The callback function is applied jointly to multiple</span>
+<span class="sd">      splits at once. The callback receives all available splits together</span>
+<span class="sd">      and may share state across them (e.g., fitting on training data and</span>
+<span class="sd">      applying the transformation to validation and test data).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    callback_proc : callable</span>
+<span class="sd">        Preprocessing callback function.</span>
+
+<span class="sd">        - If ``callback_proc_mode=&quot;per_split&quot;``, the signature must be::</span>
+
+<span class="sd">              callback_proc(data, split)</span>
+
+<span class="sd">          where ``split`` is one of ``{&quot;train&quot;, &quot;valid&quot;, &quot;test&quot;}``.</span>
+
+<span class="sd">        - If ``callback_proc_mode=&quot;joint&quot;``, the signature must be either::</span>
+
+<span class="sd">              callback_proc(train, test)</span>
+<span class="sd">              callback_proc(train, valid, test)</span>
+
+<span class="sd">          depending on whether validation data are provided.</span>
+
+<span class="sd">    callback_proc_mode : {&quot;per_split&quot;, &quot;joint&quot;}</span>
+<span class="sd">        Mode that specifies how the preprocessing callback is applied.</span>
+
+<span class="sd">        - ``&quot;per_split&quot;`` applies the callback independently to each split.</span>
+<span class="sd">        - ``&quot;joint&quot;`` applies the callback jointly to multiple splits.</span>
+
+<span class="sd">    train : object</span>
+<span class="sd">        Training split data.</span>
+
+<span class="sd">    valid : object or None</span>
+<span class="sd">        Validation split data. If ``None``, validation data are assumed to</span>
+<span class="sd">        be unavailable and are skipped.</span>
+
+<span class="sd">    test : list</span>
+<span class="sd">        Test split data. Each element is processed independently in</span>
+<span class="sd">        ``&quot;per_split&quot;`` mode, or passed collectively in ``&quot;joint&quot;`` mode.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    train : object</span>
+<span class="sd">        Processed training split.</span>
+
+<span class="sd">    valid : object or None</span>
+<span class="sd">        Processed validation split.</span>
+
+<span class="sd">    test : list</span>
+<span class="sd">        Processed test split(s).</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If ``callback_proc_mode`` is not one of the supported modes.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The ``&quot;per_split&quot;`` mode is suitable for stateless or split-local</span>
+<span class="sd">    preprocessing steps such as filtering, normalization, or feature</span>
+<span class="sd">    extraction.</span>
+
+<span class="sd">    The ``&quot;joint&quot;`` mode is intended for stateful preprocessing that</span>
+<span class="sd">    requires access to multiple splits simultaneously, such as fitting</span>
+<span class="sd">    a transformation on training data and applying it consistently to</span>
+<span class="sd">    validation and test data.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Apply split-wise preprocessing::</span>
+
+<span class="sd">        train, valid, test = apply_callback_proc(</span>
+<span class="sd">            callback_proc=my_proc,</span>
+<span class="sd">            callback_proc_mode=&quot;per_split&quot;,</span>
+<span class="sd">            train=train,</span>
+<span class="sd">            valid=valid,</span>
+<span class="sd">            test=test,</span>
+<span class="sd">        )</span>
+
+<span class="sd">    Apply joint preprocessing (e.g., fit on train, apply to others)::</span>
+
+<span class="sd">        train, valid, test = apply_callback_proc(</span>
+<span class="sd">            callback_proc=my_proc,</span>
+<span class="sd">            callback_proc_mode=&quot;joint&quot;,</span>
+<span class="sd">            train=train,</span>
+<span class="sd">            valid=valid,</span>
+<span class="sd">            test=test,</span>
+<span class="sd">        )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">match</span> <span class="n">callback_proc_mode</span><span class="p">:</span>
+        <span class="k">case</span> <span class="s2">&quot;per_split&quot;</span><span class="p">:</span>
+            <span class="n">train</span> <span class="o">=</span> <span class="n">callback_proc</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">valid</span> <span class="o">=</span> <span class="n">callback_proc</span><span class="p">(</span><span class="n">valid</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">)</span>
+            <span class="n">test</span> <span class="o">=</span> <span class="p">[</span><span class="n">callback_proc</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">test</span><span class="p">]</span>
+        <span class="k">case</span> <span class="s2">&quot;joint&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">valid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">callback_proc</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">train</span><span class="p">,</span> <span class="n">valid</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">callback_proc</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">valid</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span>
+
+        <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;callback_proc_mode: </span><span class="si">{</span><span class="n">callback_proc_mode</span><span class="si">}</span><span class="s2"> is unknown&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">train</span><span class="p">,</span> <span class="n">valid</span><span class="p">,</span> <span class="n">test</span>
+
+
+<div class="viewcode-block" id="convert_epochs_to_ndarray">
+<a class="viewcode-back" href="../../../rosoku.utils.convert_epochs_to_ndarray.html#rosoku.utils.convert_epochs_to_ndarray">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_epochs_to_ndarray</span><span class="p">(</span>
+    <span class="n">epochs</span><span class="p">,</span>
+    <span class="n">split</span><span class="p">,</span>
+    <span class="n">label_keys</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;left_hand&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;right_hand&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert an MNE Epochs object into NumPy arrays (X, y).</span>
+
+<span class="sd">    This function extracts the raw epoch data using ``epochs.get_data()`` and</span>
+<span class="sd">    generates corresponding class labels by parsing event markers via</span>
+<span class="sd">    :func:`get_labels_from_epochs`.</span>
+<span class="sd">    It serves as the **default conversion function** for both</span>
+<span class="sd">    :func:`rosoku.deeplearning` and :func:`rosoku.conventional`,</span>
+<span class="sd">    where it is passed as ``func_convert_epochs_to_ndarray``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    epochs : mne.Epochs</span>
+<span class="sd">        MNE epochs containing EEG/BCI trials. Must include ``events`` and</span>
+<span class="sd">        ``event_id`` for label extraction.</span>
+
+<span class="sd">    split : {&quot;train&quot;, &quot;valid&quot;, &quot;test&quot;}</span>
+<span class="sd">        Provided for pipeline consistency, but not used directly here.</span>
+<span class="sd">        Allows seamless substitution with user-defined conversion functions</span>
+<span class="sd">        that may behave differently depending on dataset split.</span>
+
+<span class="sd">    label_keys : dict, default={&quot;left_hand&quot;: 0, &quot;right_hand&quot;: 1}</span>
+<span class="sd">        Mapping from event string to class ID.</span>
+<span class="sd">        Passed to :func:`get_labels_from_epochs`.</span>
+
+<span class="sd">    **kwargs :</span>
+<span class="sd">        Additional arguments forwarded to ``epochs.get_data()``, such as:</span>
+
+<span class="sd">        ``picks=...`` (channel selection)</span>
+<span class="sd">        ``tmin, tmax`` (time window)</span>
+<span class="sd">        ``reject_by_annotation=True`` etc.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    X : np.ndarray of shape (n_epochs, n_channels, n_times)</span>
+<span class="sd">        Trial data extracted from MNE Epochs.</span>
+
+<span class="sd">    y : np.ndarray of shape (n_epochs,)</span>
+<span class="sd">        Integer class labels derived from event markers.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - Serves as the default feature-extraction backend for rosoku pipelines.</span>
+<span class="sd">    - Intended for cases where the user does **not** need custom handcrafted</span>
+<span class="sd">      features and prefers raw time-domain input for ML/DL.</span>
+<span class="sd">    - Can be replaced by any user-defined function with the same return format.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; X, y = convert_epochs_to_ndarray(epochs, split=&quot;train&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; X.shape, y.shape</span>
+<span class="sd">    ((120, 64, 400), (120,))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">label_keys</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span></div>
+
+
+
+<div class="viewcode-block" id="ndarray_to_tensor">
+<a class="viewcode-back" href="../../../rosoku.utils.ndarray_to_tensor.html#rosoku.utils.ndarray_to_tensor">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">ndarray_to_tensor</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="p">,</span>
+    <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">X_valid</span><span class="p">,</span>
+    <span class="n">y_valid</span><span class="p">,</span>
+    <span class="n">X_test</span><span class="p">,</span>
+    <span class="n">y_test</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert NumPy arrays to PyTorch tensors and move them to a device.</span>
+
+<span class="sd">    This utility function converts training, validation, and test datasets from</span>
+<span class="sd">    NumPy arrays to PyTorch tensors with appropriate dtypes, and moves them to</span>
+<span class="sd">    the specified device. It supports both single test sets and grouped test</span>
+<span class="sd">    sets represented as lists, which is consistent with rosoku&#39;s handling of</span>
+<span class="sd">    multiple test evaluation groups.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X_train : array-like</span>
+<span class="sd">        Training data array. Typically has shape</span>
+<span class="sd">        ``(n_samples, n_channels, n_times)`` for EEG data.</span>
+
+<span class="sd">    y_train : array-like</span>
+<span class="sd">        Training labels. Must be convertible to integer class indices.</span>
+
+<span class="sd">    X_valid : array-like</span>
+<span class="sd">        Validation data array with the same structure as ``X_train``.</span>
+
+<span class="sd">    y_valid : array-like</span>
+<span class="sd">        Validation labels.</span>
+
+<span class="sd">    X_test : array-like or list of array-like</span>
+<span class="sd">        Test data array, or a list of test data arrays corresponding to multiple</span>
+<span class="sd">        test evaluation groups.</span>
+
+<span class="sd">    y_test : array-like or list of array-like</span>
+<span class="sd">        Test labels, or a list of label arrays corresponding to ``X_test``.</span>
+
+<span class="sd">    device : {&quot;cpu&quot;, &quot;cuda&quot;}, optional</span>
+<span class="sd">        Device to which the tensors are moved (default: ``&quot;cpu&quot;``).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    X_train_tensor : torch.Tensor</span>
+<span class="sd">        Training data tensor of type ``torch.float`` on ``device``.</span>
+
+<span class="sd">    y_train_tensor : torch.Tensor</span>
+<span class="sd">        Training label tensor of type ``torch.int64`` on ``device``.</span>
+
+<span class="sd">    X_valid_tensor : torch.Tensor</span>
+<span class="sd">        Validation data tensor of type ``torch.float`` on ``device``.</span>
+
+<span class="sd">    y_valid_tensor : torch.Tensor</span>
+<span class="sd">        Validation label tensor of type ``torch.int64`` on ``device``.</span>
+
+<span class="sd">    X_test_tensor : torch.Tensor or list of torch.Tensor</span>
+<span class="sd">        Test data tensor(s) of type ``torch.float`` on ``device``.</span>
+<span class="sd">        A list is returned if ``X_test`` is a list.</span>
+
+<span class="sd">    y_test_tensor : torch.Tensor or list of torch.Tensor</span>
+<span class="sd">        Test label tensor(s) of type ``torch.int64`` on ``device``.</span>
+<span class="sd">        A list is returned if ``y_test`` is a list.</span>
+
+<span class="sd">    dtype : torch.dtype, optional</span>
+<span class="sd">        Data type used when converting NumPy arrays to PyTorch tensors</span>
+<span class="sd">        (default: ``torch.float32``).</span>
+
+<span class="sd">        This argument is forwarded to :func:`ndarray_to_tensor` and controls the</span>
+<span class="sd">        floating-point precision of the resulting tensors stored in the</span>
+<span class="sd">        :class:`torch.utils.data.TensorDataset`.</span>
+
+<span class="sd">        Typical choices are:</span>
+
+<span class="sd">        - ``torch.float32`` : default and recommended for most training scenarios</span>
+<span class="sd">        - ``torch.float64`` : useful for numerical debugging or high-precision analysis</span>
+<span class="sd">        - ``torch.float16`` / ``torch.bfloat16`` : may be used for memory reduction,</span>
+<span class="sd">          but require careful handling and compatible models/devices</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">         - ``dtype`` affects only the feature tensors ``X``. Label tensors ``y`` are</span>
+<span class="sd">           converted to integer types as required by PyTorch loss functions.</span>
+<span class="sd">         - Changing ``dtype`` can affect numerical stability and reproducibility,</span>
+<span class="sd">           especially when combined with GPU acceleration.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - All feature arrays are converted to ``torch.float`` and all labels to</span>
+<span class="sd">      ``torch.int64``, which is compatible with common PyTorch loss functions</span>
+<span class="sd">      such as :class:`torch.nn.CrossEntropyLoss`.</span>
+<span class="sd">    - When ``X_test`` and ``y_test`` are lists, the returned test tensors preserve</span>
+<span class="sd">      this list structure, enabling grouped test evaluation in downstream</span>
+<span class="sd">      pipelines (e.g., in :func:`rosoku.deeplearning`).</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    rosoku.deeplearning :</span>
+<span class="sd">        Deep-learning pipeline that consumes tensors produced by this function.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Convert NumPy arrays to tensors on GPU::</span>
+
+<span class="sd">        Xtr_t, ytr_t, Xva_t, yva_t, Xte_t, yte_t = ndarray_to_tensor(</span>
+<span class="sd">            X_train, y_train,</span>
+<span class="sd">            X_valid, y_valid,</span>
+<span class="sd">            X_test, y_test,</span>
+<span class="sd">            device=&quot;cuda&quot;,</span>
+<span class="sd">        )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+    <span class="n">X_train_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">y_train_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">X_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">X_valid_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">y_valid_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">X_valid_tensor</span> <span class="o">=</span> <span class="n">y_valid_tensor</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">X_test_tensor</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">X</span> <span class="ow">in</span> <span class="n">X_test</span><span class="p">]</span>
+        <span class="n">y_test_tensor</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">y_test</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">X_test_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">y_test_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">X_train_tensor</span><span class="p">,</span>
+        <span class="n">y_train_tensor</span><span class="p">,</span>
+        <span class="n">X_valid_tensor</span><span class="p">,</span>
+        <span class="n">y_valid_tensor</span><span class="p">,</span>
+        <span class="n">X_test_tensor</span><span class="p">,</span>
+        <span class="n">y_test_tensor</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="tensor_to_dataset">
+<a class="viewcode-back" href="../../../rosoku.utils.tensor_to_dataset.html#rosoku.utils.tensor_to_dataset">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">tensor_to_dataset</span><span class="p">(</span>
+    <span class="n">X_train_tensor</span><span class="p">,</span>
+    <span class="n">y_train_tensor</span><span class="p">,</span>
+    <span class="n">X_valid_tensor</span><span class="p">,</span>
+    <span class="n">y_valid_tensor</span><span class="p">,</span>
+    <span class="n">X_test_tensor</span><span class="p">,</span>
+    <span class="n">y_test_tensor</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert PyTorch tensors into TensorDataset objects.</span>
+
+<span class="sd">    This utility function wraps training, validation, and test tensors into</span>
+<span class="sd">    :class:`torch.utils.data.TensorDataset` objects. It supports both single</span>
+<span class="sd">    test datasets and grouped test datasets represented as lists, which is</span>
+<span class="sd">    consistent with rosoku&#39;s handling of multiple test evaluation groups.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X_train_tensor : torch.Tensor</span>
+<span class="sd">        Training data tensor.</span>
+
+<span class="sd">    y_train_tensor : torch.Tensor</span>
+<span class="sd">        Training label tensor.</span>
+
+<span class="sd">    X_valid_tensor : torch.Tensor</span>
+<span class="sd">        Validation data tensor.</span>
+
+<span class="sd">    y_valid_tensor : torch.Tensor</span>
+<span class="sd">        Validation label tensor.</span>
+
+<span class="sd">    X_test_tensor : torch.Tensor or list of torch.Tensor</span>
+<span class="sd">        Test data tensor, or a list of test data tensors corresponding to</span>
+<span class="sd">        multiple test evaluation groups.</span>
+
+<span class="sd">    y_test_tensor : torch.Tensor or list of torch.Tensor</span>
+<span class="sd">        Test label tensor, or a list of label tensors corresponding to</span>
+<span class="sd">        ``X_test_tensor``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dataset_train : torch.utils.data.TensorDataset</span>
+<span class="sd">        Dataset containing training data and labels.</span>
+
+<span class="sd">    dataset_valid : torch.utils.data.TensorDataset</span>
+<span class="sd">        Dataset containing validation data and labels.</span>
+
+<span class="sd">    dataset_test : torch.utils.data.TensorDataset or list of torch.utils.data.TensorDataset</span>
+<span class="sd">        Test dataset(s). A list is returned if ``X_test_tensor`` is a list,</span>
+<span class="sd">        preserving the grouping of test evaluation sets.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - Each returned dataset yields ``(data, label)`` pairs when iterated.</span>
+<span class="sd">    - When ``X_test_tensor`` is a list, the list structure is preserved in the</span>
+<span class="sd">      returned ``dataset_test`` to enable grouped test evaluation in downstream</span>
+<span class="sd">      pipelines (e.g., in :func:`rosoku.deeplearning`).</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    ndarray_to_tensor :</span>
+<span class="sd">        Convert NumPy arrays to PyTorch tensors.</span>
+
+<span class="sd">    torch.utils.data.TensorDataset :</span>
+<span class="sd">        PyTorch dataset class used to wrap tensors.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Convert tensors to datasets::</span>
+
+<span class="sd">        dataset_train, dataset_valid, dataset_test = tensor_to_dataset(</span>
+<span class="sd">            X_train_tensor, y_train_tensor,</span>
+<span class="sd">            X_valid_tensor, y_valid_tensor,</span>
+<span class="sd">            X_test_tensor, y_test_tensor,</span>
+<span class="sd">        )</span>
+
+<span class="sd">    Use grouped test datasets::</span>
+
+<span class="sd">        for ds in dataset_test:</span>
+<span class="sd">            loader = DataLoader(ds, batch_size=64)</span>
+<span class="sd">            ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+    <span class="n">dataset_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">TensorDataset</span><span class="p">(</span><span class="n">X_train_tensor</span><span class="p">,</span> <span class="n">y_train_tensor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">X_valid_tensor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dataset_valid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">TensorDataset</span><span class="p">(</span><span class="n">X_valid_tensor</span><span class="p">,</span> <span class="n">y_valid_tensor</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dataset_valid</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X_test_tensor</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">dataset_test</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">TensorDataset</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X_test_tensor</span><span class="p">,</span> <span class="n">y_test_tensor</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dataset_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">TensorDataset</span><span class="p">(</span><span class="n">X_test_tensor</span><span class="p">,</span> <span class="n">y_test_tensor</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dataset_train</span><span class="p">,</span> <span class="n">dataset_valid</span><span class="p">,</span> <span class="n">dataset_test</span></div>
+
+
+
+<div class="viewcode-block" id="dataset_to_dataloader">
+<a class="viewcode-back" href="../../../rosoku.utils.dataset_to_dataloader.html#rosoku.utils.dataset_to_dataloader">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">dataset_to_dataloader</span><span class="p">(</span>
+    <span class="n">dataset_train</span><span class="p">,</span>
+    <span class="n">dataset_valid</span><span class="p">,</span>
+    <span class="n">dataset_test</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">generator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">num_workers</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">generator</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">func_worker_init</span><span class="p">(</span><span class="n">worker_id</span><span class="p">):</span>
+            <span class="n">worker_seed</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">initial_seed</span><span class="p">()</span> <span class="o">%</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">worker_seed</span><span class="p">)</span>
+            <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">worker_seed</span><span class="p">)</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">worker_seed</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">func_worker_init</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">generator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">generator</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span>
+        <span class="n">generator</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="n">dataloader_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+        <span class="n">dataset_train</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">generator</span><span class="o">=</span><span class="n">generator</span><span class="p">,</span>
+        <span class="n">worker_init_fn</span><span class="o">=</span><span class="n">func_worker_init</span><span class="p">,</span>
+        <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span>
+        <span class="n">persistent_workers</span><span class="o">=</span><span class="p">(</span><span class="n">num_workers</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">make_non_shuffle_dl</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+            <span class="n">ds</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">generator</span><span class="o">=</span><span class="n">generator</span><span class="p">,</span>
+            <span class="n">worker_init_fn</span><span class="o">=</span><span class="n">func_worker_init</span><span class="p">,</span>
+            <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span>
+            <span class="n">persistent_workers</span><span class="o">=</span><span class="p">(</span><span class="n">num_workers</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dataset_valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dataloader_valid</span> <span class="o">=</span> <span class="n">make_non_shuffle_dl</span><span class="p">(</span><span class="n">dataset_valid</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dataloader_valid</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dataset_test</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">dataloader_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">make_non_shuffle_dl</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">dataset_test</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dataloader_test</span> <span class="o">=</span> <span class="n">make_non_shuffle_dl</span><span class="p">(</span><span class="n">dataset_test</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dataloader_train</span><span class="p">,</span> <span class="n">dataloader_valid</span><span class="p">,</span> <span class="n">dataloader_test</span></div>
+
+
+
+<div class="viewcode-block" id="ndarray_to_dataloader">
+<a class="viewcode-back" href="../../../rosoku.utils.ndarray_to_dataloader.html#rosoku.utils.ndarray_to_dataloader">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">ndarray_to_dataloader</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="p">,</span>
+    <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">X_valid</span><span class="p">,</span>
+    <span class="n">y_valid</span><span class="p">,</span>
+    <span class="n">X_test</span><span class="p">,</span>
+    <span class="n">y_test</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+    <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">generator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert NumPy arrays to PyTorch DataLoaders.</span>
+
+<span class="sd">    This is a convenience wrapper that converts NumPy arrays to PyTorch tensors,</span>
+<span class="sd">    wraps them into :class:`torch.utils.data.TensorDataset` objects, and constructs</span>
+<span class="sd">    :class:`torch.utils.data.DataLoader` instances for training, validation, and</span>
+<span class="sd">    test splits.</span>
+
+<span class="sd">    Grouped test evaluation is supported: if ``X_test`` / ``y_test`` are provided</span>
+<span class="sd">    as lists, the returned test DataLoaders preserve the list structure, enabling</span>
+<span class="sd">    evaluation of multiple test groups.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X_train : array-like</span>
+<span class="sd">        Training data array. Typically has shape</span>
+<span class="sd">        ``(n_samples, n_channels, n_times)`` for EEG data.</span>
+
+<span class="sd">    y_train : array-like</span>
+<span class="sd">        Training labels. Must be convertible to integer class indices.</span>
+
+<span class="sd">    X_valid : array-like</span>
+<span class="sd">        Validation data array with the same structure as ``X_train``.</span>
+
+<span class="sd">    y_valid : array-like</span>
+<span class="sd">        Validation labels.</span>
+
+<span class="sd">    X_test : array-like or list of array-like</span>
+<span class="sd">        Test data array, or a list of test data arrays corresponding to multiple</span>
+<span class="sd">        test evaluation groups.</span>
+
+<span class="sd">    y_test : array-like or list of array-like</span>
+<span class="sd">        Test labels, or a list of label arrays corresponding to ``X_test``.</span>
+
+<span class="sd">    batch_size : int</span>
+<span class="sd">        Mini-batch size used for all DataLoaders.</span>
+
+<span class="sd">    device : {&quot;cpu&quot;, &quot;cuda&quot;}, optional</span>
+<span class="sd">        Device to which the tensors are moved before dataset/DataLoader creation</span>
+<span class="sd">        (default: ``&quot;cpu&quot;``).</span>
+
+<span class="sd">    dtype : torch.dtype, optional</span>
+<span class="sd">        Data type used when converting NumPy arrays to PyTorch tensors</span>
+<span class="sd">        (default: ``torch.float32``).</span>
+
+<span class="sd">        This argument is forwarded to :func:`ndarray_to_tensor` and controls the</span>
+<span class="sd">        floating-point precision of the resulting tensors stored in the</span>
+<span class="sd">        :class:`torch.utils.data.TensorDataset`.</span>
+
+<span class="sd">        Typical choices are:</span>
+
+<span class="sd">        - ``torch.float32`` : default and recommended for most training scenarios</span>
+<span class="sd">        - ``torch.float64`` : useful for numerical debugging or high-precision analysis</span>
+<span class="sd">        - ``torch.float16`` / ``torch.bfloat16`` : may be used for memory reduction,</span>
+<span class="sd">          but require careful handling and compatible models/devices</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">         - ``dtype`` affects only the feature tensors ``X``. Label tensors ``y`` are</span>
+<span class="sd">           converted to integer types as required by PyTorch loss functions.</span>
+<span class="sd">         - Changing ``dtype`` can affect numerical stability and reproducibility,</span>
+<span class="sd">           especially when combined with GPU acceleration.</span>
+
+<span class="sd">    num_workers : int, optional</span>
+<span class="sd">        Number of worker processes used by each DataLoader (default: 0).</span>
+
+<span class="sd">        For **maximum reproducibility**, it is recommended to keep</span>
+<span class="sd">        ``num_workers=0``, as multi-process data loading can introduce</span>
+<span class="sd">        non-determinism depending on the dataset, transformations, and system</span>
+<span class="sd">        configuration.</span>
+
+<span class="sd">    seed : int or None, optional</span>
+<span class="sd">        Random seed used to control deterministic behavior in data loading.</span>
+<span class="sd">        This value is forwarded to ``dataset_to_dataloader`` and used to seed</span>
+<span class="sd">        PyTorch, NumPy, and Python RNGs where applicable.</span>
+
+<span class="sd">    generator : None | int | torch.Generator, optional</span>
+<span class="sd">        Random generator controlling the DataLoader sampling order.</span>
+
+<span class="sd">        - If ``None``, no explicit generator is used.</span>
+<span class="sd">        - If ``int``, a new :class:`torch.Generator` is created and seeded.</span>
+<span class="sd">        - If :class:`torch.Generator`, it is used directly.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dataloader_train : torch.utils.data.DataLoader</span>
+<span class="sd">        DataLoader for the training dataset.</span>
+
+<span class="sd">    dataloader_valid : torch.utils.data.DataLoader</span>
+<span class="sd">        DataLoader for the validation dataset.</span>
+
+<span class="sd">    dataloader_test : torch.utils.data.DataLoader or list of torch.utils.data.DataLoader</span>
+<span class="sd">        DataLoader(s) for the test dataset(s). A list is returned if ``X_test`` is</span>
+<span class="sd">        a list.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    ndarray_to_tensor :</span>
+<span class="sd">        Convert NumPy arrays to PyTorch tensors.</span>
+
+<span class="sd">    tensor_to_dataset :</span>
+<span class="sd">        Wrap tensors into TensorDataset objects.</span>
+
+<span class="sd">    dataset_to_dataloader :</span>
+<span class="sd">        Construct DataLoaders with explicit control over seeding and workers.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - This function is a thin wrapper around</span>
+<span class="sd">      ``ndarray_to_tensor → tensor_to_dataset → dataset_to_dataloader``.</span>
+<span class="sd">    - For strict reproducibility (e.g., debugging, method comparison, or paper</span>
+<span class="sd">      experiments), it is recommended to use:</span>
+
+<span class="sd">      - ``num_workers = 0``</span>
+<span class="sd">      - a fixed ``seed``</span>
+
+<span class="sd">    - Using ``num_workers &gt; 0`` can improve throughput but may introduce subtle</span>
+<span class="sd">      non-determinism even when seeds are set.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Standard (reproducible) usage::</span>
+
+<span class="sd">        dl_train, dl_valid, dl_test = ndarray_to_dataloader(</span>
+<span class="sd">            X_train, y_train,</span>
+<span class="sd">            X_valid, y_valid,</span>
+<span class="sd">            X_test, y_test,</span>
+<span class="sd">            batch_size=64,</span>
+<span class="sd">            num_workers=0,</span>
+<span class="sd">            seed=42,</span>
+<span class="sd">        )</span>
+
+<span class="sd">    Grouped test evaluation::</span>
+
+<span class="sd">        dl_train, dl_valid, dl_test = ndarray_to_dataloader(</span>
+<span class="sd">            X_train, y_train,</span>
+<span class="sd">            X_valid, y_valid,</span>
+<span class="sd">            [X_test_ses1, X_test_ses2],</span>
+<span class="sd">            [y_test_ses1, y_test_ses2],</span>
+<span class="sd">            batch_size=64,</span>
+<span class="sd">        )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="p">(</span>
+        <span class="n">X_train_tensor</span><span class="p">,</span>
+        <span class="n">y_train_tensor</span><span class="p">,</span>
+        <span class="n">X_valid_tensor</span><span class="p">,</span>
+        <span class="n">y_valid_tensor</span><span class="p">,</span>
+        <span class="n">X_test_tensor</span><span class="p">,</span>
+        <span class="n">y_test_tensor</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="n">ndarray_to_tensor</span><span class="p">(</span>
+        <span class="n">X_train</span><span class="p">,</span>
+        <span class="n">y_train</span><span class="p">,</span>
+        <span class="n">X_valid</span><span class="p">,</span>
+        <span class="n">y_valid</span><span class="p">,</span>
+        <span class="n">X_test</span><span class="p">,</span>
+        <span class="n">y_test</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="p">(</span><span class="n">dataset_train</span><span class="p">,</span> <span class="n">dataset_valid</span><span class="p">,</span> <span class="n">dataset_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">tensor_to_dataset</span><span class="p">(</span>
+        <span class="n">X_train_tensor</span><span class="p">,</span>
+        <span class="n">y_train_tensor</span><span class="p">,</span>
+        <span class="n">X_valid_tensor</span><span class="p">,</span>
+        <span class="n">y_valid_tensor</span><span class="p">,</span>
+        <span class="n">X_test_tensor</span><span class="p">,</span>
+        <span class="n">y_test_tensor</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dataset_to_dataloader</span><span class="p">(</span>
+        <span class="n">dataset_train</span><span class="p">,</span>
+        <span class="n">dataset_valid</span><span class="p">,</span>
+        <span class="n">dataset_test</span><span class="p">,</span>
+        <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+        <span class="n">generator</span><span class="o">=</span><span class="n">generator</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="load_data">
+<a class="viewcode-back" href="../../../rosoku.utils.load_data.html#rosoku.utils.load_data">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_data</span><span class="p">(</span>
+    <span class="n">items_train</span><span class="p">,</span>
+    <span class="n">items_valid</span><span class="p">,</span>
+    <span class="n">items_test</span><span class="p">,</span>
+    <span class="n">callback_load_epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_load_ndarray</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_proc_epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_proc_ndarray</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_proc_mode</span><span class="o">=</span><span class="s2">&quot;per_split&quot;</span><span class="p">,</span>
+    <span class="n">callback_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">convert_epochs_to_ndarray</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load and preprocess datasets for rosoku pipelines using item specifications.</span>
+
+<span class="sd">    This utility is the core data loader used by rosoku&#39;s :func:`conventional` and</span>
+<span class="sd">    :func:`deeplearning` pipelines. It takes user-defined *items* that describe which</span>
+<span class="sd">    data to load for the train/validation/test splits, calls user-provided loading</span>
+<span class="sd">    functions (for MNE Epochs or NumPy arrays), optionally applies preprocessing, and</span>
+<span class="sd">    returns NumPy arrays suitable for downstream models.</span>
+
+<span class="sd">    In rosoku, an *item* is an arbitrary user-defined object (often a dict) that</span>
+<span class="sd">    encodes how to locate/load a subset of data (e.g., subject/session/run metadata).</span>
+<span class="sd">    Items are interpreted only by the user callbacks.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    items_train : list</span>
+<span class="sd">        List of items describing the training split.</span>
+
+<span class="sd">    items_valid : list or None</span>
+<span class="sd">        List of items describing the validation split. If ``None``, no validation set</span>
+<span class="sd">        is loaded and ``X_valid``/``y_valid`` are returned as ``None``.</span>
+
+<span class="sd">    items_test : list</span>
+<span class="sd">        Test split specification with optional grouping. Each element defines **one**</span>
+<span class="sd">        test evaluation group and can be either:</span>
+
+<span class="sd">        - a single item (e.g., ``&quot;A29&quot;`` or ``{&quot;sub&quot;: 1, &quot;ses&quot;: 2}``)</span>
+<span class="sd">        - a list of items (e.g., ``[&quot;A29&quot;, &quot;A3&quot;]``) to be loaded/merged as a single group</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">        Internally, any single item in ``items_test`` is wrapped to a list</span>
+<span class="sd">        ``[item]`` before calling the loading callback, so the loader always receives</span>
+<span class="sd">        a list of items.</span>
+
+<span class="sd">    callback_load_epochs : callable | None, optional</span>
+<span class="sd">        Loader returning an :class:`mne.Epochs` instance.</span>
+
+<span class="sd">        The callback **must** have the signature::</span>
+
+<span class="sd">            callback_load_epochs(items, split)</span>
+
+<span class="sd">        where ``items`` is a list of items and ``split`` is one of</span>
+<span class="sd">        ``{&quot;train&quot;, &quot;valid&quot;, &quot;test&quot;}``.</span>
+
+<span class="sd">        The callback should implement any merging/concatenation logic needed for</span>
+<span class="sd">        grouped items (e.g., using :func:`mne.concatenate_epochs`).</span>
+
+<span class="sd">        Exactly one of ``callback_load_epochs`` and ``callback_load_ndarray`` must be</span>
+<span class="sd">        provided.</span>
+
+<span class="sd">    callback_load_ndarray : callable | None, optional</span>
+<span class="sd">        Loader returning arrays directly.</span>
+
+<span class="sd">        The callback **must** have the signature::</span>
+
+<span class="sd">            callback_load_ndarray(items, split)</span>
+
+<span class="sd">        and return ``(X, y)``, where ``X`` is an array-like feature tensor and ``y``</span>
+<span class="sd">        are the corresponding labels.</span>
+
+<span class="sd">        Exactly one of ``callback_load_epochs`` and ``callback_load_ndarray`` must be</span>
+<span class="sd">        provided.</span>
+
+<span class="sd">    callback_proc_epochs : callable | None, optional</span>
+<span class="sd">        Optional preprocessing applied to Epochs objects *before* conversion to arrays.</span>
+<span class="sd">        It is invoked via ``apply_callback_proc``. Typical use cases include channel</span>
+<span class="sd">        selection, cropping, filtering, artifact rejection, etc.</span>
+
+<span class="sd">    callback_proc_ndarray : callable | None, optional</span>
+<span class="sd">        Optional preprocessing applied to ndarray data after conversion (or direct</span>
+<span class="sd">        ndarray loading). It is invoked via ``apply_callback_proc``.</span>
+
+<span class="sd">    callback_proc_mode : {&quot;per_split&quot;, &quot;joint&quot;}, optional</span>
+<span class="sd">        Controls how preprocessing callbacks are applied, as interpreted by</span>
+<span class="sd">        ``apply_callback_proc``.</span>
+
+<span class="sd">        - ``&quot;per_split&quot;``:</span>
+<span class="sd">            The preprocessing callback is applied independently to each data</span>
+<span class="sd">            split (train / valid / test).</span>
+
+<span class="sd">            The callback function must have the signature::</span>
+
+<span class="sd">                callback_proc(data, split)</span>
+
+<span class="sd">            where ``split`` is one of ``{&quot;train&quot;, &quot;valid&quot;, &quot;test&quot;}``.</span>
+
+<span class="sd">            The callback must return the processed version of ``data``.</span>
+<span class="sd">            No information is shared across splits in this mode.</span>
+
+<span class="sd">        - ``&quot;joint&quot;``:</span>
+<span class="sd">            The preprocessing callback is applied jointly to multiple splits</span>
+<span class="sd">            at once, allowing shared state across splits.</span>
+
+<span class="sd">            If validation data are not provided (``valid is None``), the callback</span>
+<span class="sd">            must have the signature::</span>
+
+<span class="sd">                callback_proc(train, test)</span>
+
+<span class="sd">            and must return::</span>
+
+<span class="sd">                train, test</span>
+
+<span class="sd">            If validation data are provided, the callback must have the signature::</span>
+
+<span class="sd">                callback_proc(train, valid, test)</span>
+
+<span class="sd">            and must return::</span>
+
+<span class="sd">                train, valid, test</span>
+
+<span class="sd">            This mode is intended for stateful preprocessing steps such as</span>
+<span class="sd">            fitting a transformation on training data and applying it</span>
+<span class="sd">            consistently to validation and test data.</span>
+
+<span class="sd">    callback_convert_epochs_to_ndarray : callable, optional</span>
+<span class="sd">        Function used to convert Epochs objects to arrays.</span>
+<span class="sd">        Called as ``callback_convert_epochs_to_ndarray(epochs, split)``.</span>
+<span class="sd">        By default, uses :func:`convert_epochs_to_ndarray`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    X_train : numpy.ndarray</span>
+<span class="sd">        Training data array.</span>
+
+<span class="sd">    X_valid : numpy.ndarray or None</span>
+<span class="sd">        Validation data array, or ``None`` if ``items_valid`` is ``None``.</span>
+
+<span class="sd">    X_test : list of numpy.ndarray</span>
+<span class="sd">        List of test data arrays, one per test evaluation group.</span>
+
+<span class="sd">    y_train : numpy.ndarray</span>
+<span class="sd">        Training labels.</span>
+
+<span class="sd">    y_valid : numpy.ndarray or None</span>
+<span class="sd">        Validation labels, or ``None`` if ``items_valid`` is ``None``.</span>
+
+<span class="sd">    y_test : list of numpy.ndarray</span>
+<span class="sd">        List of label arrays, one per test evaluation group.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If neither or both of ``callback_load_epochs`` and ``callback_load_ndarray`` are</span>
+<span class="sd">        provided.</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If ``items_train`` / ``items_valid`` / ``items_test`` are not lists as required.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - Exactly one of ``callback_load_epochs`` and ``callback_load_ndarray`` must be</span>
+<span class="sd">      provided.</span>
+
+<span class="sd">    - When ``callback_load_epochs`` is used, the pipeline is::</span>
+
+<span class="sd">          callback_load_epochs(items_*, split)</span>
+<span class="sd">          -&gt; callback_proc_epochs(...)             (optional, via apply_callback_proc)</span>
+<span class="sd">          -&gt; callback_convert_epochs_to_ndarray(..., split)</span>
+<span class="sd">          -&gt; callback_proc_ndarray(...)            (optional, via apply_callback_proc)</span>
+
+<span class="sd">    - When ``callback_load_ndarray`` is used, the pipeline is::</span>
+
+<span class="sd">          callback_load_ndarray(items_*, split)</span>
+<span class="sd">          -&gt; callback_proc_ndarray(...)            (optional, via apply_callback_proc)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Load from ndarrays (single-item groups)::</span>
+
+<span class="sd">        def load_xy(items, split):</span>
+<span class="sd">            item = items[0]</span>
+<span class="sd">            X = np.load(item[&quot;X&quot;])</span>
+<span class="sd">            y = np.load(item[&quot;y&quot;])</span>
+<span class="sd">            return X, y</span>
+
+<span class="sd">        X_train, X_valid, X_test, y_train, y_valid, y_test = load_data(</span>
+<span class="sd">            items_train=[{&quot;X&quot;: &quot;Xtr.npy&quot;, &quot;y&quot;: &quot;ytr.npy&quot;}],</span>
+<span class="sd">            items_valid=None,</span>
+<span class="sd">            items_test=[{&quot;X&quot;: &quot;Xte.npy&quot;, &quot;y&quot;: &quot;yte.npy&quot;}],</span>
+<span class="sd">            callback_load_ndarray=load_xy,</span>
+<span class="sd">        )</span>
+
+<span class="sd">    Group multiple items into a single merged test set::</span>
+
+<span class="sd">        def load_epochs(items, split):</span>
+<span class="sd">            epochs_list = [mne.read_epochs(it[&quot;fname&quot;]) for it in items]</span>
+<span class="sd">            return mne.concatenate_epochs(epochs_list)</span>
+
+<span class="sd">        X_train, X_valid, X_test, y_train, y_valid, y_test = load_data(</span>
+<span class="sd">            items_train=[{&quot;fname&quot;: &quot;sub-01_ses-01-epo.fif&quot;}],</span>
+<span class="sd">            items_valid=None,</span>
+<span class="sd">            items_test=[[{&quot;fname&quot;: &quot;sub-01_ses-02-epo.fif&quot;},</span>
+<span class="sd">                         {&quot;fname&quot;: &quot;sub-01_ses-03-epo.fif&quot;}]],</span>
+<span class="sd">            callback_load_epochs=load_epochs,</span>
+<span class="sd">        )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">callback_load_epochs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">callback_load_ndarray</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Specify callback_load_epochs or callback_load_ndarray&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">callback_load_epochs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">callback_load_ndarray</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Either callback_load_epochs or callback_load_ndarray must be None&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">items_valid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">items_train</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">items_test</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;items_train and items_test must be instance of list&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">items_train</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">items_valid</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">items_test</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;items_train, items_valid, and items_test must be instance of list&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">callback_load_epochs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># load epochs</span>
+        <span class="n">epochs_train</span> <span class="o">=</span> <span class="n">callback_load_epochs</span><span class="p">(</span><span class="n">items_train</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">items_valid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">epochs_valid</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">epochs_valid</span> <span class="o">=</span> <span class="n">callback_load_epochs</span><span class="p">(</span><span class="n">items_valid</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">)</span>
+
+        <span class="n">epochs_test</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items_test</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">e</span> <span class="o">=</span> <span class="n">callback_load_epochs</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+                <span class="n">epochs_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">e</span> <span class="o">=</span> <span class="n">callback_load_epochs</span><span class="p">([</span><span class="n">item</span><span class="p">],</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+                <span class="n">epochs_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="c1"># apply callback_proc_epochs</span>
+        <span class="k">if</span> <span class="n">callback_proc_epochs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">epochs_train</span><span class="p">,</span> <span class="n">epochs_valid</span><span class="p">,</span> <span class="n">epochs_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">apply_callback_proc</span><span class="p">(</span>
+                <span class="n">callback_proc</span><span class="o">=</span><span class="n">callback_proc_epochs</span><span class="p">,</span>
+                <span class="n">callback_proc_mode</span><span class="o">=</span><span class="n">callback_proc_mode</span><span class="p">,</span>
+                <span class="n">train</span><span class="o">=</span><span class="n">epochs_train</span><span class="p">,</span>
+                <span class="n">valid</span><span class="o">=</span><span class="n">epochs_valid</span><span class="p">,</span>
+                <span class="n">test</span><span class="o">=</span><span class="n">epochs_test</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># convert epochs to ndarray</span>
+        <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">callback_convert_epochs_to_ndarray</span><span class="p">(</span><span class="n">epochs_train</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">epochs_valid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="n">callback_convert_epochs_to_ndarray</span><span class="p">(</span><span class="n">epochs_valid</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">)</span>
+        <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">epochs_test</span><span class="p">:</span>
+            <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">callback_convert_epochs_to_ndarray</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+            <span class="n">X_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">y_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># load ndarray</span>
+        <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">callback_load_ndarray</span><span class="p">(</span><span class="n">items_train</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">items_valid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="n">callback_load_ndarray</span><span class="p">(</span><span class="n">items_valid</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">)</span>
+
+        <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items_test</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">callback_load_ndarray</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+                <span class="n">X_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+                <span class="n">y_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">callback_load_ndarray</span><span class="p">([</span><span class="n">item</span><span class="p">],</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+                <span class="n">X_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+                <span class="n">y_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># proc nd array</span>
+
+    <span class="k">if</span> <span class="n">callback_proc_ndarray</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dict_test</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span> <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)]</span>
+        <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">valid</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span> <span class="o">=</span> <span class="n">apply_callback_proc</span><span class="p">(</span>
+            <span class="n">callback_proc</span><span class="o">=</span><span class="n">callback_proc_ndarray</span><span class="p">,</span>
+            <span class="n">callback_proc_mode</span><span class="o">=</span><span class="n">callback_proc_mode</span><span class="p">,</span>
+            <span class="n">train</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="n">X_train</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y_train</span><span class="p">},</span>
+            <span class="n">valid</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="n">X_valid</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y_valid</span><span class="p">},</span>
+            <span class="n">test</span><span class="o">=</span><span class="n">dict_test</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span> <span class="n">train</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+        <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="n">valid</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span> <span class="n">valid</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+        <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">test</span><span class="p">],</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">test</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">y_test</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Simon Kojima.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

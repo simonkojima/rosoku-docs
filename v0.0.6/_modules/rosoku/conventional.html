@@ -1,0 +1,786 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rosoku.conventional &#8212; Rosoku 0.0.4 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8c5712d9"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/rosoku/conventional';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://simonkojima.github.io/rosoku-docs/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.0.4';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo-light.png" class="logo__image only-light" alt="Rosoku 0.0.4 documentation - Home"/>
+    <img src="../../_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="Rosoku 0.0.4 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    How to Install
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    How to Install
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">rosoku.conventional</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for rosoku.conventional</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyriemann</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.utils.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">_add_values_to_df</span>
+
+
+<div class="viewcode-block" id="conventional">
+<a class="viewcode-back" href="../../rosoku.conventional.html#rosoku.conventional">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">conventional</span><span class="p">(</span>
+    <span class="n">items_train</span><span class="p">,</span>
+    <span class="n">items_test</span><span class="p">,</span>
+    <span class="n">callback_load_epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_proc_epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">utils</span><span class="o">.</span><span class="n">convert_epochs_to_ndarray</span><span class="p">,</span>
+    <span class="n">callback_load_ndarray</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_proc_ndarray</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_proc_mode</span><span class="o">=</span><span class="s2">&quot;per_split&quot;</span><span class="p">,</span>
+    <span class="n">callback_fit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_predict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_predict_proba</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_get_models</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+    <span class="n">scoring_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">models</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">pyriemann</span><span class="o">.</span><span class="n">classification</span><span class="o">.</span><span class="n">TSClassifier</span><span class="p">(),</span>
+        <span class="n">pyriemann</span><span class="o">.</span><span class="n">classification</span><span class="o">.</span><span class="n">MDM</span><span class="p">(),</span>
+    <span class="p">],</span>
+    <span class="n">model_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">samples_fname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">additional_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Run a conventional (non-deep-learning) classification pipeline.</span>
+
+<span class="sd">    This utility orchestrates end-to-end evaluation for classical machine-learning</span>
+<span class="sd">    models with a scikit-learn-like interface (i.e., estimators implementing</span>
+<span class="sd">    ``fit``/``predict`` and optionally ``predict_proba``) by:</span>
+
+<span class="sd">    1) loading training and test data via user callbacks (as MNE Epochs or NumPy),</span>
+<span class="sd">    2) optionally preprocessing Epochs/arrays,</span>
+<span class="sd">    3) fitting one or more estimators,</span>
+<span class="sd">    4) predicting labels (and, if available, class probabilities),</span>
+<span class="sd">    5) computing one or more scoring functions on each test group, and</span>
+<span class="sd">    6) returning a tidy results table (optionally exporting sample-level outputs).</span>
+
+<span class="sd">    While the default behavior follows a standard scikit-learn workflow, the</span>
+<span class="sd">    ``callback_fit``, ``callback_predict``, and ``callback_predict_proba`` hooks can be</span>
+<span class="sd">    used to override the fitting/prediction steps, enabling more flexible behaviors</span>
+<span class="sd">    (e.g., custom wrappers, non-standard estimators, additional post-processing, or</span>
+<span class="sd">    alternative probability generation).</span>
+
+<span class="sd">    Test data can be evaluated in user-defined groups: each element of ``items_test``</span>
+<span class="sd">    represents one evaluation group, and can contain one or multiple items (e.g., to</span>
+<span class="sd">    merge multiple sessions into a single test set before scoring).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    items_train : list</span>
+<span class="sd">        Item objects describing how to load the training data. The exact content is</span>
+<span class="sd">        user-defined and interpreted by ``callback_load_epochs`` or</span>
+<span class="sd">        ``callback_load_ndarray``.</span>
+
+<span class="sd">    items_test : list of list</span>
+<span class="sd">        Item objects describing how to load the test data, grouped for evaluation.</span>
+<span class="sd">        Each inner list defines one evaluation group.</span>
+<span class="sd">        For example, ``[[a], [b]]`` evaluates ``a`` and ``b`` separately, while</span>
+<span class="sd">        ``[[a, b]]`` merges ``a`` and ``b`` into a single test set.</span>
+
+<span class="sd">    callback_load_epochs : callable | None, optional</span>
+<span class="sd">        Data loader returning an :class:`mne.Epochs` object for a given item.</span>
+<span class="sd">        Must have signature ``callback_load_epochs(item, split)``, where ``split``</span>
+<span class="sd">        is ``&quot;train&quot;`` or ``&quot;test&quot;``. If provided, Epochs will be converted to</span>
+<span class="sd">        arrays via ``callback_convert_epochs_to_ndarray``.</span>
+
+<span class="sd">    callback_proc_epochs : callable | None, optional</span>
+<span class="sd">        Optional preprocessing applied to loaded Epochs (e.g., picking channels,</span>
+<span class="sd">        cropping, filtering). Signature is expected to be</span>
+<span class="sd">        ``callback_proc_epochs(epochs, split)`` or ``callback_proc_epochs(epochs)``</span>
+<span class="sd">        depending on your implementation used in ``utils.load_data``.</span>
+
+<span class="sd">    callback_convert_epochs_to_ndarray : callable, optional</span>
+<span class="sd">        Converter used when loading Epochs. By default,</span>
+<span class="sd">        ``utils.convert_epochs_to_ndarray`` is used.</span>
+
+<span class="sd">    callback_load_ndarray : callable | None, optional</span>
+<span class="sd">        Data loader returning a tuple ``(X, y)`` for a given item. Must have</span>
+<span class="sd">        signature ``callback_load_ndarray(item, split)`` where ``split`` is</span>
+<span class="sd">        ``&quot;train&quot;`` or ``&quot;test&quot;``. ``X`` and ``y`` must be array-like.</span>
+
+<span class="sd">    callback_proc_ndarray : callable | None, optional</span>
+<span class="sd">        Optional preprocessing applied to NumPy data (e.g., standardization, feature</span>
+<span class="sd">        extraction), as used by ``utils.load_data``.</span>
+
+<span class="sd">    callback_proc_mode : {&quot;per_split&quot;, &quot;joint&quot;}, optional</span>
+<span class="sd">        Controls how preprocessing callbacks are applied, as interpreted by</span>
+<span class="sd">        ``apply_callback_proc``.</span>
+
+<span class="sd">        - ``&quot;per_split&quot;``:</span>
+<span class="sd">            The preprocessing callback is applied independently to each data</span>
+<span class="sd">            split (train / valid / test).</span>
+
+<span class="sd">            The callback function must have the signature::</span>
+
+<span class="sd">                callback_proc(data, split)</span>
+
+<span class="sd">            where ``split`` is one of ``{&quot;train&quot;, &quot;valid&quot;, &quot;test&quot;}``.</span>
+
+<span class="sd">            The callback must return the processed version of ``data``.</span>
+<span class="sd">            No information is shared across splits in this mode.</span>
+
+<span class="sd">        - ``&quot;joint&quot;``:</span>
+<span class="sd">            The preprocessing callback is applied jointly to multiple splits</span>
+<span class="sd">            at once, allowing shared state across splits.</span>
+
+<span class="sd">            If validation data are not provided (``valid is None``), the callback</span>
+<span class="sd">            must have the signature::</span>
+
+<span class="sd">                callback_proc(train, test)</span>
+
+<span class="sd">            and must return::</span>
+
+<span class="sd">                train, test</span>
+
+<span class="sd">            If validation data are provided, the callback must have the signature::</span>
+
+<span class="sd">                callback_proc(train, valid, test)</span>
+
+<span class="sd">            and must return::</span>
+
+<span class="sd">                train, valid, test</span>
+
+<span class="sd">            This mode is intended for stateful preprocessing steps such as</span>
+<span class="sd">            fitting a transformation on training data and applying it</span>
+<span class="sd">            consistently to validation and test data.</span>
+
+<span class="sd">    callback_fit : callable | None, optional</span>
+<span class="sd">        Optional custom fitting hook. If provided, called as</span>
+<span class="sd">        ``callback_fit(model, X_train, y_train)``.</span>
+<span class="sd">        If ``None``, this function calls ``model.fit(X_train, y_train)``.</span>
+<span class="sd">        Note: if your callback returns a new fitted estimator, ensure it is mutated</span>
+<span class="sd">        in-place or manage estimator replacement consistently.</span>
+
+<span class="sd">    callback_predict : callable | None, optional</span>
+<span class="sd">        Optional custom prediction hook. If provided, called as</span>
+<span class="sd">        ``callback_predict(model, X)``. If ``None``, uses ``model.predict(X)``.</span>
+
+<span class="sd">    callback_predict_proba : callable | None, optional</span>
+<span class="sd">        Optional custom probability prediction hook. If provided, called as</span>
+<span class="sd">        ``callback_predict_proba(model, X)``. If ``None``, uses</span>
+<span class="sd">        ``model.predict_proba(X)``. Estimators must support probability outputs.</span>
+
+<span class="sd">    callback_get_models : callable | None, optional</span>
+<span class="sd">        Factory function that returns one or more scikit-learn estimators.</span>
+<span class="sd">        This callback is used only when ``models=None``.</span>
+
+<span class="sd">        If provided, it is called as::</span>
+
+<span class="sd">            callback_get_models(X_train, y_train)</span>
+
+<span class="sd">        where ``X_train`` and ``y_train`` are the training arrays returned by</span>
+<span class="sd">        ``utils.load_data``.</span>
+
+<span class="sd">        The return value **must be** either:</span>
+
+<span class="sd">        - a single scikit-learn–compatible estimator, or</span>
+<span class="sd">        - a list of scikit-learn–compatible estimators.</span>
+
+<span class="sd">        Each estimator must implement at least ``fit`` and ``predict``.</span>
+<span class="sd">        If class probabilities are required (default behavior), estimators must also</span>
+<span class="sd">        implement ``predict_proba`` unless ``callback_predict_proba`` is provided.</span>
+
+<span class="sd">    scoring : str | callable | list of (str or callable), optional</span>
+<span class="sd">        Scoring specification(s) applied to each test group.</span>
+<span class="sd">        If a string, it is resolved with :func:`sklearn.metrics.get_scorer` and the</span>
+<span class="sd">        underlying ``_score_func`` is used.</span>
+<span class="sd">        If a callable, it must have signature ``scoring(y_true, y_pred)`` and return</span>
+<span class="sd">        a scalar.</span>
+
+<span class="sd">    scoring_name : str | list of str | None, optional</span>
+<span class="sd">        Column name(s) for the returned scores. If ``None``, names are inferred:</span>
+<span class="sd">        strings keep their name, callables become ``&quot;callable&quot;`` (and other types</span>
+<span class="sd">        become ``&quot;unknown_scoring&quot;``). Must match ``scoring`` length.</span>
+
+<span class="sd">    models : estimator | list of estimator | None, optional</span>
+<span class="sd">        One or more estimators implementing at least ``fit`` and ``predict``.</span>
+<span class="sd">        If probabilities are required (default behavior), estimators should also</span>
+<span class="sd">        implement ``predict_proba`` (or you must provide ``callback_predict_proba``).</span>
+
+<span class="sd">    model_names : list of str | None, optional</span>
+<span class="sd">        Display names for ``models`` used in outputs. If ``None``, uses</span>
+<span class="sd">        ``model.__class__.__name__`` for each estimator.</span>
+
+<span class="sd">    samples_fname : path-like | None, optional</span>
+<span class="sd">        If provided, writes sample-level outputs to this path in Parquet format.</span>
+<span class="sd">        The file includes true labels, predicted labels, per-class probabilities,</span>
+<span class="sd">        and the model name (plus ``additional_values`` if given).</span>
+
+<span class="sd">    additional_values : dict | None, optional</span>
+<span class="sd">        Extra metadata appended as columns to the results DataFrame (and also to the</span>
+<span class="sd">        sample-level table if ``samples_fname`` is provided).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        Summary results with one row per (test group × model). Includes JSON-serialized</span>
+<span class="sd">        ``items_train`` / ``items_test`` strings, the classifier name, and one column</span>
+<span class="sd">        per requested scoring metric.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - ``items_test`` grouping controls evaluation granularity: each inner list is</span>
+<span class="sd">      treated as one test set after loading/merging by ``utils.load_data``.</span>
+<span class="sd">    - If you pass a scoring string, this function uses</span>
+<span class="sd">      ``sklearn.metrics.get_scorer(scoring)._score_func``. This typically matches the</span>
+<span class="sd">      metric function but may ignore scorer-specific configuration (e.g., sign flipping</span>
+<span class="sd">      for losses) because the scorer object itself is not called.</span>
+<span class="sd">    - Probability outputs are always attempted; ensure your estimator supports</span>
+<span class="sd">      ``predict_proba`` or provide ``callback_predict_proba``.</span>
+<span class="sd">    - ``callback_get_models`` is ignored when ``models`` is explicitly provided. In that</span>
+<span class="sd">      case, the estimators passed via ``models`` are used directly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span>
+        <span class="n">items_train</span><span class="o">=</span><span class="n">items_train</span><span class="p">,</span>
+        <span class="n">items_valid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">items_test</span><span class="o">=</span><span class="n">items_test</span><span class="p">,</span>
+        <span class="n">callback_load_epochs</span><span class="o">=</span><span class="n">callback_load_epochs</span><span class="p">,</span>
+        <span class="n">callback_load_ndarray</span><span class="o">=</span><span class="n">callback_load_ndarray</span><span class="p">,</span>
+        <span class="n">callback_proc_epochs</span><span class="o">=</span><span class="n">callback_proc_epochs</span><span class="p">,</span>
+        <span class="n">callback_proc_ndarray</span><span class="o">=</span><span class="n">callback_proc_ndarray</span><span class="p">,</span>
+        <span class="n">callback_proc_mode</span><span class="o">=</span><span class="n">callback_proc_mode</span><span class="p">,</span>
+        <span class="n">callback_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">callback_convert_epochs_to_ndarray</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">models</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="n">callback_get_models</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">models</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scoring</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">scoring</span> <span class="o">=</span> <span class="p">[</span><span class="n">scoring</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">scoring_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">scoring_name</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">scoring_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scoring</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scoring_</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">scoring_name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scoring_</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">scoring_</span><span class="p">):</span>
+                <span class="n">scoring_name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;callable&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">scoring_name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;unknown_scoring&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scoring_name</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">scoring_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">scoring_name</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">scoring</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">scoring_name</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;len(scoring) != len(scoring_name)&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">scoring_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scoring</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scoring_</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_scorer</span>
+
+            <span class="n">scoring_</span> <span class="o">=</span> <span class="n">get_scorer</span><span class="p">(</span><span class="n">scoring_</span><span class="p">)</span><span class="o">.</span><span class="n">_score_func</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">scoring_</span><span class="p">):</span>
+            <span class="c1"># do nothing</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid scoring: </span><span class="si">{</span><span class="n">scoring_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">scoring</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">scoring_</span>
+
+    <span class="k">if</span> <span class="n">model_names</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">model_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">]</span>
+
+    <span class="c1"># train classifiers</span>
+    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">callback_fit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">callback_fit</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="c1"># classify test data and evaluate results</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">X_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">X_test</span><span class="p">]</span>
+        <span class="n">y_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">y_test</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items_test</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;len(items_test) != len(X_test)&quot;</span><span class="p">)</span>
+
+    <span class="n">df_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">samples_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">items_test</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">model</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">model_names</span><span class="p">):</span>
+
+            <span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">callback_predict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">preds</span> <span class="o">=</span> <span class="n">callback_predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">callback_predict_proba</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">probas</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">probas</span> <span class="o">=</span> <span class="n">callback_predict_proba</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+
+            <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">scoring_</span> <span class="ow">in</span> <span class="n">scoring</span><span class="p">:</span>
+                <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scoring_</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">preds</span><span class="p">))</span>
+
+            <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;items_train&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">items_train</span><span class="p">)]</span>
+            <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;items_test&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">)]</span>
+            <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;classifier&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">scoring_name_</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scoring_name</span><span class="p">,</span> <span class="n">scores</span><span class="p">):</span>
+                <span class="n">df_results</span><span class="p">[</span><span class="n">scoring_name_</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">score</span><span class="p">]</span>
+
+            <span class="n">samples</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+            <span class="n">samples</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+            <span class="n">samples</span><span class="p">[</span><span class="s2">&quot;preds&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">preds</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">probas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="n">samples</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;probas_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">probas</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">]</span>
+            <span class="n">samples</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">))]</span>
+
+            <span class="n">samples_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+            <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_results</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">additional_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">_add_values_to_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">additional_values</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">samples_fname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">samples_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">additional_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">samples</span> <span class="o">=</span> <span class="n">_add_values_to_df</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">additional_values</span><span class="p">)</span>
+        <span class="n">samples</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">samples_fname</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Simon Kojima.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

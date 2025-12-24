@@ -1,0 +1,751 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Example: Within-subject classification with deep learning &#8212; Rosoku 0.0.3 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=47de8214"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/example_within-subject-classification-deeplearning';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://simonkojima.github.io/rosoku-docs/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.0.3';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-light.png" class="logo__image only-light" alt="Rosoku 0.0.3 documentation - Home"/>
+    <img src="../_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="Rosoku 0.0.3 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    How to Install
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../install.html">
+    How to Install
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Example: Within-subject classification with deep learning</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-example-within-subject-classification-deeplearning-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="example-within-subject-classification-with-deep-learning">
+<span id="sphx-glr-auto-examples-example-within-subject-classification-deeplearning-py"></span><h1>Example: Within-subject classification with deep learning<a class="headerlink" href="#example-within-subject-classification-with-deep-learning" title="Link to this heading">#</a></h1>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">mne</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">moabb.datasets</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">braindecode</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rosoku</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">func_get_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">n_chans</span><span class="p">,</span> <span class="n">n_times</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">F1</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">F2</span> <span class="o">=</span> <span class="n">F1</span> <span class="o">*</span> <span class="n">D</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">braindecode</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">EEGNet</span><span class="p">(</span>
+        <span class="n">n_chans</span><span class="o">=</span><span class="n">n_chans</span><span class="p">,</span>
+        <span class="n">n_outputs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">n_times</span><span class="o">=</span><span class="n">n_times</span><span class="p">,</span>
+        <span class="n">F1</span><span class="o">=</span><span class="n">F1</span><span class="p">,</span>
+        <span class="n">D</span><span class="o">=</span><span class="n">D</span><span class="p">,</span>
+        <span class="n">F2</span><span class="o">=</span><span class="n">F2</span><span class="p">,</span>
+        <span class="n">drop_prob</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">func_load_epochs</span><span class="p">(</span><span class="n">keywords</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">l_freq</span><span class="p">,</span> <span class="n">h_freq</span><span class="p">,</span> <span class="n">order_filter</span><span class="p">,</span> <span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span><span class="p">):</span>
+    <span class="n">subject</span> <span class="o">=</span> <span class="n">keywords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">keywords</span> <span class="o">=</span> <span class="n">keywords</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="n">sessions</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">subjects</span><span class="o">=</span><span class="p">[</span><span class="n">subject</span><span class="p">])</span>
+    <span class="n">raws</span> <span class="o">=</span> <span class="n">sessions</span><span class="p">[</span><span class="n">subject</span><span class="p">][</span><span class="s2">&quot;0&quot;</span><span class="p">]</span>
+
+    <span class="n">epochs_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">name_run</span><span class="p">,</span> <span class="n">raw</span><span class="p">)</span> <span class="ow">in</span> <span class="n">raws</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="kc">True</span> <span class="ow">in</span> <span class="p">[</span><span class="n">k</span> <span class="ow">in</span> <span class="n">name_run</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keywords</span><span class="p">]:</span>
+            <span class="k">continue</span>
+
+        <span class="n">raw</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="n">l_freq</span><span class="o">=</span><span class="n">l_freq</span><span class="p">,</span>
+            <span class="n">h_freq</span><span class="o">=</span><span class="n">h_freq</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="s2">&quot;iir&quot;</span><span class="p">,</span>
+            <span class="n">iir_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ftype&quot;</span><span class="p">:</span> <span class="s2">&quot;butter&quot;</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="n">order_filter</span><span class="p">,</span> <span class="s2">&quot;btype&quot;</span><span class="p">:</span> <span class="s2">&quot;bandpass&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">pick</span><span class="p">(</span><span class="n">picks</span><span class="o">=</span><span class="s2">&quot;eeg&quot;</span><span class="p">)</span>
+
+        <span class="n">epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">Epochs</span><span class="p">(</span>
+            <span class="n">raw</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
+            <span class="n">tmin</span><span class="o">=</span><span class="n">tmin</span><span class="p">,</span>
+            <span class="n">tmax</span><span class="o">=</span><span class="n">tmax</span><span class="p">,</span>
+            <span class="n">baseline</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">epochs_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">mne</span><span class="o">.</span><span class="n">concatenate_epochs</span><span class="p">(</span><span class="n">epochs_list</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">func_proc_epochs</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="c1"># do nothing in this example</span>
+    <span class="k">return</span> <span class="n">epochs</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_epochs_to_ndarray</span><span class="p">(</span>
+        <span class="n">epochs</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">,</span>
+        <span class="n">label_keys</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">rosoku</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">label_keys</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">subject</span> <span class="o">=</span> <span class="mi">56</span>
+<span class="n">resample</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">1e-3</span>
+<span class="n">weight_decay</span> <span class="o">=</span> <span class="mf">1e-2</span>
+<span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">patience</span> <span class="o">=</span> <span class="mi">75</span>
+<span class="n">enable_euclidean_alignment</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">enable_normalization</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span>
+<span class="n">enable_ddp</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">enable_dp</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">moabb</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">Dreyer2023</span><span class="p">()</span>
+
+<span class="n">save_base</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;rosoku-log&quot;</span>
+<span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;checkpoint&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;history&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;saliency&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;samples&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;normalization&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">lr_scheduler</span><span class="o">.</span><span class="n">CosineAnnealingLR</span>
+<span class="n">scheduler_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;T_max&quot;</span><span class="p">:</span> <span class="n">n_epochs</span><span class="p">,</span> <span class="s2">&quot;eta_min&quot;</span><span class="p">:</span> <span class="mf">1e-6</span><span class="p">}</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span>
+<span class="n">optimizer_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;lr&quot;</span><span class="p">:</span> <span class="n">lr</span><span class="p">,</span> <span class="s2">&quot;weight_decay&quot;</span><span class="p">:</span> <span class="n">weight_decay</span><span class="p">}</span>
+<span class="n">early_stopping</span> <span class="o">=</span> <span class="n">rosoku</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="n">patience</span><span class="p">)</span>
+
+<span class="n">label_keys</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;left_hand&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;right_hand&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">rosoku</span><span class="o">.</span><span class="n">deeplearning</span><span class="p">(</span>
+    <span class="n">keywords_train</span><span class="o">=</span><span class="p">[</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;R1&quot;</span><span class="p">,</span> <span class="s2">&quot;R2&quot;</span><span class="p">],</span>
+    <span class="n">keywords_valid</span><span class="o">=</span><span class="p">[</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;R3&quot;</span><span class="p">],</span>
+    <span class="n">keywords_test</span><span class="o">=</span><span class="p">[[</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;R4&quot;</span><span class="p">,</span> <span class="s2">&quot;R5&quot;</span><span class="p">]],</span>
+    <span class="n">func_load_epochs</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">func_load_epochs</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">l_freq</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span> <span class="n">h_freq</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">order_filter</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                                       <span class="n">tmin</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">interval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+    <span class="n">func_proc_epochs</span><span class="o">=</span><span class="n">func_proc_epochs</span><span class="p">,</span>
+    <span class="n">func_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
+        <span class="n">convert_epochs_to_ndarray</span><span class="p">,</span> <span class="n">label_keys</span><span class="o">=</span><span class="n">label_keys</span>
+    <span class="p">),</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
+    <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+    <span class="n">optimizer_params</span><span class="o">=</span><span class="n">optimizer_params</span><span class="p">,</span>
+    <span class="n">func_get_model</span><span class="o">=</span><span class="n">func_get_model</span><span class="p">,</span>
+    <span class="n">scheduler</span><span class="o">=</span><span class="n">scheduler</span><span class="p">,</span>
+    <span class="n">scheduler_params</span><span class="o">=</span><span class="n">scheduler_params</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">enable_ddp</span><span class="o">=</span><span class="n">enable_ddp</span><span class="p">,</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="n">early_stopping</span><span class="p">,</span>
+    <span class="n">enable_normalization</span><span class="o">=</span><span class="n">enable_normalization</span><span class="p">,</span>
+    <span class="n">name_classifier</span><span class="o">=</span><span class="s2">&quot;eegnet4.2&quot;</span><span class="p">,</span>
+    <span class="n">history_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;history&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.parquet&quot;</span><span class="p">),</span>
+    <span class="n">checkpoint_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;checkpoint&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.pth&quot;</span><span class="p">),</span>
+    <span class="n">samples_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;samples&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.parquet&quot;</span><span class="p">),</span>
+    <span class="n">normalization_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;normalization&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.msgpack&quot;</span><span class="p">),</span>
+    <span class="n">saliency_map_fname</span><span class="o">=</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;saliency&quot;</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;sub-</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.msgpack&quot;</span><span class="p">),</span>
+    <span class="n">label_keys</span><span class="o">=</span><span class="n">label_keys</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+
+<span class="n">results</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">save_base</span> <span class="o">/</span> <span class="s2">&quot;results_deeplearning_within-subject.parquet&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0it [00:00, ?it/s]
+9it [00:00, 23637.28it/s]
+
+0it [00:00, ?it/s]
+9it [00:00, 23130.35it/s]
+
+0it [00:00, ?it/s]
+9it [00:00, 26360.85it/s]
+epoch 000, train_loss: 0.6855, train_acc: 0.69, valid_loss: 0.6885, valid_acc: 0.55, lr: 9.9975e-04, et: 0.3887, checkpoint saved
+epoch 001, train_loss: 0.6791, train_acc: 0.70, valid_loss: 0.6880, valid_acc: 0.57, lr: 9.9901e-04, et: 0.1145, checkpoint saved
+epoch 002, train_loss: 0.6724, train_acc: 0.69, valid_loss: 0.6870, valid_acc: 0.55, lr: 9.9778e-04, et: 0.1093, checkpoint saved
+epoch 003, train_loss: 0.6637, train_acc: 0.71, valid_loss: 0.6869, valid_acc: 0.57, lr: 9.9606e-04, et: 0.1085, checkpoint saved
+epoch 004, train_loss: 0.6523, train_acc: 0.76, valid_loss: 0.6870, valid_acc: 0.53, lr: 9.9385e-04, et: 0.1077
+epoch 005, train_loss: 0.6400, train_acc: 0.80, valid_loss: 0.6905, valid_acc: 0.50, lr: 9.9115e-04, et: 0.1076
+epoch 006, train_loss: 0.6243, train_acc: 0.84, valid_loss: 0.6962, valid_acc: 0.47, lr: 9.8797e-04, et: 0.1075
+epoch 007, train_loss: 0.6079, train_acc: 0.84, valid_loss: 0.7002, valid_acc: 0.53, lr: 9.8431e-04, et: 0.1054
+epoch 008, train_loss: 0.5897, train_acc: 0.85, valid_loss: 0.6997, valid_acc: 0.53, lr: 9.8017e-04, et: 0.1116
+epoch 009, train_loss: 0.5738, train_acc: 0.86, valid_loss: 0.7031, valid_acc: 0.50, lr: 9.7555e-04, et: 0.1046
+epoch 010, train_loss: 0.5550, train_acc: 0.88, valid_loss: 0.7061, valid_acc: 0.53, lr: 9.7047e-04, et: 0.1059
+epoch 011, train_loss: 0.5345, train_acc: 0.88, valid_loss: 0.7100, valid_acc: 0.53, lr: 9.6492e-04, et: 0.1061
+epoch 012, train_loss: 0.5119, train_acc: 0.90, valid_loss: 0.7193, valid_acc: 0.50, lr: 9.5892e-04, et: 0.1091
+epoch 013, train_loss: 0.4908, train_acc: 0.91, valid_loss: 0.7211, valid_acc: 0.50, lr: 9.5246e-04, et: 0.1063
+epoch 014, train_loss: 0.4731, train_acc: 0.91, valid_loss: 0.7195, valid_acc: 0.53, lr: 9.4556e-04, et: 0.1066
+epoch 015, train_loss: 0.4493, train_acc: 0.93, valid_loss: 0.7165, valid_acc: 0.53, lr: 9.3822e-04, et: 0.1058
+epoch 016, train_loss: 0.4233, train_acc: 0.93, valid_loss: 0.7128, valid_acc: 0.55, lr: 9.3044e-04, et: 0.1056
+epoch 017, train_loss: 0.3935, train_acc: 0.93, valid_loss: 0.7165, valid_acc: 0.57, lr: 9.2224e-04, et: 0.1056
+epoch 018, train_loss: 0.3677, train_acc: 0.95, valid_loss: 0.7194, valid_acc: 0.57, lr: 9.1363e-04, et: 0.1062
+epoch 019, train_loss: 0.3455, train_acc: 0.95, valid_loss: 0.7180, valid_acc: 0.57, lr: 9.0460e-04, et: 0.1060
+epoch 020, train_loss: 0.3168, train_acc: 0.96, valid_loss: 0.6993, valid_acc: 0.60, lr: 8.9518e-04, et: 0.1079
+epoch 021, train_loss: 0.2858, train_acc: 0.96, valid_loss: 0.6730, valid_acc: 0.65, lr: 8.8537e-04, et: 0.1067, checkpoint saved
+epoch 022, train_loss: 0.2641, train_acc: 0.99, valid_loss: 0.6418, valid_acc: 0.68, lr: 8.7518e-04, et: 0.1061, checkpoint saved
+epoch 023, train_loss: 0.2339, train_acc: 1.00, valid_loss: 0.6205, valid_acc: 0.68, lr: 8.6462e-04, et: 0.1073, checkpoint saved
+epoch 024, train_loss: 0.2244, train_acc: 1.00, valid_loss: 0.6233, valid_acc: 0.65, lr: 8.5370e-04, et: 0.1077
+epoch 025, train_loss: 0.2111, train_acc: 1.00, valid_loss: 0.6109, valid_acc: 0.65, lr: 8.4243e-04, et: 0.1061, checkpoint saved
+epoch 026, train_loss: 0.2039, train_acc: 1.00, valid_loss: 0.6134, valid_acc: 0.68, lr: 8.3083e-04, et: 0.1055
+epoch 027, train_loss: 0.1793, train_acc: 1.00, valid_loss: 0.5782, valid_acc: 0.68, lr: 8.1889e-04, et: 0.1055, checkpoint saved
+epoch 028, train_loss: 0.1567, train_acc: 1.00, valid_loss: 0.5519, valid_acc: 0.68, lr: 8.0665e-04, et: 0.1060, checkpoint saved
+epoch 029, train_loss: 0.1496, train_acc: 1.00, valid_loss: 0.5504, valid_acc: 0.68, lr: 7.9410e-04, et: 0.1050, checkpoint saved
+epoch 030, train_loss: 0.1100, train_acc: 1.00, valid_loss: 0.4733, valid_acc: 0.70, lr: 7.8126e-04, et: 0.1054, checkpoint saved
+epoch 031, train_loss: 0.0852, train_acc: 1.00, valid_loss: 0.4028, valid_acc: 0.80, lr: 7.6815e-04, et: 0.1059, checkpoint saved
+epoch 032, train_loss: 0.0758, train_acc: 1.00, valid_loss: 0.3697, valid_acc: 0.82, lr: 7.5477e-04, et: 0.1050, checkpoint saved
+epoch 033, train_loss: 0.0793, train_acc: 1.00, valid_loss: 0.3792, valid_acc: 0.82, lr: 7.4114e-04, et: 0.1054
+epoch 034, train_loss: 0.0817, train_acc: 0.99, valid_loss: 0.3918, valid_acc: 0.78, lr: 7.2727e-04, et: 0.1060
+epoch 035, train_loss: 0.0766, train_acc: 1.00, valid_loss: 0.4031, valid_acc: 0.75, lr: 7.1318e-04, et: 0.1076
+epoch 036, train_loss: 0.0619, train_acc: 0.99, valid_loss: 0.3620, valid_acc: 0.75, lr: 6.9888e-04, et: 0.1073, checkpoint saved
+epoch 037, train_loss: 0.0386, train_acc: 1.00, valid_loss: 0.2831, valid_acc: 0.90, lr: 6.8438e-04, et: 0.1082, checkpoint saved
+epoch 038, train_loss: 0.0322, train_acc: 1.00, valid_loss: 0.2611, valid_acc: 0.90, lr: 6.6970e-04, et: 0.1049, checkpoint saved
+epoch 039, train_loss: 0.0282, train_acc: 1.00, valid_loss: 0.2555, valid_acc: 0.93, lr: 6.5485e-04, et: 0.1064, checkpoint saved
+epoch 040, train_loss: 0.0260, train_acc: 1.00, valid_loss: 0.2591, valid_acc: 0.93, lr: 6.3986e-04, et: 0.1059
+epoch 041, train_loss: 0.0290, train_acc: 1.00, valid_loss: 0.2714, valid_acc: 0.90, lr: 6.2472e-04, et: 0.1058
+epoch 042, train_loss: 0.0259, train_acc: 1.00, valid_loss: 0.2565, valid_acc: 0.93, lr: 6.0946e-04, et: 0.1063
+epoch 043, train_loss: 0.0236, train_acc: 1.00, valid_loss: 0.2350, valid_acc: 0.93, lr: 5.9410e-04, et: 0.1075, checkpoint saved
+epoch 044, train_loss: 0.0217, train_acc: 1.00, valid_loss: 0.2251, valid_acc: 0.93, lr: 5.7864e-04, et: 0.1083, checkpoint saved
+epoch 045, train_loss: 0.0182, train_acc: 1.00, valid_loss: 0.2211, valid_acc: 0.93, lr: 5.6310e-04, et: 0.1067, checkpoint saved
+epoch 046, train_loss: 0.0181, train_acc: 1.00, valid_loss: 0.2171, valid_acc: 0.93, lr: 5.4751e-04, et: 0.1059, checkpoint saved
+epoch 047, train_loss: 0.0150, train_acc: 1.00, valid_loss: 0.2115, valid_acc: 0.93, lr: 5.3186e-04, et: 0.1049, checkpoint saved
+epoch 048, train_loss: 0.0146, train_acc: 1.00, valid_loss: 0.2166, valid_acc: 0.93, lr: 5.1619e-04, et: 0.1075
+epoch 049, train_loss: 0.0174, train_acc: 1.00, valid_loss: 0.2177, valid_acc: 0.93, lr: 5.0050e-04, et: 0.1100
+epoch 050, train_loss: 0.0174, train_acc: 1.00, valid_loss: 0.2464, valid_acc: 0.90, lr: 4.8481e-04, et: 0.1086
+epoch 051, train_loss: 0.0127, train_acc: 1.00, valid_loss: 0.2242, valid_acc: 0.90, lr: 4.6914e-04, et: 0.1065
+epoch 052, train_loss: 0.0090, train_acc: 1.00, valid_loss: 0.2003, valid_acc: 0.90, lr: 4.5349e-04, et: 0.1064, checkpoint saved
+epoch 053, train_loss: 0.0083, train_acc: 1.00, valid_loss: 0.1962, valid_acc: 0.90, lr: 4.3790e-04, et: 0.1064, checkpoint saved
+epoch 054, train_loss: 0.0083, train_acc: 1.00, valid_loss: 0.1898, valid_acc: 0.93, lr: 4.2236e-04, et: 0.1059, checkpoint saved
+epoch 055, train_loss: 0.0091, train_acc: 1.00, valid_loss: 0.1847, valid_acc: 0.93, lr: 4.0690e-04, et: 0.1073, checkpoint saved
+epoch 056, train_loss: 0.0089, train_acc: 1.00, valid_loss: 0.1761, valid_acc: 0.93, lr: 3.9154e-04, et: 0.1049, checkpoint saved
+epoch 057, train_loss: 0.0082, train_acc: 1.00, valid_loss: 0.1721, valid_acc: 0.93, lr: 3.7628e-04, et: 0.1077, checkpoint saved
+epoch 058, train_loss: 0.0081, train_acc: 1.00, valid_loss: 0.1755, valid_acc: 0.90, lr: 3.6114e-04, et: 0.1068
+epoch 059, train_loss: 0.0079, train_acc: 1.00, valid_loss: 0.1820, valid_acc: 0.90, lr: 3.4615e-04, et: 0.1083
+epoch 060, train_loss: 0.0085, train_acc: 1.00, valid_loss: 0.1962, valid_acc: 0.90, lr: 3.3130e-04, et: 0.1049
+epoch 061, train_loss: 0.0078, train_acc: 1.00, valid_loss: 0.2000, valid_acc: 0.88, lr: 3.1662e-04, et: 0.1053
+epoch 062, train_loss: 0.0068, train_acc: 1.00, valid_loss: 0.1872, valid_acc: 0.90, lr: 3.0212e-04, et: 0.1058
+epoch 063, train_loss: 0.0066, train_acc: 1.00, valid_loss: 0.1824, valid_acc: 0.90, lr: 2.8782e-04, et: 0.1055
+epoch 064, train_loss: 0.0065, train_acc: 1.00, valid_loss: 0.1815, valid_acc: 0.93, lr: 2.7373e-04, et: 0.1052
+epoch 065, train_loss: 0.0062, train_acc: 1.00, valid_loss: 0.1761, valid_acc: 0.93, lr: 2.5986e-04, et: 0.1056
+epoch 066, train_loss: 0.0059, train_acc: 1.00, valid_loss: 0.1716, valid_acc: 0.93, lr: 2.4623e-04, et: 0.1065, checkpoint saved
+epoch 067, train_loss: 0.0058, train_acc: 1.00, valid_loss: 0.1663, valid_acc: 0.93, lr: 2.3285e-04, et: 0.1049, checkpoint saved
+epoch 068, train_loss: 0.0056, train_acc: 1.00, valid_loss: 0.1664, valid_acc: 0.93, lr: 2.1974e-04, et: 0.1056
+epoch 069, train_loss: 0.0054, train_acc: 1.00, valid_loss: 0.1691, valid_acc: 0.93, lr: 2.0690e-04, et: 0.1054
+epoch 070, train_loss: 0.0054, train_acc: 1.00, valid_loss: 0.1654, valid_acc: 0.93, lr: 1.9435e-04, et: 0.1074, checkpoint saved
+epoch 071, train_loss: 0.0053, train_acc: 1.00, valid_loss: 0.1600, valid_acc: 0.93, lr: 1.8211e-04, et: 0.1051, checkpoint saved
+epoch 072, train_loss: 0.0051, train_acc: 1.00, valid_loss: 0.1584, valid_acc: 0.93, lr: 1.7017e-04, et: 0.1051, checkpoint saved
+epoch 073, train_loss: 0.0050, train_acc: 1.00, valid_loss: 0.1589, valid_acc: 0.93, lr: 1.5857e-04, et: 0.1047
+epoch 074, train_loss: 0.0050, train_acc: 1.00, valid_loss: 0.1616, valid_acc: 0.90, lr: 1.4730e-04, et: 0.1059
+epoch 075, train_loss: 0.0049, train_acc: 1.00, valid_loss: 0.1612, valid_acc: 0.90, lr: 1.3638e-04, et: 0.1054
+epoch 076, train_loss: 0.0049, train_acc: 1.00, valid_loss: 0.1599, valid_acc: 0.90, lr: 1.2582e-04, et: 0.1076
+epoch 077, train_loss: 0.0049, train_acc: 1.00, valid_loss: 0.1579, valid_acc: 0.93, lr: 1.1563e-04, et: 0.1083, checkpoint saved
+epoch 078, train_loss: 0.0050, train_acc: 1.00, valid_loss: 0.1591, valid_acc: 0.93, lr: 1.0582e-04, et: 0.1076
+epoch 079, train_loss: 0.0049, train_acc: 1.00, valid_loss: 0.1602, valid_acc: 0.93, lr: 9.6396e-05, et: 0.1062
+epoch 080, train_loss: 0.0048, train_acc: 1.00, valid_loss: 0.1614, valid_acc: 0.93, lr: 8.7373e-05, et: 0.1057
+epoch 081, train_loss: 0.0047, train_acc: 1.00, valid_loss: 0.1620, valid_acc: 0.93, lr: 7.8758e-05, et: 0.1053
+epoch 082, train_loss: 0.0046, train_acc: 1.00, valid_loss: 0.1629, valid_acc: 0.93, lr: 7.0559e-05, et: 0.1061
+epoch 083, train_loss: 0.0045, train_acc: 1.00, valid_loss: 0.1642, valid_acc: 0.93, lr: 6.2785e-05, et: 0.1073
+epoch 084, train_loss: 0.0044, train_acc: 1.00, valid_loss: 0.1643, valid_acc: 0.93, lr: 5.5442e-05, et: 0.1051
+epoch 085, train_loss: 0.0044, train_acc: 1.00, valid_loss: 0.1642, valid_acc: 0.93, lr: 4.8539e-05, et: 0.1062
+epoch 086, train_loss: 0.0044, train_acc: 1.00, valid_loss: 0.1640, valid_acc: 0.93, lr: 4.2082e-05, et: 0.1080
+epoch 087, train_loss: 0.0044, train_acc: 1.00, valid_loss: 0.1638, valid_acc: 0.93, lr: 3.6077e-05, et: 0.1080
+epoch 088, train_loss: 0.0044, train_acc: 1.00, valid_loss: 0.1635, valid_acc: 0.93, lr: 3.0530e-05, et: 0.1062
+epoch 089, train_loss: 0.0044, train_acc: 1.00, valid_loss: 0.1639, valid_acc: 0.93, lr: 2.5447e-05, et: 0.1076
+epoch 090, train_loss: 0.0044, train_acc: 1.00, valid_loss: 0.1645, valid_acc: 0.93, lr: 2.0833e-05, et: 0.1066
+epoch 091, train_loss: 0.0044, train_acc: 1.00, valid_loss: 0.1644, valid_acc: 0.93, lr: 1.6693e-05, et: 0.1082
+epoch 092, train_loss: 0.0044, train_acc: 1.00, valid_loss: 0.1639, valid_acc: 0.93, lr: 1.3030e-05, et: 0.1068
+epoch 093, train_loss: 0.0044, train_acc: 1.00, valid_loss: 0.1646, valid_acc: 0.93, lr: 9.8475e-06, et: 0.1075
+epoch 094, train_loss: 0.0043, train_acc: 1.00, valid_loss: 0.1650, valid_acc: 0.93, lr: 7.1497e-06, et: 0.1061
+epoch 095, train_loss: 0.0043, train_acc: 1.00, valid_loss: 0.1650, valid_acc: 0.93, lr: 4.9387e-06, et: 0.1069
+epoch 096, train_loss: 0.0043, train_acc: 1.00, valid_loss: 0.1649, valid_acc: 0.93, lr: 3.2168e-06, et: 0.1071
+epoch 097, train_loss: 0.0043, train_acc: 1.00, valid_loss: 0.1649, valid_acc: 0.93, lr: 1.9856e-06, et: 0.1060
+epoch 098, train_loss: 0.0043, train_acc: 1.00, valid_loss: 0.1646, valid_acc: 0.93, lr: 1.2465e-06, et: 0.1061
+epoch 099, train_loss: 0.0043, train_acc: 1.00, valid_loss: 0.1649, valid_acc: 0.93, lr: 1.0000e-06, et: 0.1055
+Elapsed Time: 11.04s
+keywords_train    [56, &quot;R1&quot;, &quot;R2&quot;]
+keywords_valid          [56, &quot;R3&quot;]
+keywords_test     [56, &quot;R4&quot;, &quot;R5&quot;]
+classifier               eegnet4.2
+accuracy                     0.975
+Name: 0, dtype: object
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 14.873 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-example-within-subject-classification-deeplearning-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/a02950bee0118fd2ab9bfd657a37a34f/example_within-subject-classification-deeplearning.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">example_within-subject-classification-deeplearning.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/4e05b32bde2f49290503c60a58ff2027/example_within-subject-classification-deeplearning.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">example_within-subject-classification-deeplearning.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/a42b81dd97d751fa091402e992f675f2/example_within-subject-classification-deeplearning.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">example_within-subject-classification-deeplearning.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/auto_examples/example_within-subject-classification-deeplearning.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Simon Kojima.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+
+
+.. _sphx_glr_auto_examples_02_deeplearning:
+
+Deep Learning
+=============
+
+.. toctree::
+   :hidden:
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example 01: Testing Reproducibility of Deeplearning Experiments">
+
+.. only:: html
+
+  .. image:: /auto_examples/02_deeplearning/images/thumb/sphx_glr_01_example_test_reproducibility_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/02_deeplearning/01_example_test_reproducibility`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 01: Testing Reproducibility of Deeplearning Experiments</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example 02: Plot Saliency Map">
+
+.. only:: html
+
+  .. image:: /auto_examples/02_deeplearning/images/thumb/sphx_glr_02_example_plot_saliency_map_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/02_deeplearning/02_example_plot_saliency_map`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 02: Plot Saliency Map</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates a two-step training strategy using early stopping with rosoku for deep-learning-based EEG classification.">
+
+.. only:: html
+
+  .. image:: /auto_examples/02_deeplearning/images/thumb/sphx_glr_03_example_2step_early_stopping_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/02_deeplearning/03_example_2step_early_stopping`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 03: 2-step Early Stopping</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/02_deeplearning/01_example_test_reproducibility
+   /auto_examples/02_deeplearning/02_example_plot_saliency_map
+   /auto_examples/02_deeplearning/03_example_2step_early_stopping
+

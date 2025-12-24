@@ -1,0 +1,215 @@
+:orphan:
+
+Examples
+========
+
+Requirements for running Examples
+---------------------------------
+
+To run the examples, install the following packages:
+
+.. code-block:: bash
+
+   pip install moabb braindecode
+
+.. toctree::
+   :hidden:
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Getting Started!!
+=================
+
+.. toctree::
+   :hidden:
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates a within-subject motor imagery classification pipeline using a Riemannian geometry-based classifier with rosoku.">
+
+.. only:: html
+
+  .. image:: /auto_examples/00_getting_started/images/thumb/sphx_glr_01_example_within-subject-classification-riemannian_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/00_getting_started/01_example_within-subject-classification-riemannian`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 01: Within-subject classification with Riemannian classifier</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform within-subject motor imagery classification using a deep learning model with rosoku.">
+
+.. only:: html
+
+  .. image:: /auto_examples/00_getting_started/images/thumb/sphx_glr_02_example_within-subject-classification-deeplearning_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/00_getting_started/02_example_within-subject-classification-deeplearning`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 02: Within-subject classification with deep learning</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates cross-subject motor imagery classification using a Riemannian geometry-based pipeline with rosoku.">
+
+.. only:: html
+
+  .. image:: /auto_examples/00_getting_started/images/thumb/sphx_glr_03_example_cross-subject-classification-riemannian_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/00_getting_started/03_example_cross-subject-classification-riemannian`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 03: Cross-subject classification with Riemannian classifier</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates cross-subject motor imagery classification using a deep learning model with rosoku.">
+
+.. only:: html
+
+  .. image:: /auto_examples/00_getting_started/images/thumb/sphx_glr_04_example_cross-subject-classification-deeplearning_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/00_getting_started/04_example_cross-subject-classification-deeplearning`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 04: Cross-subject classification with deep learning</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Deep Learning
+=============
+
+.. toctree::
+   :hidden:
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example 01: Testing Reproducibility of Deeplearning Experiments">
+
+.. only:: html
+
+  .. image:: /auto_examples/02_deeplearning/images/thumb/sphx_glr_01_example_test_reproducibility_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/02_deeplearning/01_example_test_reproducibility`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 01: Testing Reproducibility of Deeplearning Experiments</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example 02: Plot Saliency Map">
+
+.. only:: html
+
+  .. image:: /auto_examples/02_deeplearning/images/thumb/sphx_glr_02_example_plot_saliency_map_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/02_deeplearning/02_example_plot_saliency_map`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 02: Plot Saliency Map</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates a two-step training strategy using early stopping with rosoku for deep-learning-based EEG classification.">
+
+.. only:: html
+
+  .. image:: /auto_examples/02_deeplearning/images/thumb/sphx_glr_03_example_2step_early_stopping_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/02_deeplearning/03_example_2step_early_stopping`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Example 03: 2-step Early Stopping</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /auto_examples/00_getting_started/index.rst
+   /auto_examples/02_deeplearning/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: auto_examples_python.zip </auto_examples/auto_examples_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: auto_examples_jupyter.zip </auto_examples/auto_examples_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

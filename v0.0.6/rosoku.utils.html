@@ -1,0 +1,1236 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>rosoku.utils package &#8212; Rosoku 0.0.3 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=47de8214"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rosoku.utils';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://simonkojima.github.io/rosoku-docs/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.0.3';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo-light.png" class="logo__image only-light" alt="Rosoku 0.0.3 documentation - Home"/>
+    <img src="_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="Rosoku 0.0.3 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    How to Install
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    How to Install
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="rosoku.preprocessing.html">rosoku.preprocessing package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rosoku.tl.html">rosoku.tl package</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">rosoku.utils package</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">rosoku.utils package</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="rosoku-utils-package">
+<h1>rosoku.utils package<a class="headerlink" href="#rosoku-utils-package" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="rosoku-utils-utils-module">
+<h2>rosoku.utils.utils module<a class="headerlink" href="#rosoku-utils-utils-module" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-rosoku.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rosoku.utils" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="rosoku.utils.EarlyStopping">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">EarlyStopping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/core.html#EarlyStopping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.EarlyStopping" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Simple early stopping utility for training loops.</p>
+<p>This class monitors validation loss and stops training when it has not
+improved for a given number of consecutive epochs (<code class="docutils literal notranslate"><span class="pre">patience</span></code>).
+A minimum required improvement between epochs can be controlled via
+<code class="docutils literal notranslate"><span class="pre">min_delta</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patience</strong> (<em>int</em><em>, </em><em>default=3</em>) – Number of consecutive epochs with no improvement in validation loss
+before stopping is triggered.</p></li>
+<li><p><strong>min_delta</strong> (<em>float</em><em>, </em><em>default=0.0</em>) – Minimum change in validation loss required to consider it an
+improvement. Smaller or equal improvements are treated as no progress.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rosoku.utils.EarlyStopping.best_loss">
+<span class="sig-name descname"><span class="pre">best_loss</span></span><a class="headerlink" href="#rosoku.utils.EarlyStopping.best_loss" title="Link to this definition">#</a></dt>
+<dd><p>Best (lowest) validation loss observed so far.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rosoku.utils.EarlyStopping.counter">
+<span class="sig-name descname"><span class="pre">counter</span></span><a class="headerlink" href="#rosoku.utils.EarlyStopping.counter" title="Link to this definition">#</a></dt>
+<dd><p>Number of epochs since the last improvement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rosoku.utils.EarlyStopping.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/core.html#EarlyStopping.initialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.EarlyStopping.initialize" title="Link to this definition">#</a></dt>
+<dd><p>Reset internal state (<cite>best_loss</cite> and <cite>counter</cite>) before training.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rosoku.utils.EarlyStopping.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val_loss</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/core.html#EarlyStopping.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.EarlyStopping.__call__" title="Link to this definition">#</a></dt>
+<dd><p>Alias to <a class="reference internal" href="rosoku.utils.EarlyStopping.html#rosoku.utils.EarlyStopping.step" title="rosoku.utils.EarlyStopping.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>. Evaluates a new loss value and returns whether
+early stopping should trigger.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rosoku.utils.EarlyStopping.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val_loss</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/core.html#EarlyStopping.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.EarlyStopping.step" title="Link to this definition">#</a></dt>
+<dd><p>Update best loss and internal counter with a given validation loss,
+returning <code class="docutils literal notranslate"><span class="pre">True</span></code> when patience is exhausted and training should stop.</p>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">early_stop</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">val_loss</span> <span class="o">=</span> <span class="n">compute_validation_loss</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">early_stop</span><span class="p">(</span><span class="n">val_loss</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Early stopping triggered.&quot;</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="k">break</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="rosoku.utils.EarlyStopping.html#rosoku.utils.EarlyStopping.__call__" title="rosoku.utils.EarlyStopping.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a>(val_loss)</p></td>
+<td><p>Call self as a function.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>initialize</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>step</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/core.html#EarlyStopping.initialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val_loss</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/core.html#EarlyStopping.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rosoku.utils.convert_epochs_to_ndarray">
+<span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">convert_epochs_to_ndarray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'left_hand':</span> <span class="pre">0,</span> <span class="pre">'right_hand':</span> <span class="pre">1}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/data_load.html#convert_epochs_to_ndarray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.convert_epochs_to_ndarray" title="Link to this definition">#</a></dt>
+<dd><p>Convert an MNE Epochs object into NumPy arrays (X, y).</p>
+<p>This function extracts the raw epoch data using <code class="docutils literal notranslate"><span class="pre">epochs.get_data()</span></code> and
+generates corresponding class labels by parsing event markers via
+<a class="reference internal" href="#rosoku.utils.get_labels_from_epochs" title="rosoku.utils.get_labels_from_epochs"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_labels_from_epochs()</span></code></a>.
+It serves as the <strong>default conversion function</strong> for both
+<a class="reference internal" href="rosoku.deeplearning.html#rosoku.deeplearning" title="rosoku.deeplearning"><code class="xref py py-func docutils literal notranslate"><span class="pre">rosoku.deeplearning()</span></code></a> and <a class="reference internal" href="rosoku.conventional.html#rosoku.conventional" title="rosoku.conventional"><code class="xref py py-func docutils literal notranslate"><span class="pre">rosoku.conventional()</span></code></a>,
+where it is passed as <code class="docutils literal notranslate"><span class="pre">func_convert_epochs_to_ndarray</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>epochs</strong> (<em>mne.Epochs</em>) – MNE epochs containing EEG/BCI trials. Must include <code class="docutils literal notranslate"><span class="pre">events</span></code> and
+<code class="docutils literal notranslate"><span class="pre">event_id</span></code> for label extraction.</p></li>
+<li><p><strong>mode</strong> (<em>{&quot;train&quot;</em><em>, </em><em>&quot;valid&quot;</em><em>, </em><em>&quot;test&quot;}</em>) – Provided for pipeline consistency, but not used directly here.
+Allows seamless substitution with user-defined conversion functions
+that may behave differently depending on dataset split.</p></li>
+<li><p><strong>label_keys</strong> (<em>dict</em><em>, </em><em>default={&quot;left_hand&quot;: 0</em><em>, </em><em>&quot;right_hand&quot;: 1}</em>) – Mapping from event string to class ID.
+Passed to <a class="reference internal" href="#rosoku.utils.get_labels_from_epochs" title="rosoku.utils.get_labels_from_epochs"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_labels_from_epochs()</span></code></a>.</p></li>
+<li><p><strong>**kwargs</strong> – <p>Additional arguments forwarded to <code class="docutils literal notranslate"><span class="pre">epochs.get_data()</span></code>, such as:</p>
+<p><code class="docutils literal notranslate"><span class="pre">picks=...</span></code> (channel selection)
+<code class="docutils literal notranslate"><span class="pre">tmin,</span> <span class="pre">tmax</span></code> (time window)
+<code class="docutils literal notranslate"><span class="pre">reject_by_annotation=True</span></code> etc.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>X</strong> (<em>np.ndarray of shape (n_epochs, n_channels, n_times)</em>) – Trial data extracted from MNE Epochs.</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray of shape (n_epochs,)</em>) – Integer class labels derived from event markers.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Serves as the default feature-extraction backend for rosoku pipelines.</p></li>
+<li><p>Intended for cases where the user does <strong>not</strong> need custom handcrafted
+features and prefers raw time-domain input for ML/DL.</p></li>
+<li><p>Can be replaced by any user-defined function with the same return format.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">convert_epochs_to_ndarray</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">((120, 64, 400), (120,))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rosoku.utils.dataset_to_dataloader">
+<span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">dataset_to_dataloader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_DS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DS_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/data_load.html#dataset_to_dataloader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.dataset_to_dataloader" title="Link to this definition">#</a></dt>
+<dd><p>Create PyTorch DataLoader objects from datasets.</p>
+<p>This utility builds DataLoaders for training, validation, and test datasets.
+It supports (i) standard single-process loading and (ii) distributed loading
+via <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.distributed.DistributedSampler</span></code>. It also supports
+grouped test sets, where <code class="docutils literal notranslate"><span class="pre">dataset_test</span></code> may be a list of datasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_train</strong> (<em>torch.utils.data.Dataset</em>) – Training dataset.</p></li>
+<li><p><strong>dataset_valid</strong> (<em>torch.utils.data.Dataset</em>) – Validation dataset.</p></li>
+<li><p><strong>dataset_test</strong> (<em>torch.utils.data.Dataset</em><em> or </em><em>list</em><em> of </em><em>torch.utils.data.Dataset</em>) – Test dataset(s). If a list is provided, a list of DataLoaders is returned
+for the test split, preserving the grouping.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – Mini-batch size used for all DataLoaders.</p></li>
+<li><p><strong>enable_DS</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, use <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.distributed.DistributedSampler</span></code>
+for train/valid/test. When enabled, the returned <code class="docutils literal notranslate"><span class="pre">sampler_train</span></code> must
+be stepped each epoch by calling <code class="docutils literal notranslate"><span class="pre">sampler_train.set_epoch(epoch)</span></code> to
+reshuffle deterministically (default: False).</p></li>
+<li><p><strong>DS_params</strong> (<em>dict</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – <p>Distributed sampler parameters. Required when <code class="docutils literal notranslate"><span class="pre">enable_DS=True</span></code>.
+Expected keys are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;world_size&quot;</span></code> : int</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;rank&quot;</span></code> : int</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;num_workers&quot;</span></code> : int</p></li>
+</ul>
+<p>These control distributed sampling and DataLoader worker settings.</p>
+</p></li>
+<li><p><strong>generator</strong> (<em>None</em><em> | </em><em>int</em><em> | </em><em>torch.Generator</em><em>, </em><em>optional</em>) – <p>Random generator control for deterministic behavior.</p>
+<ul>
+<li><p>If None, no generator is set.</p></li>
+<li><p>If int, a new <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Generator</span></code> is created and seeded with
+<code class="docutils literal notranslate"><span class="pre">generator</span></code>; worker seeds are derived as <code class="docutils literal notranslate"><span class="pre">generator</span> <span class="pre">+</span> <span class="pre">worker_id</span></code>.</p></li>
+<li><p>If <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Generator</span></code>, it is used directly; worker seeds are
+derived as <code class="docutils literal notranslate"><span class="pre">g.initial_seed()</span> <span class="pre">+</span> <span class="pre">worker_id</span></code>.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>dataloader_train</strong> (<em>torch.utils.data.DataLoader</em>) – DataLoader for the training dataset.</p></li>
+<li><p><strong>dataloader_valid</strong> (<em>torch.utils.data.DataLoader</em>) – DataLoader for the validation dataset.</p></li>
+<li><p><strong>dataloader_test</strong> (<em>torch.utils.data.DataLoader or list of torch.utils.data.DataLoader</em>) – DataLoader(s) for the test dataset(s). A list is returned if
+<code class="docutils literal notranslate"><span class="pre">dataset_test</span></code> is a list.</p></li>
+<li><p><strong>sampler_train</strong> (<em>torch.utils.data.distributed.DistributedSampler</em>) – Returned only when <code class="docutils literal notranslate"><span class="pre">enable_DS=True</span></code>. The DistributedSampler used for
+the training dataset.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="docutils literal notranslate"><span class="pre">generator</span></code> is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, an <code class="docutils literal notranslate"><span class="pre">int</span></code>, or a <code class="docutils literal notranslate"><span class="pre">torch.Generator</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>In distributed mode (<code class="docutils literal notranslate"><span class="pre">enable_DS=True</span></code>), <code class="docutils literal notranslate"><span class="pre">pin_memory=True</span></code> and
+<code class="docutils literal notranslate"><span class="pre">persistent_workers</span></code> are enabled when <code class="docutils literal notranslate"><span class="pre">num_workers</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p></li>
+<li><p>If you enable distributed sampling, you typically need to call
+<code class="docutils literal notranslate"><span class="pre">sampler_train.set_epoch(epoch)</span></code> at the start of each training epoch
+to ensure proper shuffling across epochs.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">dataset_test</span></code> is a list, the function returns a list of test
+DataLoaders to preserve grouped test evaluation.</p></li>
+<li><p>This function seeds NumPy, Python’s <code class="docutils literal notranslate"><span class="pre">random</span></code>, and PyTorch per worker
+via <code class="docutils literal notranslate"><span class="pre">worker_init_fn</span></code> when <code class="docutils literal notranslate"><span class="pre">generator</span></code> is provided.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">enable_DS=True</span></code>, this function creates a single <code class="docutils literal notranslate"><span class="pre">sampler_test</span></code> and
+reuses it for all test DataLoaders if <code class="docutils literal notranslate"><span class="pre">dataset_test</span></code> is a list. Depending
+on your distributed evaluation design, you may want per-test-group samplers.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.utils.data.DataLoader</span></code></dt><dd><p>PyTorch DataLoader.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.utils.data.distributed.DistributedSampler</span></code></dt><dd><p>Sampler used for distributed training.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Standard (non-distributed) DataLoaders:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dl_train</span><span class="p">,</span> <span class="n">dl_valid</span><span class="p">,</span> <span class="n">dl_test</span> <span class="o">=</span> <span class="n">dataset_to_dataloader</span><span class="p">(</span>
+    <span class="n">dataset_train</span><span class="p">,</span> <span class="n">dataset_valid</span><span class="p">,</span> <span class="n">dataset_test</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">enable_DS</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Distributed DataLoaders (DDP):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dl_train</span><span class="p">,</span> <span class="n">dl_valid</span><span class="p">,</span> <span class="n">dl_test</span><span class="p">,</span> <span class="n">sampler_train</span> <span class="o">=</span> <span class="n">dataset_to_dataloader</span><span class="p">(</span>
+    <span class="n">dataset_train</span><span class="p">,</span> <span class="n">dataset_valid</span><span class="p">,</span> <span class="n">dataset_test</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+    <span class="n">enable_DS</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">DS_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;world_size&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;rank&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;num_workers&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="n">generator</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+    <span class="n">sampler_train</span><span class="o">.</span><span class="n">set_epoch</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rosoku.utils.get_ddp_params">
+<span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">get_ddp_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/core.html#get_ddp_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.get_ddp_params" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve Distributed Data Parallel (DDP) configuration from environment variables.</p>
+<p>This function collects process rank, world size, master address, and master port
+from environment variables required for PyTorch Distributed Data Parallel (DDP).
+It supports both standard variables (<code class="docutils literal notranslate"><span class="pre">RANK</span></code>, <code class="docutils literal notranslate"><span class="pre">LOCAL_RANK</span></code>) and Slurm-based
+scheduling variables (<code class="docutils literal notranslate"><span class="pre">SLURM_PROCID</span></code>, <code class="docutils literal notranslate"><span class="pre">SLURM_LOCALID</span></code>) as a fallback.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p><strong>params</strong> – Dictionary containing the distributed configuration:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;world_size&quot;</span></code> : int
+Total number of processes participating in the job.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;master_addr&quot;</span></code> : str
+Address of the master process.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;master_port&quot;</span></code> : str
+Port used to initialize communication.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;rank&quot;</span></code> : int
+Global process rank.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;local_rank&quot;</span></code> : int
+Local rank within the current node.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – If required environment variables cannot be parsed from either
+PyTorch-style or Slurm-style distributed launch configurations.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul>
+<li><p>Expected environment variables:</p>
+<blockquote>
+<div><p><strong>Primary (PyTorch standard)</strong>
+<code class="docutils literal notranslate"><span class="pre">WORLD_SIZE,</span> <span class="pre">MASTER_ADDR,</span> <span class="pre">MASTER_PORT,</span> <span class="pre">RANK,</span> <span class="pre">LOCAL_RANK</span></code></p>
+<p><strong>Fallback (Slurm)</strong>
+<code class="docutils literal notranslate"><span class="pre">SLURM_PROCID,</span> <span class="pre">SLURM_LOCALID</span></code></p>
+</div></blockquote>
+</li>
+<li><p>Intended for use inside DDP initialization routines where distributed
+parameters must be inferred from the runtime environment.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">get_ddp_params</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span>
+<span class="go">{&#39;world_size&#39;: 4, &#39;master_addr&#39;: &#39;10.0.0.1&#39;, &#39;master_port&#39;: &#39;12345&#39;,</span>
+<span class="go"> &#39;rank&#39;: 0, &#39;local_rank&#39;: 0}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rosoku.utils.get_labels_from_epochs">
+<span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">get_labels_from_epochs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'left_hand':</span> <span class="pre">0,</span> <span class="pre">'right_hand':</span> <span class="pre">1}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/data_load.html#get_labels_from_epochs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.get_labels_from_epochs" title="Link to this definition">#</a></dt>
+<dd><p>Extract trial labels from MNE Epochs based on event markers.</p>
+<p>This function retrieves event markers from <code class="docutils literal notranslate"><span class="pre">epochs.events</span></code> and maps them to
+integer class IDs according to <code class="docutils literal notranslate"><span class="pre">label_keys</span></code>.
+Event strings containing multiple tags (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;cue/left_hand&quot;</span></code>) are also
+supported — if a key appears anywhere within the marker, it is assigned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>epochs</strong> (<em>mne.Epochs</em>) – Input epochs from which events are extracted.
+<code class="docutils literal notranslate"><span class="pre">epochs.events</span></code> and <code class="docutils literal notranslate"><span class="pre">epochs.event_id</span></code> must be available.</p></li>
+<li><p><strong>label_keys</strong> (<em>dict</em><em>, </em><em>default={&quot;left_hand&quot;: 0</em><em>, </em><em>&quot;right_hand&quot;: 1}</em>) – Mapping from event keyword to integer class label.
+Keys are matched against event marker strings.
+Example:
+<code class="docutils literal notranslate"><span class="pre">{&quot;left_hand&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;right_hand&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;feet&quot;:</span> <span class="pre">2}</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>y</strong> – Array of integer labels corresponding to each epoch.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray of shape (n_epochs,)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If the extracted label count does not match the number of epochs.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Event markers may contain hierarchical names (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;cue/left_hand&quot;</span></code>).
+In such cases, the marker is split by <code class="docutils literal notranslate"><span class="pre">&quot;/&quot;</span></code> and matched against keys.</p></li>
+<li><p>Every epoch must contain exactly one identifiable label.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len(epochs)</span> <span class="pre">==</span> <span class="pre">len(y)</span></code> is enforced for consistency.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">get_labels_from_epochs</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">label_keys</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;left_hand&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;right_hand&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;feet&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="go">array([0, 1, 1, 0, ...])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rosoku.utils.get_predictions">
+<span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">get_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_get_logits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_get_probas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_get_preds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/core.html#get_predictions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.get_predictions" title="Link to this definition">#</a></dt>
+<dd><p>Run inference on a dataloader and return predictions, labels, logits and class probabilities.</p>
+<p>The model is evaluated in no-grad mode and expected to output raw logits.
+Predictions are computed via <code class="docutils literal notranslate"><span class="pre">argmax</span></code>, while probabilities are obtained
+by applying a softmax over the class dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – A trained PyTorch model used for inference.
+Must return logits of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">n_classes)</span></code>.</p></li>
+<li><p><strong>dataloader</strong> (<em>torch.utils.data.DataLoader</em>) – Dataloader yielding batches of input tensors <code class="docutils literal notranslate"><span class="pre">X</span></code> and labels <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
+<li><p><strong>device</strong> (<em>{&quot;cpu&quot;</em><em>, </em><em>&quot;cuda&quot;}</em><em>, </em><em>default=&quot;cpu&quot;</em>) – Device used for running forward passes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>preds</strong> (<em>np.ndarray of shape (N,)</em>) – Predicted class indices for all samples in the dataloader.</p></li>
+<li><p><strong>labels</strong> (<em>np.ndarray of shape (N,)</em>) – Ground-truth labels.</p></li>
+<li><p><strong>logits</strong> (<em>np.ndarray of shape (N, n_classes)</em>) – Raw model outputs (pre-softmax).</p></li>
+<li><p><strong>probas</strong> (<em>np.ndarray of shape (N, n_classes)</em>) – Softmax-normalized class probabilities.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The model is automatically set to evaluation mode.</p></li>
+<li><p>Computes outputs without gradient tracking for faster inference.</p></li>
+<li><p>Outputs are concatenated across all batches and returned as NumPy arrays.</p></li>
+<li><p>Order of returned values is:
+<code class="docutils literal notranslate"><span class="pre">preds,</span> <span class="pre">labels,</span> <span class="pre">logits,</span> <span class="pre">probas</span></code>.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">logits</span><span class="p">,</span> <span class="n">probas</span> <span class="o">=</span> <span class="n">get_predictions</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preds</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="go">array([1, 0, 1, 1, 2])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rosoku.utils.load_data">
+<span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keywords_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_load_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_load_ndarray</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_proc_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_proc_ndarray</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_proc_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'per_split'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_convert_epochs_to_ndarray</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;function</span> <span class="pre">convert_epochs_to_ndarray&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/data_load.html#load_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.load_data" title="Link to this definition">#</a></dt>
+<dd><p>Load and preprocess datasets for rosoku pipelines using keyword specifications.</p>
+<p>This utility function is the core data loader used by rosoku’s
+<code class="xref py py-func docutils literal notranslate"><span class="pre">conventional()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">deeplearning()</span></code> pipelines. It takes
+user-defined <em>keywords</em> that describe which data to load for the
+train/validation/test splits, calls user-provided loading functions
+(for MNE Epochs or NumPy arrays), optionally applies preprocessing,
+and returns NumPy arrays suitable for machine-learning models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keywords_train</strong> (<em>list</em>) – List of keyword objects specifying which data belong to the
+training split. The structure of each keyword is arbitrary
+(e.g., dicts with subject/session metadata) and is interpreted
+solely by the user-defined loading functions.</p></li>
+<li><p><strong>keywords_valid</strong> (<em>list</em><em> or </em><em>None</em>) – List of keyword objects specifying validation data.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, no separate validation set is loaded and
+<code class="docutils literal notranslate"><span class="pre">X_valid</span></code>/<code class="docutils literal notranslate"><span class="pre">y_valid</span></code> will be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>keywords_test</strong> (<em>list</em>) – <p>List describing test data and how they are grouped. Each element
+can be either:</p>
+<ul>
+<li><p>a single keyword object → treated as one test group</p></li>
+<li><p>a list of keyword objects → merged and evaluated as a single test group</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">keywords_test</span> <span class="pre">=</span> <span class="pre">[&quot;A29&quot;,</span> <span class="pre">&quot;A3&quot;]</span></code>
+→ two separate test sets (<code class="docutils literal notranslate"><span class="pre">[&quot;A29&quot;]</span></code>, <code class="docutils literal notranslate"><span class="pre">[&quot;A3&quot;]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keywords_test</span> <span class="pre">=</span> <span class="pre">[[&quot;A29&quot;,</span> <span class="pre">&quot;A3&quot;]]</span></code>
+→ load both and merge into one test set</p></li>
+</ul>
+</p></li>
+<li><p><strong>callback_load_epochs</strong> (<em>callable</em><em>, </em><em>optional</em>) – <p>Function used to load data as MNE <code class="docutils literal notranslate"><span class="pre">Epochs</span></code> objects.
+Must accept <code class="docutils literal notranslate"><span class="pre">(keywords,</span> <span class="pre">mode)</span></code> where <code class="docutils literal notranslate"><span class="pre">keywords</span></code> is a list of
+keyword objects and <code class="docutils literal notranslate"><span class="pre">mode</span></code> is one of <code class="docutils literal notranslate"><span class="pre">&quot;train&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;valid&quot;</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">&quot;test&quot;</span></code>. Should return an <code class="docutils literal notranslate"><span class="pre">mne.Epochs</span></code> instance (or a
+merged Epochs object).</p>
+<p>Required if <code class="docutils literal notranslate"><span class="pre">callback_load_ndarray</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</p></li>
+<li><p><strong>callback_load_ndarray</strong> (<em>callable</em><em>, </em><em>optional</em>) – <p>Function used to load data directly as NumPy arrays.
+Must accept <code class="docutils literal notranslate"><span class="pre">(keywords,</span> <span class="pre">mode)</span></code> and return a tuple <code class="docutils literal notranslate"><span class="pre">(X,</span> <span class="pre">y)</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">X</span></code> is a NumPy array and <code class="docutils literal notranslate"><span class="pre">y</span></code> the corresponding labels.</p>
+<p>Required if <code class="docutils literal notranslate"><span class="pre">callback_load_epochs</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</p></li>
+<li><p><strong>callback_proc_epochs</strong> (<em>callable</em><em>, </em><em>optional</em>) – Preprocessing function applied to Epochs objects <em>before</em>
+conversion to NumPy arrays. It is passed through to
+<code class="xref py py-func docutils literal notranslate"><span class="pre">apply_callback_proc()</span></code> and can be used for tasks such as
+channel selection, cropping, filtering, etc.</p></li>
+<li><p><strong>callback_proc_ndarray</strong> (<em>callable</em><em>, </em><em>optional</em>) – Preprocessing function applied to NumPy arrays <em>(X, y)</em> after
+conversion from Epochs or direct loading. Also handled by
+<code class="xref py py-func docutils literal notranslate"><span class="pre">apply_callback_proc()</span></code>.</p></li>
+<li><p><strong>callback_proc_mode</strong> (<em>{&quot;per_split&quot;</em><em>, </em><em>&quot;all&quot;}</em><em>, </em><em>default=&quot;per_split&quot;</em>) – <p>Controls how the preprocessing functions are applied:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;per_split&quot;</span></code> : process train/valid/test splits independently</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code> : pass all splits at once to the processing function
+(exact behavior depends on <code class="xref py py-func docutils literal notranslate"><span class="pre">apply_callback_proc()</span></code>)</p></li>
+</ul>
+</p></li>
+<li><p><strong>callback_convert_epochs_to_ndarray</strong> (<em>callable</em><em>, </em><em>default=convert_epochs_to_ndarray</em>) – Function used to convert Epochs objects to <code class="docutils literal notranslate"><span class="pre">(X,</span> <span class="pre">y)</span></code> arrays.
+By default, uses <a class="reference internal" href="#rosoku.utils.convert_epochs_to_ndarray" title="rosoku.utils.convert_epochs_to_ndarray"><code class="xref py py-func docutils literal notranslate"><span class="pre">convert_epochs_to_ndarray()</span></code></a>, which wraps
+<code class="docutils literal notranslate"><span class="pre">epochs.get_data()</span></code> and <a class="reference internal" href="#rosoku.utils.get_labels_from_epochs" title="rosoku.utils.get_labels_from_epochs"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_labels_from_epochs()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>X_train</strong> (<em>np.ndarray</em>) – Training data array.</p></li>
+<li><p><strong>X_valid</strong> (<em>np.ndarray or None</em>) – Validation data array, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if <code class="docutils literal notranslate"><span class="pre">keywords_valid</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>X_test</strong> (<em>list of np.ndarray</em>) – List of test data arrays, one per test group defined in
+<code class="docutils literal notranslate"><span class="pre">keywords_test</span></code>.</p></li>
+<li><p><strong>y_train</strong> (<em>np.ndarray</em>) – Training labels.</p></li>
+<li><p><strong>y_valid</strong> (<em>np.ndarray or None</em>) – Validation labels, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if <code class="docutils literal notranslate"><span class="pre">keywords_valid</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>y_test</strong> (<em>list of np.ndarray</em>) – List of label arrays corresponding to each test group in
+<code class="docutils literal notranslate"><span class="pre">X_test</span></code>.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If neither nor both of <code class="docutils literal notranslate"><span class="pre">callback_load_epochs</span></code> and
+<code class="docutils literal notranslate"><span class="pre">callback_load_ndarray</span></code> are provided, or if keyword lists are
+not lists as required.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul>
+<li><p>Exactly one of <code class="docutils literal notranslate"><span class="pre">callback_load_epochs</span></code> and <code class="docutils literal notranslate"><span class="pre">callback_load_ndarray</span></code>
+must be provided.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">callback_load_epochs</span></code> is used, the pipeline is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>callback_load_epochs()
+↓
+callback_proc_epochs()        (optional)
+↓
+callback_convert_epochs_to_ndarray()
+↓
+callback_proc_ndarray()       (optional)
+</pre></div>
+</div>
+</li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">callback_load_ndarray</span></code> is used, the pipeline is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>callback_load_ndarray()
+↓
+callback_proc_ndarray()       (optional)
+</pre></div>
+</div>
+</li>
+<li><p>This function is designed to support flexible dataset definitions
+while keeping the downstream experiment code (training/evaluation)
+agnostic to data-loading details.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rosoku.utils.ndarray_to_dataloader">
+<span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">ndarray_to_dataloader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_DS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DS_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/data_load.html#ndarray_to_dataloader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.ndarray_to_dataloader" title="Link to this definition">#</a></dt>
+<dd><p>Convert NumPy arrays to PyTorch DataLoaders.</p>
+<p>This is a convenience wrapper that converts NumPy arrays to PyTorch tensors,
+wraps them into <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.TensorDataset</span></code> objects, and finally
+constructs <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.DataLoader</span></code> objects for training,
+validation, and test splits.</p>
+<p>Grouped test evaluation is supported: if <code class="docutils literal notranslate"><span class="pre">X_test</span></code>/<code class="docutils literal notranslate"><span class="pre">y_test</span></code> are provided
+as lists, the returned test DataLoaders preserve the list structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_train</strong> (<em>array-like</em>) – Training data array. Typically has shape
+<code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">n_channels,</span> <span class="pre">n_times)</span></code> for EEG data.</p></li>
+<li><p><strong>y_train</strong> (<em>array-like</em>) – Training labels. Must be convertible to integer class indices.</p></li>
+<li><p><strong>X_valid</strong> (<em>array-like</em>) – Validation data array with the same structure as <code class="docutils literal notranslate"><span class="pre">X_train</span></code>.</p></li>
+<li><p><strong>y_valid</strong> (<em>array-like</em>) – Validation labels.</p></li>
+<li><p><strong>X_test</strong> (<em>array-like</em><em> or </em><em>list</em><em> of </em><em>array-like</em>) – Test data array, or a list of test data arrays corresponding to multiple
+test evaluation groups.</p></li>
+<li><p><strong>y_test</strong> (<em>array-like</em><em> or </em><em>list</em><em> of </em><em>array-like</em>) – Test labels, or a list of label arrays corresponding to <code class="docutils literal notranslate"><span class="pre">X_test</span></code>.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – Mini-batch size used for all DataLoaders.</p></li>
+<li><p><strong>device</strong> (<em>{&quot;cpu&quot;</em><em>, </em><em>&quot;cuda&quot;}</em><em>, </em><em>optional</em>) – Device to which the tensors are moved before dataset/DataLoader creation
+(default: <code class="docutils literal notranslate"><span class="pre">&quot;cpu&quot;</span></code>).</p></li>
+<li><p><strong>enable_DS</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, use <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.distributed.DistributedSampler</span></code>
+for train/valid/test and return <code class="docutils literal notranslate"><span class="pre">sampler_train</span></code> as an additional output.
+When enabled, you must call <code class="docutils literal notranslate"><span class="pre">sampler_train.set_epoch(epoch)</span></code> every epoch
+(default: False).</p></li>
+<li><p><strong>DS_params</strong> (<em>dict</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – Distributed sampler parameters. Required when <code class="docutils literal notranslate"><span class="pre">enable_DS=True</span></code>.
+Expected keys are <code class="docutils literal notranslate"><span class="pre">&quot;world_size&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;rank&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;num_workers&quot;</span></code>.</p></li>
+<li><p><strong>generator</strong> (<em>None</em><em> | </em><em>int</em><em> | </em><em>torch.Generator</em><em>, </em><em>optional</em>) – Random generator control for deterministic behavior, forwarded to
+<a class="reference internal" href="#rosoku.utils.dataset_to_dataloader" title="rosoku.utils.dataset_to_dataloader"><code class="xref py py-func docutils literal notranslate"><span class="pre">dataset_to_dataloader()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>dataloader_train</strong> (<em>torch.utils.data.DataLoader</em>) – DataLoader for the training dataset.</p></li>
+<li><p><strong>dataloader_valid</strong> (<em>torch.utils.data.DataLoader</em>) – DataLoader for the validation dataset.</p></li>
+<li><p><strong>dataloader_test</strong> (<em>torch.utils.data.DataLoader or list of torch.utils.data.DataLoader</em>) – DataLoader(s) for the test dataset(s). A list is returned if
+<code class="docutils literal notranslate"><span class="pre">X_test</span></code> is a list.</p></li>
+<li><p><strong>sampler_train</strong> (<em>torch.utils.data.distributed.DistributedSampler</em>) – Returned only when <code class="docutils literal notranslate"><span class="pre">enable_DS=True</span></code>. The DistributedSampler used for
+the training dataset.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#rosoku.utils.ndarray_to_tensor" title="rosoku.utils.ndarray_to_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray_to_tensor</span></code></a></dt><dd><p>Convert NumPy arrays to PyTorch tensors.</p>
+</dd>
+<dt><a class="reference internal" href="#rosoku.utils.tensor_to_dataset" title="rosoku.utils.tensor_to_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tensor_to_dataset</span></code></a></dt><dd><p>Wrap tensors into TensorDataset objects.</p>
+</dd>
+<dt><a class="reference internal" href="#rosoku.utils.dataset_to_dataloader" title="rosoku.utils.dataset_to_dataloader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dataset_to_dataloader</span></code></a></dt><dd><p>Construct DataLoaders (optionally with DistributedSampler).</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Standard DataLoaders:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dl_train</span><span class="p">,</span> <span class="n">dl_valid</span><span class="p">,</span> <span class="n">dl_test</span> <span class="o">=</span> <span class="n">ndarray_to_dataloader</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Distributed DataLoaders (DDP):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dl_train</span><span class="p">,</span> <span class="n">dl_valid</span><span class="p">,</span> <span class="n">dl_test</span><span class="p">,</span> <span class="n">sampler_train</span> <span class="o">=</span> <span class="n">ndarray_to_dataloader</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span>
+    <span class="n">enable_DS</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">DS_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;world_size&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;rank&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;num_workers&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="n">generator</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rosoku.utils.ndarray_to_tensor">
+<span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">ndarray_to_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/data_load.html#ndarray_to_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.ndarray_to_tensor" title="Link to this definition">#</a></dt>
+<dd><p>Convert NumPy arrays to PyTorch tensors and move them to a device.</p>
+<p>This utility function converts training, validation, and test datasets from
+NumPy arrays to PyTorch tensors with appropriate dtypes, and moves them to
+the specified device. It supports both single test sets and grouped test
+sets represented as lists, which is consistent with rosoku’s handling of
+multiple test evaluation groups.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_train</strong> (<em>array-like</em>) – Training data array. Typically has shape
+<code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">n_channels,</span> <span class="pre">n_times)</span></code> for EEG data.</p></li>
+<li><p><strong>y_train</strong> (<em>array-like</em>) – Training labels. Must be convertible to integer class indices.</p></li>
+<li><p><strong>X_valid</strong> (<em>array-like</em>) – Validation data array with the same structure as <code class="docutils literal notranslate"><span class="pre">X_train</span></code>.</p></li>
+<li><p><strong>y_valid</strong> (<em>array-like</em>) – Validation labels.</p></li>
+<li><p><strong>X_test</strong> (<em>array-like</em><em> or </em><em>list</em><em> of </em><em>array-like</em>) – Test data array, or a list of test data arrays corresponding to multiple
+test evaluation groups.</p></li>
+<li><p><strong>y_test</strong> (<em>array-like</em><em> or </em><em>list</em><em> of </em><em>array-like</em>) – Test labels, or a list of label arrays corresponding to <code class="docutils literal notranslate"><span class="pre">X_test</span></code>.</p></li>
+<li><p><strong>device</strong> (<em>{&quot;cpu&quot;</em><em>, </em><em>&quot;cuda&quot;}</em><em>, </em><em>optional</em>) – Device to which the tensors are moved (default: <code class="docutils literal notranslate"><span class="pre">&quot;cpu&quot;</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>X_train_tensor</strong> (<em>torch.Tensor</em>) – Training data tensor of type <code class="docutils literal notranslate"><span class="pre">torch.float</span></code> on <code class="docutils literal notranslate"><span class="pre">device</span></code>.</p></li>
+<li><p><strong>y_train_tensor</strong> (<em>torch.Tensor</em>) – Training label tensor of type <code class="docutils literal notranslate"><span class="pre">torch.int64</span></code> on <code class="docutils literal notranslate"><span class="pre">device</span></code>.</p></li>
+<li><p><strong>X_valid_tensor</strong> (<em>torch.Tensor</em>) – Validation data tensor of type <code class="docutils literal notranslate"><span class="pre">torch.float</span></code> on <code class="docutils literal notranslate"><span class="pre">device</span></code>.</p></li>
+<li><p><strong>y_valid_tensor</strong> (<em>torch.Tensor</em>) – Validation label tensor of type <code class="docutils literal notranslate"><span class="pre">torch.int64</span></code> on <code class="docutils literal notranslate"><span class="pre">device</span></code>.</p></li>
+<li><p><strong>X_test_tensor</strong> (<em>torch.Tensor or list of torch.Tensor</em>) – Test data tensor(s) of type <code class="docutils literal notranslate"><span class="pre">torch.float</span></code> on <code class="docutils literal notranslate"><span class="pre">device</span></code>.
+A list is returned if <code class="docutils literal notranslate"><span class="pre">X_test</span></code> is a list.</p></li>
+<li><p><strong>y_test_tensor</strong> (<em>torch.Tensor or list of torch.Tensor</em>) – Test label tensor(s) of type <code class="docutils literal notranslate"><span class="pre">torch.int64</span></code> on <code class="docutils literal notranslate"><span class="pre">device</span></code>.
+A list is returned if <code class="docutils literal notranslate"><span class="pre">y_test</span></code> is a list.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>All feature arrays are converted to <code class="docutils literal notranslate"><span class="pre">torch.float</span></code> and all labels to
+<code class="docutils literal notranslate"><span class="pre">torch.int64</span></code>, which is compatible with common PyTorch loss functions
+such as <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.CrossEntropyLoss</span></code>.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">X_test</span></code> and <code class="docutils literal notranslate"><span class="pre">y_test</span></code> are lists, the returned test tensors preserve
+this list structure, enabling grouped test evaluation in downstream
+pipelines (e.g., in <a class="reference internal" href="rosoku.deeplearning.html#rosoku.deeplearning" title="rosoku.deeplearning"><code class="xref py py-func docutils literal notranslate"><span class="pre">rosoku.deeplearning()</span></code></a>).</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="rosoku.deeplearning.html#rosoku.deeplearning" title="rosoku.deeplearning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rosoku.deeplearning</span></code></a></dt><dd><p>Deep-learning pipeline that consumes tensors produced by this function.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Convert NumPy arrays to tensors on GPU:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Xtr_t</span><span class="p">,</span> <span class="n">ytr_t</span><span class="p">,</span> <span class="n">Xva_t</span><span class="p">,</span> <span class="n">yva_t</span><span class="p">,</span> <span class="n">Xte_t</span><span class="p">,</span> <span class="n">yte_t</span> <span class="o">=</span> <span class="n">ndarray_to_tensor</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span>
+    <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rosoku.utils.tensor_to_dataset">
+<span class="sig-prename descclassname"><span class="pre">rosoku.utils.</span></span><span class="sig-name descname"><span class="pre">tensor_to_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_valid_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_valid_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test_tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rosoku/utils/data_load.html#tensor_to_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rosoku.utils.tensor_to_dataset" title="Link to this definition">#</a></dt>
+<dd><p>Convert PyTorch tensors into TensorDataset objects.</p>
+<p>This utility function wraps training, validation, and test tensors into
+<code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.TensorDataset</span></code> objects. It supports both single
+test datasets and grouped test datasets represented as lists, which is
+consistent with rosoku’s handling of multiple test evaluation groups.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_train_tensor</strong> (<em>torch.Tensor</em>) – Training data tensor.</p></li>
+<li><p><strong>y_train_tensor</strong> (<em>torch.Tensor</em>) – Training label tensor.</p></li>
+<li><p><strong>X_valid_tensor</strong> (<em>torch.Tensor</em>) – Validation data tensor.</p></li>
+<li><p><strong>y_valid_tensor</strong> (<em>torch.Tensor</em>) – Validation label tensor.</p></li>
+<li><p><strong>X_test_tensor</strong> (<em>torch.Tensor</em><em> or </em><em>list</em><em> of </em><em>torch.Tensor</em>) – Test data tensor, or a list of test data tensors corresponding to
+multiple test evaluation groups.</p></li>
+<li><p><strong>y_test_tensor</strong> (<em>torch.Tensor</em><em> or </em><em>list</em><em> of </em><em>torch.Tensor</em>) – Test label tensor, or a list of label tensors corresponding to
+<code class="docutils literal notranslate"><span class="pre">X_test_tensor</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>dataset_train</strong> (<em>torch.utils.data.TensorDataset</em>) – Dataset containing training data and labels.</p></li>
+<li><p><strong>dataset_valid</strong> (<em>torch.utils.data.TensorDataset</em>) – Dataset containing validation data and labels.</p></li>
+<li><p><strong>dataset_test</strong> (<em>torch.utils.data.TensorDataset or list of torch.utils.data.TensorDataset</em>) – Test dataset(s). A list is returned if <code class="docutils literal notranslate"><span class="pre">X_test_tensor</span></code> is a list,
+preserving the grouping of test evaluation sets.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Each returned dataset yields <code class="docutils literal notranslate"><span class="pre">(data,</span> <span class="pre">label)</span></code> pairs when iterated.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">X_test_tensor</span></code> is a list, the list structure is preserved in the
+returned <code class="docutils literal notranslate"><span class="pre">dataset_test</span></code> to enable grouped test evaluation in downstream
+pipelines (e.g., in <a class="reference internal" href="rosoku.deeplearning.html#rosoku.deeplearning" title="rosoku.deeplearning"><code class="xref py py-func docutils literal notranslate"><span class="pre">rosoku.deeplearning()</span></code></a>).</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#rosoku.utils.ndarray_to_tensor" title="rosoku.utils.ndarray_to_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray_to_tensor</span></code></a></dt><dd><p>Convert NumPy arrays to PyTorch tensors.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.utils.data.TensorDataset</span></code></dt><dd><p>PyTorch dataset class used to wrap tensors.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Convert tensors to datasets:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_train</span><span class="p">,</span> <span class="n">dataset_valid</span><span class="p">,</span> <span class="n">dataset_test</span> <span class="o">=</span> <span class="n">tensor_to_dataset</span><span class="p">(</span>
+    <span class="n">X_train_tensor</span><span class="p">,</span> <span class="n">y_train_tensor</span><span class="p">,</span>
+    <span class="n">X_valid_tensor</span><span class="p">,</span> <span class="n">y_valid_tensor</span><span class="p">,</span>
+    <span class="n">X_test_tensor</span><span class="p">,</span> <span class="n">y_test_tensor</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Use grouped test datasets:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">dataset_test</span><span class="p">:</span>
+    <span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku-utils-utils-module">rosoku.utils.utils module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-rosoku.utils">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.EarlyStopping"><code class="docutils literal notranslate"><span class="pre">EarlyStopping</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.EarlyStopping.best_loss"><code class="docutils literal notranslate"><span class="pre">EarlyStopping.best_loss</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.EarlyStopping.counter"><code class="docutils literal notranslate"><span class="pre">EarlyStopping.counter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.EarlyStopping.initialize"><code class="docutils literal notranslate"><span class="pre">EarlyStopping.initialize()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.EarlyStopping.__call__"><code class="docutils literal notranslate"><span class="pre">EarlyStopping.__call__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.EarlyStopping.step"><code class="docutils literal notranslate"><span class="pre">EarlyStopping.step()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">EarlyStopping.initialize()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">EarlyStopping.step()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.convert_epochs_to_ndarray"><code class="docutils literal notranslate"><span class="pre">convert_epochs_to_ndarray()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.dataset_to_dataloader"><code class="docutils literal notranslate"><span class="pre">dataset_to_dataloader()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.get_ddp_params"><code class="docutils literal notranslate"><span class="pre">get_ddp_params()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.get_labels_from_epochs"><code class="docutils literal notranslate"><span class="pre">get_labels_from_epochs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.get_predictions"><code class="docutils literal notranslate"><span class="pre">get_predictions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.ndarray_to_dataloader"><code class="docutils literal notranslate"><span class="pre">ndarray_to_dataloader()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.ndarray_to_tensor"><code class="docutils literal notranslate"><span class="pre">ndarray_to_tensor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rosoku.utils.tensor_to_dataset"><code class="docutils literal notranslate"><span class="pre">tensor_to_dataset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/rosoku.utils.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Simon Kojima.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1391 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rosoku.deeplearning &#8212; Rosoku 0.0.4 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8c5712d9"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/rosoku/deeplearning';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://simonkojima.github.io/rosoku-docs/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.0.4';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo-light.png" class="logo__image only-light" alt="Rosoku 0.0.4 documentation - Home"/>
+    <img src="../../_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="Rosoku 0.0.4 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    How to Install
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../documentation.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    How to Install
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">rosoku.deeplearning</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for rosoku.deeplearning</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">msgpack</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">rosoku.preprocessing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">attribution</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.utils.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">_train_epoch</span><span class="p">,</span> <span class="n">_add_values_to_df</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">setup_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">optimizer_params</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">optimizer_params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">(</span>
+            <span class="n">params</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span>
+            <span class="o">**</span><span class="n">optimizer_params</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">optimizer</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">setup_scheduler</span><span class="p">(</span><span class="n">scheduler</span><span class="p">,</span> <span class="n">scheduler_params</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">scheduler</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">scheduler_params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">scheduler</span> <span class="o">=</span> <span class="n">scheduler</span><span class="p">(</span>
+                <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">scheduler_params</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">scheduler</span> <span class="o">=</span> <span class="n">scheduler</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">scheduler</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">deeplearning_train</span><span class="p">(</span>
+    <span class="n">dataloader_train</span><span class="p">,</span>
+    <span class="n">dataloader_valid</span><span class="p">,</span>
+    <span class="n">n_epochs</span><span class="p">,</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">criterion</span><span class="p">,</span>
+    <span class="n">device</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">scheduler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_early_stopping</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">enable_wandb_logging</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">wandb_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">checkpoint_fname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">history_fname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">min_delta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">if</span> <span class="n">enable_wandb_logging</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">wandb</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">callback_early_stopping</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">early_stopping</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot specify both callback_early_stopping and early_stopping&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">early_stopping</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">early_stopping</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+    <span class="n">history</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;epoch&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
+        <span class="s2">&quot;train_loss&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
+        <span class="s2">&quot;valid_loss&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
+        <span class="s2">&quot;train_acc&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
+        <span class="s2">&quot;valid_acc&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
+    <span class="p">}</span>
+
+    <span class="n">loss_best</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)}</span>
+
+    <span class="k">if</span> <span class="n">enable_wandb_logging</span><span class="p">:</span>
+        <span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="o">**</span><span class="n">wandb_params</span><span class="p">)</span>
+
+    <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+        <span class="n">train_loss</span><span class="p">,</span> <span class="n">valid_loss</span> <span class="o">=</span> <span class="n">_train_epoch</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+            <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
+            <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+            <span class="n">scheduler</span><span class="o">=</span><span class="n">scheduler</span><span class="p">,</span>
+            <span class="n">min_delta</span><span class="o">=</span><span class="n">min_delta</span><span class="p">,</span>
+            <span class="n">dataloader_train</span><span class="o">=</span><span class="n">dataloader_train</span><span class="p">,</span>
+            <span class="n">dataloader_valid</span><span class="o">=</span><span class="n">dataloader_valid</span><span class="p">,</span>
+            <span class="n">epoch</span><span class="o">=</span><span class="n">epoch</span><span class="p">,</span>
+            <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+            <span class="n">loss_best</span><span class="o">=</span><span class="n">loss_best</span><span class="p">,</span>
+            <span class="n">history</span><span class="o">=</span><span class="n">history</span><span class="p">,</span>
+            <span class="n">checkpoint_fname</span><span class="o">=</span><span class="n">checkpoint_fname</span><span class="p">,</span>
+            <span class="n">enable_wandb</span><span class="o">=</span><span class="n">enable_wandb_logging</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">early_stopping</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">early_stopping</span><span class="p">(</span><span class="n">valid_loss</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Early stopping was triggered: epoch #</span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+        <span class="k">if</span> <span class="n">callback_early_stopping</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">callback_early_stopping</span><span class="p">(</span>
+                <span class="p">{</span><span class="s2">&quot;train_loss&quot;</span><span class="p">:</span> <span class="n">train_loss</span><span class="p">,</span> <span class="s2">&quot;valid_loss&quot;</span><span class="p">:</span> <span class="n">valid_loss</span><span class="p">,</span> <span class="s2">&quot;epoch&quot;</span><span class="p">:</span> <span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span>
+            <span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Early stopping was triggered: epoch #</span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+    <span class="n">toc</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">toc</span> <span class="o">-</span> <span class="n">tic</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elapsed Time: </span><span class="si">{</span><span class="n">elapsed_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">history_fname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">df_save</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+        <span class="n">df_save</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">history_fname</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_experiment</span><span class="p">(</span>
+    <span class="n">num_workers</span><span class="p">,</span>
+    <span class="n">device</span><span class="p">,</span>
+    <span class="n">X_train</span><span class="p">,</span>
+    <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">X_valid</span><span class="p">,</span>
+    <span class="n">y_valid</span><span class="p">,</span>
+    <span class="n">X_test</span><span class="p">,</span>
+    <span class="n">y_test</span><span class="p">,</span>
+    <span class="n">criterion</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">n_epochs</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="p">,</span>
+    <span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+    <span class="c1"># parse kwargs</span>
+
+    <span class="n">optimizer_params</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;optimizer_params&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">callback_early_stopping</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;callback_early_stopping&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">scheduler</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;scheduler&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">scheduler_params</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;scheduler_params&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">min_delta</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;min_delta&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">enable_wandb_logging</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;enable_wandb_logging&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">wandb_params</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;wandb_params&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">checkpoint_fname</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;checkpoint_fname&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">history_fname</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;history_fname&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">early_stopping</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;early_stopping&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">seed</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;seed&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;model is None&quot;</span><span class="p">)</span>
+
+    <span class="c1"># create dataloader</span>
+
+    <span class="p">(</span><span class="n">dataloader_train</span><span class="p">,</span> <span class="n">dataloader_valid</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">ndarray_to_dataloader</span><span class="p">(</span>
+        <span class="n">X_train</span><span class="p">,</span>
+        <span class="n">y_train</span><span class="p">,</span>
+        <span class="n">X_valid</span><span class="p">,</span>
+        <span class="n">y_valid</span><span class="p">,</span>
+        <span class="n">X_test</span><span class="p">,</span>
+        <span class="n">y_test</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+        <span class="n">generator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># setup optimizer</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">setup_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">optimizer_params</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+    <span class="c1"># setup scheduler</span>
+    <span class="n">scheduler</span> <span class="o">=</span> <span class="n">setup_scheduler</span><span class="p">(</span><span class="n">scheduler</span><span class="p">,</span> <span class="n">scheduler_params</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">)</span>
+
+    <span class="c1"># setup early stopping</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">early_stopping</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">early_stopping</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span>
+            <span class="n">patience</span><span class="o">=</span><span class="n">early_stopping</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="n">min_delta</span>
+        <span class="p">)</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">deeplearning_train</span><span class="p">(</span>
+        <span class="n">dataloader_train</span><span class="o">=</span><span class="n">dataloader_train</span><span class="p">,</span>
+        <span class="n">dataloader_valid</span><span class="o">=</span><span class="n">dataloader_valid</span><span class="p">,</span>
+        <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+        <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+        <span class="n">scheduler</span><span class="o">=</span><span class="n">scheduler</span><span class="p">,</span>
+        <span class="n">enable_wandb_logging</span><span class="o">=</span><span class="n">enable_wandb_logging</span><span class="p">,</span>
+        <span class="n">wandb_params</span><span class="o">=</span><span class="n">wandb_params</span><span class="p">,</span>
+        <span class="n">checkpoint_fname</span><span class="o">=</span><span class="n">checkpoint_fname</span><span class="p">,</span>
+        <span class="n">history_fname</span><span class="o">=</span><span class="n">history_fname</span><span class="p">,</span>
+        <span class="n">early_stopping</span><span class="o">=</span><span class="n">early_stopping</span><span class="p">,</span>
+        <span class="n">callback_early_stopping</span><span class="o">=</span><span class="n">callback_early_stopping</span><span class="p">,</span>
+        <span class="n">min_delta</span><span class="o">=</span><span class="n">min_delta</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="deeplearning">
+<a class="viewcode-back" href="../../rosoku.deeplearning.html#rosoku.deeplearning">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">deeplearning</span><span class="p">(</span>
+    <span class="n">items_train</span><span class="p">,</span>
+    <span class="n">items_valid</span><span class="p">,</span>
+    <span class="n">items_test</span><span class="p">,</span>
+    <span class="n">callback_load_epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_load_ndarray</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">criterion</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">(),</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+    <span class="n">n_epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">callback_proc_mode</span><span class="o">=</span><span class="s2">&quot;per_split&quot;</span><span class="p">,</span>
+    <span class="n">callback_proc_epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_proc_ndarray</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">utils</span><span class="o">.</span><span class="n">convert_epochs_to_ndarray</span><span class="p">,</span>
+    <span class="n">callback_get_logits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_get_preds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_get_probas</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_get_model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_early_stopping</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">callback_normalization</span><span class="o">=</span><span class="n">rosoku</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">normalize</span><span class="p">,</span>
+    <span class="n">optimizer_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">scheduler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">scheduler_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">min_delta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+    <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+    <span class="n">scoring_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">enable_wandb_logging</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">wandb_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">checkpoint_fname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">history_fname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">samples_fname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">normalization_fname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">saliency_map_fname</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">use_deterministic_algorithms</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">deterministic_warn_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">label_keys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+    <span class="n">additional_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Run a deep-learning EEG/BCI experiment using PyTorch models.</span>
+
+<span class="sd">    This function provides an end-to-end pipeline for training and evaluating a</span>
+<span class="sd">    PyTorch model on EEG/BCI datasets using rosoku&#39;s item-based data abstraction.</span>
+<span class="sd">    It supports loading data via user callbacks (MNE Epochs or NumPy arrays),</span>
+<span class="sd">    optional preprocessing and normalization, model training, grouped test</span>
+<span class="sd">    evaluation, saliency-map computation, and exporting results.</span>
+
+<span class="sd">    Compared to high-level frameworks, this function exposes explicit hooks for:</span>
+
+<span class="sd">    - model creation (``callback_get_model``),</span>
+<span class="sd">    - inference extraction (logits / predictions / probabilities),</span>
+<span class="sd">    - early stopping control,</span>
+<span class="sd">    - reproducibility control (seed and deterministic algorithms),</span>
+
+<span class="sd">    while still handling the full experimental loop.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    items_train : list</span>
+<span class="sd">        List of items describing the training split. Each item is a user-defined</span>
+<span class="sd">        object (often a dict) interpreted only by the data-loading callbacks.</span>
+
+<span class="sd">    items_valid : list or None</span>
+<span class="sd">        List of items describing the validation split. If ``None``, no validation</span>
+<span class="sd">        data are used.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">        If ``items_valid`` is ``None``, the built-in patience-style</span>
+<span class="sd">        ``early_stopping`` is not allowed (see ``early_stopping``).</span>
+
+<span class="sd">    items_test : list</span>
+<span class="sd">        List defining test evaluation groups. Each element can be either:</span>
+
+<span class="sd">        - a single item: treated as one test group</span>
+<span class="sd">        - a list of items: loaded and merged as one test group</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">        Grouping is handled by :func:`rosoku.utils.load_data`. Each element of</span>
+<span class="sd">        ``items_test`` corresponds to exactly one evaluation group (i.e., one row</span>
+<span class="sd">        per metric set in the returned results, per test group).</span>
+
+<span class="sd">    callback_load_epochs : callable | None, optional</span>
+<span class="sd">        Loader returning an :class:`mne.Epochs` instance.</span>
+
+<span class="sd">        The callback **must** have the signature::</span>
+
+<span class="sd">            callback_load_epochs(items, split)</span>
+
+<span class="sd">        where ``items`` is a list of items and ``split`` is one of</span>
+<span class="sd">        ``{&quot;train&quot;, &quot;valid&quot;, &quot;test&quot;}``.</span>
+
+<span class="sd">        For grouped items (e.g., a test group with multiple sessions), the callback</span>
+<span class="sd">        should implement merging/concatenation logic (e.g.,</span>
+<span class="sd">        :func:`mne.concatenate_epochs`).</span>
+
+<span class="sd">        Exactly one of ``callback_load_epochs`` and ``callback_load_ndarray`` must be</span>
+<span class="sd">        provided (enforced in :func:`rosoku.utils.load_data`).</span>
+
+<span class="sd">    callback_load_ndarray : callable | None, optional</span>
+<span class="sd">        Loader returning ``(X, y)`` arrays.</span>
+
+<span class="sd">        The callback **must** have the signature::</span>
+
+<span class="sd">            callback_load_ndarray(items, split)</span>
+
+<span class="sd">        and return a tuple ``(X, y)`` where ``X`` is array-like and ``y`` are labels.</span>
+
+<span class="sd">        Exactly one of ``callback_load_epochs`` and ``callback_load_ndarray`` must be</span>
+<span class="sd">        provided (enforced in :func:`rosoku.utils.load_data`).</span>
+
+<span class="sd">    criterion : torch.nn.Module, optional</span>
+<span class="sd">        Loss function used for training (default:</span>
+<span class="sd">        :class:`torch.nn.CrossEntropyLoss`).</span>
+
+<span class="sd">    batch_size : int, optional</span>
+<span class="sd">        Mini-batch size used for training and inference.</span>
+
+<span class="sd">    n_epochs : int, optional</span>
+<span class="sd">        Maximum number of training epochs.</span>
+
+<span class="sd">    optimizer : type, optional</span>
+<span class="sd">        Optimizer class (not an instance), e.g. :class:`torch.optim.AdamW`.</span>
+
+<span class="sd">    callback_proc_mode : {&quot;per_split&quot;, &quot;joint&quot;}, optional</span>
+<span class="sd">        Controls how preprocessing callbacks are applied, as interpreted by</span>
+<span class="sd">        ``apply_callback_proc``.</span>
+
+<span class="sd">        - ``&quot;per_split&quot;``:</span>
+<span class="sd">            The preprocessing callback is applied independently to each data</span>
+<span class="sd">            split (train / valid / test).</span>
+
+<span class="sd">            The callback function must have the signature::</span>
+
+<span class="sd">                callback_proc(data, split)</span>
+
+<span class="sd">            where ``split`` is one of ``{&quot;train&quot;, &quot;valid&quot;, &quot;test&quot;}``.</span>
+
+<span class="sd">            The callback must return the processed version of ``data``.</span>
+<span class="sd">            No information is shared across splits in this mode.</span>
+
+<span class="sd">        - ``&quot;joint&quot;``:</span>
+<span class="sd">            The preprocessing callback is applied jointly to multiple splits</span>
+<span class="sd">            at once, allowing shared state across splits.</span>
+
+<span class="sd">            If validation data are not provided (``valid is None``), the callback</span>
+<span class="sd">            must have the signature::</span>
+
+<span class="sd">                callback_proc(train, test)</span>
+
+<span class="sd">            and must return::</span>
+
+<span class="sd">                train, test</span>
+
+<span class="sd">            If validation data are provided, the callback must have the signature::</span>
+
+<span class="sd">                callback_proc(train, valid, test)</span>
+
+<span class="sd">            and must return::</span>
+
+<span class="sd">                train, valid, test</span>
+
+<span class="sd">            This mode is intended for stateful preprocessing steps such as</span>
+<span class="sd">            fitting a transformation on training data and applying it</span>
+<span class="sd">            consistently to validation and test data.</span>
+
+<span class="sd">    callback_proc_epochs : callable | None, optional</span>
+<span class="sd">        Optional preprocessing applied to Epochs objects before conversion to arrays.</span>
+
+<span class="sd">    callback_proc_ndarray : callable | None, optional</span>
+<span class="sd">        Optional preprocessing applied to ndarray data via ``apply_callback_proc``.</span>
+
+<span class="sd">    callback_convert_epochs_to_ndarray : callable, optional</span>
+<span class="sd">        Converter from Epochs to ``(X, y)`` arrays.</span>
+<span class="sd">        Called as ``callback_convert_epochs_to_ndarray(epochs, split)``.</span>
+
+<span class="sd">    callback_get_logits : callable | None, optional</span>
+<span class="sd">        Optional hook to compute logits during inference.</span>
+
+<span class="sd">        If provided, it is called as::</span>
+
+<span class="sd">            callback_get_logits(model, X)</span>
+
+<span class="sd">        If ``None``, logits are computed by the default forward pass::</span>
+
+<span class="sd">            logits = model(X)</span>
+
+<span class="sd">        The returned ``logits`` must be shaped ``(n_samples, n_classes)``.</span>
+
+<span class="sd">    callback_get_preds : callable | None, optional</span>
+<span class="sd">        Optional hook to compute predicted labels during inference.</span>
+
+<span class="sd">        If provided, it is called as::</span>
+
+<span class="sd">            callback_get_preds(model, X)</span>
+
+<span class="sd">        If ``None``, predictions are computed from logits as::</span>
+
+<span class="sd">            preds = torch.argmax(logits, dim=1)</span>
+
+<span class="sd">        The returned ``preds`` must be a 1D tensor/array of length ``n_samples``.</span>
+
+<span class="sd">    callback_get_probas : callable | None, optional</span>
+<span class="sd">        Optional hook to compute class probabilities during inference.</span>
+
+<span class="sd">        If provided, it is called as::</span>
+
+<span class="sd">            callback_get_probas(model, X)</span>
+
+<span class="sd">        If ``None``, probabilities are computed from logits as::</span>
+
+<span class="sd">            probas = torch.nn.functional.softmax(logits, dim=1)</span>
+
+<span class="sd">        The returned ``probas`` must be shaped ``(n_samples, n_classes)``.</span>
+
+<span class="sd">    callback_get_model : callable | None, optional</span>
+<span class="sd">        Factory function returning a ``torch.nn.Module`` instance.</span>
+
+<span class="sd">        If ``model`` is ``None``, this callback **must** be provided and is called as::</span>
+
+<span class="sd">            callback_get_model(X_train, y_train)</span>
+
+<span class="sd">        where ``X_train`` and ``y_train`` are arrays returned by</span>
+<span class="sd">        :func:`rosoku.utils.load_data`.</span>
+
+<span class="sd">        If ``model`` is provided explicitly, this callback is ignored.</span>
+
+<span class="sd">    callback_early_stopping : callable | None, optional</span>
+<span class="sd">        User-defined early stopping callback.</span>
+
+<span class="sd">        If provided, this callback is evaluated once per epoch during training.</span>
+<span class="sd">        It must accept a single dictionary describing the current training state</span>
+<span class="sd">        and return a boolean value:</span>
+
+<span class="sd">        - ``True``  → stop training (early stopping is triggered)</span>
+<span class="sd">        - ``False`` → continue training</span>
+
+<span class="sd">        The callback is invoked as::</span>
+
+<span class="sd">            callback_early_stopping(state)</span>
+
+<span class="sd">        where ``state`` is a dictionary with the following keys:</span>
+
+<span class="sd">        ``&quot;train_loss&quot;`` : float</span>
+<span class="sd">            Training loss at the current epoch.</span>
+
+<span class="sd">        ``&quot;valid_loss&quot;`` : float</span>
+<span class="sd">            Validation loss at the current epoch.</span>
+
+<span class="sd">        ``&quot;epoch&quot;`` : int</span>
+<span class="sd">            Current epoch number (1-based).</span>
+
+<span class="sd">        When the callback returns ``True``, the training loop is immediately</span>
+<span class="sd">        terminated after the current epoch.</span>
+
+<span class="sd">        Notes:</span>
+
+<span class="sd">        - The callback is evaluated after both training and validation losses</span>
+<span class="sd">          have been computed for the epoch.</span>
+<span class="sd">        - The callback itself is responsible for maintaining any internal state</span>
+<span class="sd">          (e.g., best loss, patience counters).</span>
+<span class="sd">        - ``callback_early_stopping`` and ``early_stopping`` cannot be specified</span>
+<span class="sd">          at the same time.</span>
+<span class="sd">        - This callback can be used even when ``items_valid`` is ``None``,</span>
+<span class="sd">          provided the callback logic does not rely on ``&quot;valid_loss&quot;``.</span>
+
+<span class="sd">    callback_normalization : callable | None, optional</span>
+<span class="sd">        Normalization function applied to train/validation/test arrays.</span>
+
+<span class="sd">        By default, ``rosoku.preprocessing.normalize`` is used, which applies</span>
+<span class="sd">        z-score normalization based on the training data and returns</span>
+<span class="sd">        ``(X_train, X_valid, X_test, mean, std)``.</span>
+
+<span class="sd">        If provided, this callback is invoked **after data loading and preprocessing**</span>
+<span class="sd">        and **before model creation and training**. It is responsible for applying</span>
+<span class="sd">        normalization (e.g., z-score normalization) consistently across splits.</span>
+
+<span class="sd">        The callback **must** be callable and is invoked as::</span>
+
+<span class="sd">            callback_normalization(X_train, X_valid, X_test)</span>
+
+<span class="sd">        The return value must be either:</span>
+
+<span class="sd">        - ``(X_train, X_valid, X_test)``</span>
+<span class="sd">        - ``(X_train, X_valid, X_test, mean, std)``</span>
+
+<span class="sd">        where:</span>
+
+<span class="sd">        ``X_train`` : numpy.ndarray</span>
+<span class="sd">            Normalized training data.</span>
+
+<span class="sd">        ``X_valid`` : numpy.ndarray or None</span>
+<span class="sd">            Normalized validation data.</span>
+
+<span class="sd">        ``X_test`` : list of numpy.ndarray</span>
+<span class="sd">            Normalized test data (one array per test group).</span>
+
+<span class="sd">        ``mean`` / ``std`` : numpy.ndarray, optional</span>
+<span class="sd">            Normalization parameters. These are required **only if**</span>
+<span class="sd">            ``normalization_fname`` is provided.</span>
+
+<span class="sd">        Behavior details:</span>
+
+<span class="sd">        - If ``callback_normalization`` is ``None``, no normalization is applied.</span>
+<span class="sd">        - If ``normalization_fname`` is provided, the callback **must** return</span>
+<span class="sd">          ``mean`` and ``std`` in addition to the normalized arrays.</span>
+<span class="sd">        - ``mean`` and ``std`` are saved to ``normalization_fname`` using msgpack.</span>
+<span class="sd">        - rosoku does not enforce a specific normalization strategy; the callback</span>
+<span class="sd">          fully defines the behavior.</span>
+
+<span class="sd">        Recommended usage:</span>
+
+<span class="sd">        - Compute statistics (mean/std) **only from training data** and apply them</span>
+<span class="sd">          to validation and test data to avoid data leakage.</span>
+
+<span class="sd">    optimizer_params : dict | None, optional</span>
+<span class="sd">        Keyword arguments forwarded to the optimizer constructor.</span>
+
+<span class="sd">    model : torch.nn.Module | None, optional</span>
+<span class="sd">        Pre-instantiated model. If ``None``, ``callback_get_model`` must be provided.</span>
+
+<span class="sd">    scheduler : type | None, optional</span>
+<span class="sd">        Learning-rate scheduler class (not an instance).</span>
+
+<span class="sd">    scheduler_params : dict | None, optional</span>
+<span class="sd">        Keyword arguments forwarded to the scheduler constructor.</span>
+
+<span class="sd">    min_delta : float, optional</span>
+<span class="sd">        Minimum improvement threshold used for **model improvement detection**.</span>
+
+<span class="sd">        This parameter is used in two places depending on the configuration:</span>
+
+<span class="sd">        1. **Checkpoint saving**</span>
+<span class="sd">           When ``checkpoint_fname`` is provided, the training routine tracks the</span>
+<span class="sd">           best validation loss and saves model parameters only if the monitored</span>
+<span class="sd">           loss improves by at least ``min_delta`` compared to the previously best</span>
+<span class="sd">           value.</span>
+
+<span class="sd">           A new checkpoint is written if::</span>
+
+<span class="sd">               current_loss &lt; best_loss - min_delta</span>
+
+<span class="sd">        2. **Early stopping (when ``early_stopping`` is an integer)**</span>
+<span class="sd">           When ``early_stopping`` is specified as an integer, ``min_delta`` is</span>
+<span class="sd">           forwarded to :class:`rosoku.utils.EarlyStopping` and used as the minimum</span>
+<span class="sd">           required improvement to reset the patience counter.</span>
+
+<span class="sd">    device : {&quot;cpu&quot;, &quot;cuda&quot;}, optional</span>
+<span class="sd">        Device used for training and inference.</span>
+
+<span class="sd">    num_workers : int, optional</span>
+<span class="sd">        Number of worker processes used by PyTorch DataLoaders.</span>
+
+<span class="sd">        **For maximum reproducibility, it is strongly recommended to use</span>
+<span class="sd">        ``num_workers=0``.**</span>
+
+<span class="sd">        Using multiple workers may introduce non-determinism depending on the</span>
+<span class="sd">        dataset, transforms, and system configuration.</span>
+
+<span class="sd">    scoring : str | callable | list of (str or callable), optional</span>
+<span class="sd">        Scoring metric(s) computed on each test group.</span>
+
+<span class="sd">        If a string, it is resolved via :func:`sklearn.metrics.get_scorer` and the</span>
+<span class="sd">        underlying ``_score_func`` is used.</span>
+<span class="sd">        If a callable, it must have signature ``scoring(y_true, y_pred)``.</span>
+
+<span class="sd">    scoring_name : str | list of str | None, optional</span>
+<span class="sd">        Column names corresponding to ``scoring``. If ``None``, names are inferred:</span>
+<span class="sd">        strings keep their name, callables become ``&quot;callable&quot;``.</span>
+
+<span class="sd">    enable_wandb_logging : bool, optional</span>
+<span class="sd">        If True, log metrics and predictions to Weights &amp; Biases.</span>
+
+<span class="sd">    wandb_params : dict | None, optional</span>
+<span class="sd">        Parameters forwarded to ``wandb.init`` (handled inside training / caller code).</span>
+
+<span class="sd">    checkpoint_fname : path-like | None, optional</span>
+<span class="sd">        If provided, a checkpoint is loaded before test-time inference and</span>
+<span class="sd">        ``model_state_dict`` is restored.</span>
+
+<span class="sd">        Recommended extension: ``.pth``.</span>
+
+<span class="sd">    history_fname : path-like | None, optional</span>
+<span class="sd">        If provided, training history is saved by the training routine.</span>
+
+<span class="sd">        Recommended extension: ``.parquet`` (pandas DataFrame).</span>
+
+<span class="sd">    samples_fname : path-like | None, optional</span>
+<span class="sd">        If provided, writes sample-level predictions to a Parquet file.</span>
+
+<span class="sd">        Recommended extension: ``.parquet`` (pandas DataFrame).</span>
+
+<span class="sd">    normalization_fname : path-like | None, optional</span>
+<span class="sd">        If provided and ``enable_normalization=True``, saves normalization parameters</span>
+<span class="sd">        (mean/std) via msgpack.</span>
+
+<span class="sd">        Recommended extension: ``.msgpack``.</span>
+
+<span class="sd">    saliency_map_fname : path-like | None, optional</span>
+<span class="sd">        If provided, computes saliency maps for each test group and class and saves</span>
+<span class="sd">        them via msgpack.</span>
+
+<span class="sd">        Recommended extension: ``.msgpack``.</span>
+
+<span class="sd">    early_stopping : int | None, optional</span>
+<span class="sd">        Patience-style early stopping parameter interpreted by the training routine.</span>
+
+<span class="sd">        It will raise ValueError, if ``items_valid`` is ``None`` and ``early_stopping`` is provided.</span>
+<span class="sd">        In that case, use ``callback_early_stopping`` instead.</span>
+
+<span class="sd">    model_name : str | None, optional</span>
+<span class="sd">        Model name recorded in outputs. Defaults to ``model.__class__.__name__``.</span>
+
+<span class="sd">    use_deterministic_algorithms : bool, optional</span>
+<span class="sd">        If True, enforce deterministic algorithms via</span>
+<span class="sd">        :func:`torch.use_deterministic_algorithms`.</span>
+
+<span class="sd">        When enabled, PyTorch may raise a :class:`RuntimeError` if an operation does</span>
+<span class="sd">        not have a deterministic implementation on the current backend/device.</span>
+
+<span class="sd">    deterministic_warn_only : bool, optional</span>
+<span class="sd">        Passed to :func:`torch.use_deterministic_algorithms` as ``warn_only``.</span>
+
+<span class="sd">        If True, PyTorch will emit warnings instead of raising errors when it</span>
+<span class="sd">        encounters non-deterministic operations (useful for debugging and gradually</span>
+<span class="sd">        hardening reproducibility).</span>
+
+<span class="sd">    label_keys : dict | None, optional</span>
+<span class="sd">        Mapping from class labels to integer IDs, used for saliency map computation.</span>
+<span class="sd">        If ``None``, labels may be inferred from ``y_test`` (implementation-dependent).</span>
+
+<span class="sd">    seed : int | None, optional</span>
+<span class="sd">        Random seed controlling NumPy, Python, and PyTorch RNGs. When provided,</span>
+<span class="sd">        deterministic backend settings are enabled:</span>
+
+<span class="sd">        - ``torch.backends.cudnn.deterministic = True``</span>
+<span class="sd">        - ``torch.backends.cudnn.benchmark = False``</span>
+<span class="sd">        - TF32 disabled for matmul and cuDNN</span>
+
+<span class="sd">    dtype : torch.dtype, optional</span>
+<span class="sd">        Default floating-point dtype forwarded to the training routine via ``kwargs``.</span>
+<span class="sd">        Useful when you need to force ``float32`` (recommended for stability) or</span>
+<span class="sd">        experiment with other dtypes.</span>
+
+<span class="sd">    additional_values : dict | None, optional</span>
+<span class="sd">        Extra metadata appended as columns to output DataFrames (summary and samples).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        Summary results with one row per test group. Includes JSON-serialized</span>
+<span class="sd">        ``items_train`` / ``items_valid`` / ``items_test`` specifications, scoring</span>
+<span class="sd">        metrics, and the model name.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Reproducibility recommendations (strict mode)</span>
+<span class="sd">        - set ``seed`` to a fixed integer</span>
+<span class="sd">        - set ``use_deterministic_algorithms=True`` (optionally start with</span>
+<span class="sd">          ``deterministic_warn_only=True`` to identify offending ops)</span>
+<span class="sd">        - use ``num_workers=0``</span>
+<span class="sd">        - avoid non-deterministic preprocessing / augmentation steps</span>
+
+<span class="sd">    Output file extensions</span>
+<span class="sd">        rosoku does **not** automatically append file extensions.</span>
+<span class="sd">        Please explicitly include extensions in filenames. Recommended extensions:</span>
+
+<span class="sd">        - ``history_fname``        → ``.parquet``  (pandas DataFrame)</span>
+<span class="sd">        - ``checkpoint_fname``     → ``.pth``      (PyTorch checkpoint)</span>
+<span class="sd">        - ``samples_fname``        → ``.parquet``  (pandas DataFrame)</span>
+<span class="sd">        - ``normalization_fname``  → ``.msgpack``  (msgpack-serialized dict)</span>
+<span class="sd">        - ``saliency_map_fname``   → ``.msgpack``  (msgpack-serialized dict)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">enable_wandb_logging</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">wandb</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">callback_early_stopping</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">early_stopping</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot specify both callback_early_stopping and early_stopping&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">items_valid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">early_stopping</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot specify early_stopping without items_valid. Use callback_early_stpping instead&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">deterministic</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">matmul</span><span class="o">.</span><span class="n">allow_tf32</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">allow_tf32</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="n">use_deterministic_algorithms</span><span class="p">:</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">use_deterministic_algorithms</span><span class="p">(</span>
+            <span class="n">use_deterministic_algorithms</span><span class="p">,</span> <span class="n">warn_only</span><span class="o">=</span><span class="n">deterministic_warn_only</span>
+        <span class="p">)</span>
+
+    <span class="c1"># load data</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span>
+        <span class="n">items_train</span><span class="o">=</span><span class="n">items_train</span><span class="p">,</span>
+        <span class="n">items_valid</span><span class="o">=</span><span class="n">items_valid</span><span class="p">,</span>
+        <span class="n">items_test</span><span class="o">=</span><span class="n">items_test</span><span class="p">,</span>
+        <span class="n">callback_load_epochs</span><span class="o">=</span><span class="n">callback_load_epochs</span><span class="p">,</span>
+        <span class="n">callback_load_ndarray</span><span class="o">=</span><span class="n">callback_load_ndarray</span><span class="p">,</span>
+        <span class="n">callback_proc_epochs</span><span class="o">=</span><span class="n">callback_proc_epochs</span><span class="p">,</span>
+        <span class="n">callback_proc_ndarray</span><span class="o">=</span><span class="n">callback_proc_ndarray</span><span class="p">,</span>
+        <span class="n">callback_proc_mode</span><span class="o">=</span><span class="n">callback_proc_mode</span><span class="p">,</span>
+        <span class="n">callback_convert_epochs_to_ndarray</span><span class="o">=</span><span class="n">callback_convert_epochs_to_ndarray</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items_test</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;len(items_test) != len(X_test)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># data normalization</span>
+    <span class="k">if</span> <span class="n">callback_normalization</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">callback_normalization</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;callback_normalization must be callable&quot;</span><span class="p">)</span>
+
+        <span class="n">normalization_tuple</span> <span class="o">=</span> <span class="n">callback_normalization</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
+
+        <span class="n">X_train</span> <span class="o">=</span> <span class="n">normalization_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">X_valid</span> <span class="o">=</span> <span class="n">normalization_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">X_test</span> <span class="o">=</span> <span class="n">normalization_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">normalization_fname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">normalization_tuple</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                    <span class="s2">&quot;callback_normalization should return X_train, X_valid, X_test, mean, std, if normalization_fname is provided&quot;</span>
+                <span class="p">)</span>
+
+            <span class="n">normalization_mean</span> <span class="o">=</span> <span class="n">normalization_tuple</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">normalization_std</span> <span class="o">=</span> <span class="n">normalization_tuple</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+
+            <span class="n">normalization_dict</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">normalization_mean</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+                <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">normalization_std</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+            <span class="p">}</span>
+
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">normalization_fname</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">msgpack</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">normalization_dict</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">callback_get_model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;callback_get_model must be provided if model is None&quot;</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">callback_get_model</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">model_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">model_name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;optimizer_params&quot;</span><span class="p">:</span> <span class="n">optimizer_params</span><span class="p">,</span>
+        <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span>
+        <span class="s2">&quot;callback_early_stopping&quot;</span><span class="p">:</span> <span class="n">callback_early_stopping</span><span class="p">,</span>
+        <span class="s2">&quot;scheduler&quot;</span><span class="p">:</span> <span class="n">scheduler</span><span class="p">,</span>
+        <span class="s2">&quot;scheduler_params&quot;</span><span class="p">:</span> <span class="n">scheduler_params</span><span class="p">,</span>
+        <span class="s2">&quot;min_delta&quot;</span><span class="p">:</span> <span class="n">min_delta</span><span class="p">,</span>
+        <span class="s2">&quot;enable_wandb_logging&quot;</span><span class="p">:</span> <span class="n">enable_wandb_logging</span><span class="p">,</span>
+        <span class="s2">&quot;wandb_params&quot;</span><span class="p">:</span> <span class="n">wandb_params</span><span class="p">,</span>
+        <span class="s2">&quot;checkpoint_fname&quot;</span><span class="p">:</span> <span class="n">checkpoint_fname</span><span class="p">,</span>
+        <span class="s2">&quot;history_fname&quot;</span><span class="p">:</span> <span class="n">history_fname</span><span class="p">,</span>
+        <span class="s2">&quot;early_stopping&quot;</span><span class="p">:</span> <span class="n">early_stopping</span><span class="p">,</span>
+        <span class="s2">&quot;dtype&quot;</span><span class="p">:</span> <span class="n">dtype</span><span class="p">,</span>
+        <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="n">seed</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">run_experiment</span><span class="p">(</span>
+        <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">X_train</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span>
+        <span class="n">y_train</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span>
+        <span class="n">X_valid</span><span class="o">=</span><span class="n">X_valid</span><span class="p">,</span>
+        <span class="n">y_valid</span><span class="o">=</span><span class="n">y_valid</span><span class="p">,</span>
+        <span class="n">X_test</span><span class="o">=</span><span class="n">X_test</span><span class="p">,</span>
+        <span class="n">y_test</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span>
+        <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">n_epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
+        <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+        <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scoring</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">scoring</span> <span class="o">=</span> <span class="p">[</span><span class="n">scoring</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">scoring_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">scoring_name</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">scoring_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scoring</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scoring_</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">scoring_name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scoring_</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">scoring_</span><span class="p">):</span>
+                <span class="n">scoring_name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;callable&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">scoring_name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;unknown_scoring&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scoring_name</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">scoring_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">scoring_name</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">scoring</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">scoring_name</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;len(scoring) != len(scoring_name)&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">scoring_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scoring</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scoring_</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_scorer</span>
+
+            <span class="n">scoring_</span> <span class="o">=</span> <span class="n">get_scorer</span><span class="p">(</span><span class="n">scoring_</span><span class="p">)</span><span class="o">.</span><span class="n">_score_func</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">scoring_</span><span class="p">):</span>
+            <span class="c1"># do nothing</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid scoring: </span><span class="si">{</span><span class="n">scoring_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">scoring</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">scoring_</span>
+
+    <span class="c1"># classify test data</span>
+    <span class="k">if</span> <span class="n">checkpoint_fname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">checkpoint_fname</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s2">&quot;model_state_dict&quot;</span><span class="p">])</span>
+
+    <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">dataloader_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">ndarray_to_dataloader</span><span class="p">(</span>
+        <span class="n">X_train</span><span class="p">,</span>
+        <span class="n">y_train</span><span class="p">,</span>
+        <span class="n">X_valid</span><span class="p">,</span>
+        <span class="n">y_valid</span><span class="p">,</span>
+        <span class="n">X_test</span><span class="p">,</span>
+        <span class="n">y_test</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+        <span class="n">generator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dataloader_test</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">dataloader_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataloader_test</span><span class="p">]</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">saliency_map_fname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">saliency_data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">dataloader</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dataloader_test</span><span class="p">):</span>
+            <span class="n">saliency_data</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">if</span> <span class="n">label_keys</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+                <span class="n">label_keys</span> <span class="o">=</span> <span class="p">{</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">}</span>
+
+            <span class="k">for</span> <span class="n">class_label</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">label_keys</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="n">attribution</span><span class="o">.</span><span class="n">saliency_map</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">class_index</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+
+                <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+                <span class="n">saliency_data</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">class_label</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">saliency_map_fname</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">msgpack</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">saliency_data</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+    <span class="n">df_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">samples_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">items_test_single</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+            <span class="nb">zip</span><span class="p">(</span><span class="n">dataloader_test</span><span class="p">,</span> <span class="n">items_test</span><span class="p">)</span>
+        <span class="p">):</span>
+
+            <span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">logits</span><span class="p">,</span> <span class="n">probas</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_predictions</span><span class="p">(</span>
+                <span class="n">model</span><span class="p">,</span>
+                <span class="n">dataloader</span><span class="p">,</span>
+                <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+                <span class="n">callback_get_logits</span><span class="o">=</span><span class="n">callback_get_logits</span><span class="p">,</span>
+                <span class="n">callback_get_preds</span><span class="o">=</span><span class="n">callback_get_preds</span><span class="p">,</span>
+                <span class="n">callback_get_probas</span><span class="o">=</span><span class="n">callback_get_probas</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">scoring_</span> <span class="ow">in</span> <span class="n">scoring</span><span class="p">:</span>
+                <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scoring_</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">preds</span><span class="p">))</span>
+
+            <span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+            <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;items_train&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">items_train</span><span class="p">)]</span>
+            <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;items_valid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">items_valid</span><span class="p">)]</span>
+            <span class="n">df_results</span><span class="p">[</span><span class="s2">&quot;items_test&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">items_test_single</span><span class="p">)]</span>
+
+            <span class="n">wandb_log</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">scoring_name_</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scoring_name</span><span class="p">,</span> <span class="n">scores</span><span class="p">):</span>
+                <span class="n">df_results</span><span class="p">[</span><span class="n">scoring_name_</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">score</span><span class="p">]</span>
+                <span class="n">wandb_log</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;tset/</span><span class="si">{</span><span class="n">scoring_name_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">score</span>
+
+            <span class="n">samples</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+            <span class="n">samples</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span>
+            <span class="n">samples</span><span class="p">[</span><span class="s2">&quot;preds&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">preds</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">probas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="n">samples</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;probas_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">probas</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="n">samples</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;logits_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logits</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">]</span>
+            <span class="n">samples</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">model_name</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">))]</span>
+            <span class="k">if</span> <span class="n">additional_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">samples</span> <span class="o">=</span> <span class="n">_add_values_to_df</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">additional_values</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">enable_wandb_logging</span><span class="p">:</span>
+                <span class="n">table</span> <span class="o">=</span> <span class="n">wandb</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;preds&quot;</span><span class="p">])</span>
+                <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">preds</span><span class="p">)):</span>
+                    <span class="n">table</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+
+                <span class="n">wandb_log</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;predictions&quot;</span><span class="p">:</span> <span class="n">table</span><span class="p">})</span>
+                <span class="n">wandb</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">wandb_log</span><span class="p">)</span>
+
+            <span class="n">samples_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+            <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_results</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">model_name</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    <span class="k">if</span> <span class="n">additional_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">_add_values_to_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">additional_values</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">samples_fname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">samples_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">samples</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">samples_fname</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">enable_wandb_logging</span><span class="p">:</span>
+        <span class="n">wandb</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Simon Kojima.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
